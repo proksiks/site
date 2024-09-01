@@ -1,0 +1,16 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "title": "Главная",
+      "href": "/",
+      "classIcon": "bx-grid-alt"
+    },
+    {
+      "id": 2,
+      "title": "Проекты",
+      "href": "/projects/",
+      "classIcon": "bxs-devices"
+    }
+  ]
+}
