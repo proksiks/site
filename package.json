@@ -13,5 +13,10 @@
     "normalize.css": "^8.0.1",
     "nuxt": "^3.13.0",
     "vue": "latest"
+  },
+  "devDependencies": {
+    "sass": "^1.77.8",
+    "typescript": "^5.5.4",
+    "vue-tsc": "^2.1.4"
   }
 }

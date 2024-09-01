@@ -1,6 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  app:{
+  app: {
     pageTransition: { name: "page", mode: "out-in" },
     head: {
       charset: 'utf-8',
@@ -13,7 +13,7 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
   modules: [],
-  
+
   css: ["normalize.css", "~/app/css/global.css"],
 
   imports: {
@@ -24,14 +24,13 @@ export default defineNuxtConfig({
   },
 
   dir: {
-    pages: "routes",
+    pages: "app/routes",
   },
 
   components: {
     dirs: [
       {
-        path: "~/shared/components",
-        pathPrefix: false,
+        path: "~/shared",
       },
     ],
   },

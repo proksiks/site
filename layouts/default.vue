@@ -1,5 +1,9 @@
 <template>
-  <slot />
+  <main style="background-color: black; width: 100vw; height: 100vh;">
+    <div style="color: white;">
+      <slot />
+    </div>
+  </main>
 </template>
 
 <script setup lang="ts">

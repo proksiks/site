@@ -5,6 +5,7 @@
       <span class="sidebar-name">
         <span class="sidebar-name-text">{{ title }}</span>
         <span class="sidebar-name-text sidebar-name-text-dublicate">{{ title }}</span>
+        <slot />
       </span>
     </span>
   </nuxt-link>
@@ -14,6 +15,7 @@
       <span class="sidebar-name">
         <span class="sidebar-name-text">{{ title }}</span>
         <span class="sidebar-name-text sidebar-name-text-dublicate">{{ title }}</span>
+        <slot />
       </span>
     </span>
   </a>
@@ -23,6 +25,7 @@
       <span class="sidebar-name">
         <span class="sidebar-name-text">{{ title }}</span>
         <span class="sidebar-name-text sidebar-name-text-dublicate">{{ title }}</span>
+        <slot />
       </span>
     </span>
   </button>
@@ -33,6 +36,6 @@
   defineProps<Button>();
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   @import "./index.scss";
 </style>

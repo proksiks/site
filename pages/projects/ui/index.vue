@@ -12,7 +12,15 @@
       </div>
       <ul class="sidebar-list">
         <li class="sidebar-item" v-for="route in items" :key="route.id">
-          <ButtonUi title="text">text</ButtonUi>
+          <nuxt-link class="sidebar-button" :to="route.href">
+            <span class="sidebar-button-content">
+              <i class="sidebar-button-icon bx" :class="route.classIcon"></i>
+              <span class="sidebar-name">
+                <span class="sidebar-name-text">{{ route.title }}</span>
+                <span class="sidebar-name-text sidebar-name-text-dublicate">{{ route.title }}</span>
+              </span>
+            </span>
+          </nuxt-link>
         </li>
 
         <li class="sidebar-item sidebar-item-bottom">
