@@ -59,7 +59,7 @@
     height: 100%;
     padding: 1.25rem;
     color: var(--dark);
-    background-color: var(--white);
+    background-color: var(--dark-blue);
     border-radius: 0.625rem;
   }
   .wrap {
@@ -112,7 +112,7 @@
     align-items: center;
     gap: 1.5rem;
   }
-  
+
 
   .search-input {
     padding: 0.625rem;

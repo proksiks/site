@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
   ssr: false,
   app: {
-    //baseURL: "/site/",
+    baseURL: "/site/",
     //pageTransition: { name: "page", mode: "out-in" },  Ошибка перестаёт работать переход по страницам
     head: {
       charset: 'utf-8',

@@ -28,6 +28,8 @@
   --dark-75: rgba(var(--main-color), 0.75);
   --dark-20: rgba(var(--main-color), 0.2);
   --dark-0: rgba(var(--main-color), 0);
+  --dark-blue: rgb(43, 63, 77);
+
   --light: #00ffff;
   --white: white;
   --gray-light: #ebebeb;
