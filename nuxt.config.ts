@@ -12,7 +12,7 @@ export default defineNuxtConfig({
   },
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
-  modules: [],
+  modules: ['@nuxt/eslint'],
 
   css: ["normalize.css", "~/app/css/global.css"],
 

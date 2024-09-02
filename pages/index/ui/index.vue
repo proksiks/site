@@ -5,26 +5,14 @@
         <a class="sidebar-title" href="https://t.me/ProKsiKzzz" target="_blank">
           <i class="sidebar-menu-icon bx bxl-telegram"></i>
         </a>
-
-        <button class="sidebar-button sidebar-menu-button reset-btn" @click="openMenu">
-          <i class="sidebar-menu-icon bx bx-menu"></i>
-        </button>
+        <button-ui class="sidebar-menu-button" class-icon="bx-menu" :class="{ active: isMenuOpen }" @click="openMenu"></button-ui>
       </div>
       <ul class="sidebar-list">
         <li class="sidebar-item" v-for="route in items" :key="route.id">
-          <ButtonUi title="text">text</ButtonUi>
+          <button-ui class="sidebar-item-button" :class-icon="route.icon" :title="route.title"></button-ui>
         </li>
-
         <li class="sidebar-item sidebar-item-bottom">
-          <a class="sidebar-button" href="https://t.me/ProKsiKzzz">
-            <span class="sidebar-button-content">
-              <i class="sidebar-button-icon bx bxl-telegram"></i>
-              <span class="sidebar-name">
-                <span class="sidebar-name-text">Телеграмм</span>
-                <span class="sidebar-name-text sidebar-name-text-dublicate">Телеграмм</span>
-              </span>
-            </span>
-          </a>
+          <button-ui class="sidebar-item-button" class-icon="bxl-telegram" title="Телеграмм" href="https://t.me/ProKsiKzzz"></button-ui>
         </li>
       </ul>
     </div>
@@ -40,6 +28,6 @@
     isMenuOpen.value = !isMenuOpen.value;
   };
 </script>
-<style>
+<style scoped>
   @import "./index.css";
 </style>
