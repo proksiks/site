@@ -1,7 +1,8 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  ssr: false,
   app: {
-    baseURL: "/site/",
+    //baseURL: "/site/",
     pageTransition: { name: "page", mode: "out-in" },
     head: {
       charset: 'utf-8',
@@ -19,8 +20,7 @@ export default defineNuxtConfig({
 
   imports: {
     dirs: [
-      "shared/composables",
-      "shared/utils",
+      'shared/*',
     ],
   },
 
@@ -28,16 +28,14 @@ export default defineNuxtConfig({
     pages: "app/routes",
   },
 
-  components: {
-    dirs: [
-      {
-        path: "~/shared",
-        extensions: ['.vue'],
-      },
-      {
-        path: "~/widgets",
-        extensions: ['.vue'],
-      },
-    ],
-  },
+  components: [
+    {
+      path: "~/shared",
+      extensions: ['.vue'],
+    },
+    {
+      path: "~/widgets",
+      extensions: ['.vue'],
+    },
+  ],
 })

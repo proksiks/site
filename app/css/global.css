@@ -46,6 +46,13 @@ body {
   margin: 0;
   padding: 0;
   color: var(--global);
+  height: 100svh;
+}
+#__nuxt {
+  height: 100%;
+}
+.wrapper {
+  height: 100%;
 }
 
 a {

@@ -1,12 +1,8 @@
 <template>
   <div class="wrapper">
     <navigation-ui></navigation-ui>
-    <main style="background-color: black; width: 100vw; height: 100vh">
-      <div style="color: white">
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut porro odit a, doloremque architecto, optio velit
-        impedit similique sed amet hic. Tempore deserunt mollitia voluptates repellat labore possimus temporibus dolorum.
-        <slot />
-      </div>
+    <main style="background-color: black; padding: 1.25rem; flex: 1;">
+      <slot />
     </main>
   </div>
 </template>

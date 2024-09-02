@@ -8,8 +8,8 @@
     },
     {
       "id": 2,
-      "title": "Проекты",
-      "href": "/projects/",
+      "title": "Конвертация",
+      "href": "/convert/",
       "icon": "bxs-devices"
     }
   ]

@@ -14,7 +14,7 @@
       </div>
       <ul class="sidebar-list">
         <li class="sidebar-item" v-for="route in items" :key="route.id">
-          <button-ui class="sidebar-item-button" :class-icon="route.icon" :title="route.title"></button-ui>
+          <button-ui class="sidebar-item-button" :class-icon="route.icon" :title="route.title" :to="route.href" ></button-ui>
         </li>
         <li class="sidebar-item sidebar-item-bottom">
           <button-ui
