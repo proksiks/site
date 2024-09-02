@@ -1,6 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   app: {
+    baseURL: "/site/",
     pageTransition: { name: "page", mode: "out-in" },
     head: {
       charset: 'utf-8',
