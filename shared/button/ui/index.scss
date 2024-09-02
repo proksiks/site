@@ -20,23 +20,25 @@
     border: 0.0625rem solid transparent;
     transition: all 0.3s ease;
   }
-  &:hover {
-    color: var(--dark);
-    &::before {
-      opacity: 1;
-    }
-    .button-name-text {
-      transform: translateY(-100%) scale(0, 0);
-      opacity: 0;
-      &:last-child {
-        transform: translateY(0);
-        color: var(--dark);
+  @media (any-hover) {
+    &:hover {
+      color: var(--dark);
+      &::before {
         opacity: 1;
       }
-    }
-    .button-icon {
-      transform: scale(1.15);
-      color: var(--second);
+      .button-name-text {
+        transform: translateY(-100%) scale(0, 0);
+        opacity: 0;
+        &:last-child {
+          transform: translateY(0);
+          color: var(--dark);
+          opacity: 1;
+        }
+      }
+      .button-icon {
+        transform: scale(1.15);
+        color: var(--second);
+      }
     }
   }
   &:active {

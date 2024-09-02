@@ -1,6 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  ssr: false,
+  //ssr: false,
   app: {
     baseURL: "/site/",
     //pageTransition: { name: "page", mode: "out-in" },  Ошибка перестаёт работать переход по страницам

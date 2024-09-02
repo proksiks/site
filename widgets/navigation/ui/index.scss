@@ -2,14 +2,17 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  //position: fixed;
-  //top: 0;
-  //left: 0;
-  //flex: 1;
   height: 100%;
-
   background: var(--dark);
   z-index: 99;
+
+  @media (max-width: 480px) {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+  }
 }
 
 .sidebar-nav::before {
@@ -36,9 +39,20 @@
   margin: 0 0.625rem;
   overflow: hidden;
   transition: width 0.6s ease;
+  @media (max-width: 480px) {
+    flex-direction: row;
+    width: auto;
+    gap: 0.75rem;
+    overflow: auto;
+    margin: 0;
+    padding-top: 0;
+  }
 }
 .sidebar.active {
   width: 10.3125rem;
+  @media (max-width: 480px) {
+    width: auto;
+  }
 }
 .sidebar.active .sidebar-title {
   opacity: 1;
@@ -51,6 +65,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  @media (max-width: 480px) {
+    display: none;
+  }
 }
 
 .sidebar-head::before {
@@ -74,11 +91,12 @@
   padding-left: 1.875rem;
   transform: translateX(0);
   transition: opacity 0.3s ease, transform 0.6s ease;
-}
-
-.sidebar-title:hover .sidebar-menu-icon {
-  color: var(--dark);
-  background-color: var(--white);
+  @media (any-hover) {
+    &:hover .sidebar-menu-icon {
+      color: var(--dark);
+      background-color: var(--white);
+    }
+  }
 }
 
 .sidebar-title .sidebar-menu-icon {
@@ -100,6 +118,13 @@
   flex: 1;
   overflow-y: auto;
   overflow-x: hidden;
+  gap: 0.75rem;
+  @media (max-width: 480px) {
+    flex-direction: row;
+    align-items: center;
+    overflow: auto;
+    padding: 0.625rem;
+  }
 }
 .sidebar-list::-webkit-scrollbar {
   display: none;
@@ -110,13 +135,13 @@
   width: 100%;
   display: flex;
 }
-.sidebar-item + .sidebar-item {
-  margin-top: 0.75rem;
-}
 
 .sidebar-item + .sidebar-item-bottom {
   margin-top: auto;
   padding-top: 0.625rem;
+  @media (max-width: 480px) {
+    padding-top: 0;
+  }
 }
 
 .sidebar-menu-button {
@@ -136,4 +161,22 @@
 .sidebar-item-button {
   width: 100%;
   padding: 0;
+  :deep(.button-content) {
+    @media (max-width: 480px) {
+      flex-direction: column;
+      gap: 0;
+      padding: 0.625rem;
+    }
+  }
+  :deep(.button-name) {
+    @media (max-width: 480px) {
+      font-size: 0.75rem;
+    }
+  }
+  :deep(.button-icon) {
+    @media (max-width: 480px) {
+      line-height: 1;
+      margin-bottom: 0.3125rem;
+    }
+  }
 }

@@ -6,6 +6,7 @@
           <i class="sidebar-menu-icon bx bxl-telegram"></i>
         </a>
         <button-ui
+          aria-label="Открыть меню"
           class="sidebar-menu-button"
           class-icon="bx-menu"
           :class="{ active: isMenuOpen }"
@@ -14,7 +15,12 @@
       </div>
       <ul class="sidebar-list">
         <li class="sidebar-item" v-for="route in navigation" :key="route.id">
-          <button-ui class="sidebar-item-button" :class-icon="route.icon" :title="route.title" :to="route.href" ></button-ui>
+          <button-ui
+            class="sidebar-item-button"
+            :class-icon="route.icon"
+            :title="route.title"
+            :to="route.href"
+          ></button-ui>
         </li>
         <li class="sidebar-item sidebar-item-bottom">
           <button-ui

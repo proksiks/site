@@ -15,6 +15,14 @@
       { rel: "stylesheet", href: "https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" },
     ],
   });
+  useSeoMeta({
+    title: "Site",
+    ogTitle: "Site",
+    description: "site",
+    ogDescription: "site",
+    ogImage: "https://example.com/image.png",
+    twitterCard: "summary_large_image",
+  });
 </script>
 
 <style lang="scss"></style>
