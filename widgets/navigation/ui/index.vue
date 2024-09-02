@@ -13,7 +13,7 @@
         ></button-ui>
       </div>
       <ul class="sidebar-list">
-        <li class="sidebar-item" v-for="route in items" :key="route.id">
+        <li class="sidebar-item" v-for="route in navigation" :key="route.id">
           <button-ui class="sidebar-item-button" :class-icon="route.icon" :title="route.title" :to="route.href" ></button-ui>
         </li>
         <li class="sidebar-item sidebar-item-bottom">
@@ -30,7 +30,7 @@
 </template>
 
 <script lang="ts" setup>
-  import { items } from "~/content/Header.json";
+  import { navigation } from "~/content/Header.json";
   const isMenuOpen = ref(false);
   const sidebarEl = ref();
 

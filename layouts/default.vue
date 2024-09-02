@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <navigation-ui></navigation-ui>
-    <main style="background-color: black; padding: 1.25rem; flex: 1;">
+    <main class="main">
       <slot />
     </main>
   </div>

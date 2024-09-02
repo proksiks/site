@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap");
 
 :root {
+  /* deprecated */
   --white: white;
   --global: #ffffff;
   --global-invert: #050c13;
@@ -17,13 +18,13 @@
 
   --cyanide: #77f8da;
   --cyanide-dark: #77f8da;
-}
+  /* deprecated */
 
-html {
-  box-sizing: border-box;
-  scroll-behavior: smooth;
   --main-color: 22, 26, 29;
+  --main-color-dark: 18, 19, 22;
+
   --dark: rgb(var(--main-color));
+  --dark-2: rgb(var(--main-color-dark));
   --dark-75: rgba(var(--main-color), 0.75);
   --dark-20: rgba(var(--main-color), 0.2);
   --dark-0: rgba(var(--main-color), 0);
@@ -33,6 +34,11 @@ html {
   --gray-second: #b6b6b6;
   --shadow-horizontal: linear-gradient(180deg, var(--dark), var(--dark-0));
   --shadow-vertical: linear-gradient(90deg, var(--dark), var(--dark-0));
+}
+
+html {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 *,
@@ -77,17 +83,16 @@ a:hover {
   @media (min-width: 420px) {
     display: flex;
   }
-  &:has(.sidebar.active) .main {
-    padding-left: 166px;
-  }
+  /*&:has(.sidebar.active) .main {
+    padding-left: 166px; для левого меню
+  }*/
 }
+
 .main {
   width: 100%;
   min-height: 100vh;
-  padding-top: var(--default-padding);
-  padding-bottom: var(--default-padding);
-  padding-right: var(--default-padding);
-  padding-left: 88px;
-  background-color: var(--main-2);
+  padding: var(--default-padding);
+  /*padding-left: 88px;  для левого меню*/
+  background-color: var(--dark-2);
   transition: padding 0.6s ease;
 }
