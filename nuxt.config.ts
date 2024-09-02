@@ -31,6 +31,11 @@ export default defineNuxtConfig({
     dirs: [
       {
         path: "~/shared",
+        extensions: ['.vue'],
+      },
+      {
+        path: "~/widgets",
+        extensions: ['.vue'],
       },
     ],
   },

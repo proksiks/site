@@ -35,7 +35,7 @@
 </template>
 
 <script lang="ts" setup>
-  import type Button from "../model";
+  import type Button from "../model/index";
   defineProps<Button>();
 </script>
 
