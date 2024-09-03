@@ -1,43 +1,30 @@
 <template>
-  <div class="box">
-    <div class="wrap">
-      <div class="info">
-        <div class="inner-navigation">
-          <nav class="buttons">
-            <button-ui class="button" to="/" v-for="breadcrumb in navigation" :key="breadcrumb.href" :title="breadcrumb.title" />
-          </nav>
-          <div class="search">
-            <form @submit.prevent="onSubmit">
-              <input class="search-input" type="text" placeholder="Поиск" />
-            </form>
-          </div>
+  <div class="wrap">
+    <div class="head">
+      <nuxt-link to="/convert/">Конвертация</nuxt-link>
+      <select class="select" v-model="baseCurrency">
+        <option class="select-option" value="rub">RUB</option>
+        <option class="select-option" value="usd">USD</option>
+        <option class="select-option" value="eur">EUR</option>
+      </select>
+    </div>
+    <!--
+        <div class="search">
+          <form @submit.prevent="onSubmit">
+            <input class="search-input" type="text" placeholder="Поиск" />
+          </form>
         </div>
-        <div>
-          <select class="select" v-model="baseCurrency">
-            <option class="select-option" value="rub">RUB</option>
-            <option class="select-option" value="usd">USD</option>
-            <option class="select-option" value="eur">EUR</option>
-          </select>
-        </div>
-      </div>
-
-      <div>
-        <div class="points">
-          <div class="point">1 RUB = {{ getCurrencyValue("rub") }} {{ baseCurrency }}</div>
-          <div class="point">1 USD = {{ getCurrencyValue("usd") }} {{ baseCurrency }}</div>
-          <div class="point">1 EUR = {{ getCurrencyValue("eur") }} {{ baseCurrency }}</div>
-        </div>
-
-        <!--<pre>
-          {{ data }}
-        </pre>-->
-      </div>
+      -->
+    <div class="points">
+      <div class="point">1 RUB = {{ getCurrencyValue("rub") }} {{ baseCurrency }}</div>
+      <div class="point">1 USD = {{ getCurrencyValue("usd") }} {{ baseCurrency }}</div>
+      <div class="point">1 EUR = {{ getCurrencyValue("eur") }} {{ baseCurrency }}</div>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-  import { navigation } from "~/content/Header.json";
+  const breadcrumbs = [{ title: "Главная" }];
 
   const { data } = await useFetch<{ [key: string]: number }>("https://status.neuralgeneration.com/api/currency");
   const baseCurrency = ref("rub");
@@ -55,21 +42,7 @@
   }
 </script>
 <style scoped>
-  .box {
-    height: 100%;
-    padding: 1.25rem;
-    color: var(--dark);
-    background-color: var(--dark-blue);
-    border-radius: 0.625rem;
-  }
-  .wrap {
-    background-color: var(--dark);
-    border-radius: 0.375rem;
-    padding: 0.625rem;
-    height: 100%;
-    color: var(--white);
-  }
-  .info {
+  .head {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -112,7 +85,6 @@
     align-items: center;
     gap: 1.5rem;
   }
-
 
   .search-input {
     padding: 0.625rem;
