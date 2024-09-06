@@ -8,7 +8,6 @@
         <div class="field-inner">
           <div class="field-input">
             <input class="input" min="0" type="number" v-model="baseCurrencyValue" />
-            <!--<input class="input" min="0" type="number" v-model="baseCurrencyValue" />-->
           </div>
           <div class="field-select">
             <select class="select" v-model="baseCurrency">
@@ -23,7 +22,6 @@
       <div class="field">
         <div class="field-inner">
           <div class="field-input">
-            <!--<input class="input" min="0" type="number" v-model="currencyValue" />-->
             <input class="input" min="0" type="number" v-model="currencyValue" />
           </div>
           <div class="field-select">
@@ -36,10 +34,8 @@
         </div>
       </div>
     </form>
-    <pre>
-      {{ getBaseCurrencyValue }}
-      {{ getCurrencyValue }}
-    </pre>
+    <div>{{ getBaseCurrencyValue }}-{{ baseCurrency.toUpperCase() }}</div>
+    <div>{{ getCurrencyValue }}-{{ currency.toUpperCase() }}</div>
   </div>
 </template>
 
