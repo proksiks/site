@@ -7,10 +7,10 @@
       <div class="field">
         <div class="field-inner">
           <div class="field-input">
-            <input class="input" min="0" type="number" v-model="firstCurrencyValue" />
+            <input class="input" min="0" type="number" :value="baseCurrency.value" @input="onInputBaseCurrency" />
           </div>
           <div class="field-select">
-            <select class="select" v-model="firstCurrency">
+            <select class="select" v-model="baseCurrency.currency">
               <option class="select-option" :value="currency" v-for="currency in currencies">
                 {{ currency.toUpperCase() }}
               </option>
@@ -18,13 +18,14 @@
           </div>
         </div>
       </div>
+      <div class="equalize">=></div>
       <div class="field">
         <div class="field-inner">
           <div class="field-input">
-            <input class="input" min="0" type="number" v-model="secondCurrencyValue" />
+            <input class="input" min="0" type="number" :value="currency.value" @input="onInputCurrency" />
           </div>
           <div class="field-select">
-            <select class="select" v-model="secondCurrency">
+            <select class="select" v-model="currency.currency">
               <option class="select-option" :value="currency" v-for="currency in currencies">
                 {{ currency.toUpperCase() }}
               </option>
@@ -34,20 +35,52 @@
       </div>
     </form>
 
-    {{ firstCurrencyValue }}
-    {{ secondCurrencyValue }}
+    <pre>
+      {{ foo }}
+    </pre>
   </div>
 </template>
 
 <script lang="ts" setup>
+  const { data } = await useFetch<{ [key: string]: number }>("https://status.neuralgeneration.com/api/currency");
   const breadcrumbs = [{ href: "/", title: "Главная" }, { title: "Конвертация" }];
-
   const currencies = ["rub", "usd", "eur"];
-  const firstCurrencyValue = ref(0);
-  const secondCurrencyValue = ref(0);
-  
-  const firstCurrency = ref("rub");
-  const secondCurrency = ref("usd");
+
+  const baseCurrency = reactive({
+    value: 1,
+    currency: "rub",
+  });
+  const currency = reactive({
+    value: 1,
+    currency: "usd",
+  });
+
+  const currencyRelation = computed(() => {
+    console.log(data.value);
+
+    return `${baseCurrency.currency}-${currency.currency}`;
+  });
+
+  const getBaseCurrencyValue = computed(() => {
+    if (data.value && data.value[currencyRelation.value]) {
+      return data.value[currencyRelation.value];
+    } else {
+      return 1;
+    }
+  });
+  function onInputBaseCurrency() {
+    currency.value = parseFloat((baseCurrency.value * getBaseCurrencyValue.value).toFixed(2));
+  }
+  function onInputCurrency() {
+    baseCurrency.value = parseFloat((currency.value / getBaseCurrencyValue.value).toFixed(2));
+  }
+
+  const foo = computed(() => {
+    return {
+      test: data.value && data.value[currencyRelation.value] ? data.value[currencyRelation.value] : 1,
+      test2: { baseCurrency, currency },
+    };
+  });
 </script>
 <style lang="scss" scoped>
   .buttons {
@@ -57,6 +90,12 @@
   }
   .form {
     max-width: 22rem;
+  }
+  .equalize {
+    pointer-events: none;
+    text-align: center;
+    transform: rotate(90deg);
+    transform-origin: bottom center left center;
   }
   .field {
     padding: 0.375rem 0;
