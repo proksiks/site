@@ -7,7 +7,7 @@
       <div class="field">
         <div class="field-inner">
           <div class="field-input">
-            <input class="input" min="0" type="number" :value="baseCurrencyValue" @change="onChangeBaseCurrencyValue" />
+            <input class="input" min="0" type="number" :value="baseCurrencyValue" @input="onChangeBaseCurrencyValue" />
           </div>
           <div class="field-select">
             <select class="select" v-model="baseCurrency">
@@ -22,7 +22,7 @@
       <div class="field">
         <div class="field-inner">
           <div class="field-input">
-            <input class="input" min="0" type="number" :value="currencyValue" @change="onChangeCurrencyValue" />
+            <input class="input" min="0" type="number" :value="currencyValue" @input="onChangeCurrencyValue" />
           </div>
           <div class="field-select">
             <select class="select" :value="currency" @change="calculateCurrency">
@@ -73,7 +73,7 @@
   }
   function calculateBaseCurrency(e: Event) {
     if (data.value && data.value[baseCurrencyRelation.value]) {
-      currencyValue.value = getBaseCurrencyValue.value;
+      currencyValue.value = +(+(e.target as HTMLInputElement).value * data.value[baseCurrencyRelation.value]).toFixed(2);
     }
   }
 
@@ -83,8 +83,8 @@
   }
 
   function calculateCurrency(e: Event) {
-    if (data.value && data.value[baseCurrencyRelation.value]) {
-      baseCurrencyValue.value = getCurrencyValue.value;
+    if (data.value && data.value[currencyRelation.value]) {
+      baseCurrencyValue.value = +(+(e.target as HTMLInputElement).value * data.value[currencyRelation.value]).toFixed(2);
     }
   }
 </script>
