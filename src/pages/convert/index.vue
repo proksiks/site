@@ -34,8 +34,8 @@
         </div>
       </div>
     </form>
-    <div>{{ getBaseCurrencyValue }}-{{ baseCurrency.toUpperCase() }}</div>
-    <div>{{ getCurrencyValue }}-{{ currency.toUpperCase() }}</div>
+    <div>{{ getBaseCurrencyValue }}-{{ currency.toUpperCase() }}</div>
+    <div>{{ getCurrencyValue }}-{{ baseCurrency.toUpperCase() }}</div>
   </div>
 </template>
 
