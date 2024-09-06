@@ -56,8 +56,6 @@
   });
 
   const currencyRelation = computed(() => {
-    console.log(data.value);
-
     return `${baseCurrency.currency}-${currency.currency}`;
   });
 

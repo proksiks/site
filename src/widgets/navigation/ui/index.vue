@@ -13,7 +13,7 @@
           @click="openMenu"
         ></button-ui>
       </div>
-      <ul class="sidebar-list">
+      <ul class="sidebar-list" v-if="navigation">
         <li class="sidebar-item" v-for="route in navigation" :key="route.id">
           <button-ui
             class="sidebar-item-button"
@@ -36,7 +36,12 @@
 </template>
 
 <script lang="ts" setup>
-  import { navigation } from "~/content/Header.json";
+  import type { NavigationListItem } from "../model/index";
+
+  defineProps<{
+    navigation: NavigationListItem[];
+  }>();
+
   const isMenuOpen = ref(false);
   const sidebarEl = ref();
 

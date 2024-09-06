@@ -1,6 +1,8 @@
-`nvm install 20.9.0 & node -list & nvm use 20.9.0`
-
 Версия NODE.js 20.9.0
+`nvm install 20.9.0 && nvm -list && nvm use 20.9.0`
+
+# Feature-Sliced Design (FSD)
+https://feature-sliced.design/ru/docs/get-started/overview
 
 # Nuxt 3 Minimal Starter
 

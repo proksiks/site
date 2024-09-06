@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <navigation-ui />
+    <navigation-ui :navigation="navigation" />
     <main class="main">
       <div class="screen">
         <div class="screen-inner">
@@ -12,6 +12,20 @@
 </template>
 
 <script setup lang="ts">
+  const navigation = [
+    {
+      id: 1,
+      title: "Главная",
+      href: "/",
+      icon: "bx-grid-alt",
+    },
+    {
+      id: 2,
+      title: "Конвертация",
+      href: "/convert/",
+      icon: "bxs-devices",
+    },
+  ];
   useHead({
     meta: [{ name: "description", content: "Site." }],
     link: [

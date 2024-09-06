@@ -3,15 +3,16 @@ export default defineNuxtConfig({
   //ssr: false,
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
-  imports: {
-    dirs: [
-      'shared/*',
-    ],
-  },
+
+  srcDir: 'src/',
 
   dir: {
-    pages: "app/routes",
-  },
+		//plugins: 'app/plugins',
+		assets: 'app/assets',
+		public: 'app/public',
+		layouts: 'app/layouts',
+		middleware: 'app/providers/router/middleware',
+	},
 
   components: [
     {
@@ -37,5 +38,5 @@ export default defineNuxtConfig({
   },
   
   modules: ['@nuxt/eslint'],
-  css: ["normalize.css", "~/app/css/global.css"],
+  css: ["normalize.css", "~/app/assets/style/global.css"],
 })
