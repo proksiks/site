@@ -7,10 +7,11 @@
       <div class="field">
         <div class="field-inner">
           <div class="field-input">
-            <input class="input" min="0" type="number" :value="baseCurrency.value" @input="onInputBaseCurrency" />
+            <input class="input" min="0" type="number" v-model="baseCurrencyValue" />
+            <!--<input class="input" min="0" type="number" v-model="baseCurrencyValue" />-->
           </div>
           <div class="field-select">
-            <select class="select" v-model="baseCurrency.currency">
+            <select class="select" v-model="baseCurrency">
               <option class="select-option" :value="currency" v-for="currency in currencies">
                 {{ currency.toUpperCase() }}
               </option>
@@ -18,14 +19,15 @@
           </div>
         </div>
       </div>
-      <div class="equalize">=></div>
+      <div class="equalize"><=></div>
       <div class="field">
         <div class="field-inner">
           <div class="field-input">
-            <input class="input" min="0" type="number" :value="currency.value" @input="onInputCurrency" />
+            <!--<input class="input" min="0" type="number" v-model="currencyValue" />-->
+            <input class="input" min="0" type="number" v-model="currencyValue" />
           </div>
           <div class="field-select">
-            <select class="select" v-model="currency.currency">
+            <select class="select" v-model="currency">
               <option class="select-option" :value="currency" v-for="currency in currencies">
                 {{ currency.toUpperCase() }}
               </option>
@@ -34,9 +36,9 @@
         </div>
       </div>
     </form>
-
     <pre>
-      {{ foo }}
+      {{ getBaseCurrencyValue }}
+      {{ getCurrencyValue }}
     </pre>
   </div>
 </template>
@@ -46,38 +48,34 @@
   const breadcrumbs = [{ href: "/", title: "Главная" }, { title: "Конвертация" }];
   const currencies = ["rub", "usd", "eur"];
 
-  const baseCurrency = reactive({
-    value: 1,
-    currency: "rub",
-  });
-  const currency = reactive({
-    value: 1,
-    currency: "usd",
+  const baseCurrency = ref("rub");
+  const baseCurrencyValue = ref(1);
+
+  const currency = ref("usd");
+  const currencyValue = ref(1);
+
+  const baseCurrencyRelation = computed(() => {
+    return `${baseCurrency.value}-${currency.value}`;
   });
 
   const currencyRelation = computed(() => {
-    return `${baseCurrency.currency}-${currency.currency}`;
+    return `${currency.value}-${baseCurrency.value}`;
   });
 
   const getBaseCurrencyValue = computed(() => {
-    if (data.value && data.value[currencyRelation.value]) {
-      return data.value[currencyRelation.value];
+    if (data.value && data.value[baseCurrencyRelation.value]) {
+      return parseFloat((baseCurrencyValue.value * data.value[baseCurrencyRelation.value]).toFixed(2));
     } else {
       return 1;
     }
   });
-  function onInputBaseCurrency() {
-    currency.value = parseFloat((baseCurrency.value * getBaseCurrencyValue.value).toFixed(2));
-  }
-  function onInputCurrency() {
-    baseCurrency.value = parseFloat((currency.value / getBaseCurrencyValue.value).toFixed(2));
-  }
 
-  const foo = computed(() => {
-    return {
-      test: data.value && data.value[currencyRelation.value] ? data.value[currencyRelation.value] : 1,
-      test2: { baseCurrency, currency },
-    };
+  const getCurrencyValue = computed(() => {
+    if (data.value && data.value[currencyRelation.value]) {
+      return parseFloat((currencyValue.value * data.value[currencyRelation.value]).toFixed(2));
+    } else {
+      return 1;
+    }
   });
 </script>
 <style lang="scss" scoped>
