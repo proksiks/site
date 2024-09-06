@@ -7,7 +7,7 @@
       <div class="field">
         <div class="field-inner">
           <div class="field-input">
-            <input class="input" min="0" type="number" v-model="baseCurrencyValue" />
+            <input class="input" min="0" type="number" :value="baseCurrencyValue" @change="onChangeBaseCurrencyValue" />
           </div>
           <div class="field-select">
             <select class="select" v-model="baseCurrency">
@@ -22,10 +22,10 @@
       <div class="field">
         <div class="field-inner">
           <div class="field-input">
-            <input class="input" min="0" type="number" v-model="currencyValue" />
+            <input class="input" min="0" type="number" :value="currencyValue" @change="onChangeCurrencyValue" />
           </div>
           <div class="field-select">
-            <select class="select" v-model="currency">
+            <select class="select" :value="currency" @change="calculateCurrency">
               <option class="select-option" :value="currency" v-for="currency in currencies">
                 {{ currency.toUpperCase() }}
               </option>
@@ -34,8 +34,6 @@
         </div>
       </div>
     </form>
-    <div>{{ getBaseCurrencyValue }}-{{ currency.toUpperCase() }}</div>
-    <div>{{ getCurrencyValue }}-{{ baseCurrency.toUpperCase() }}</div>
   </div>
 </template>
 
@@ -46,18 +44,9 @@
 
   const baseCurrency = ref("rub");
   const baseCurrencyValue = ref(1);
-
-  const currency = ref("usd");
-  const currencyValue = ref(1);
-
   const baseCurrencyRelation = computed(() => {
     return `${baseCurrency.value}-${currency.value}`;
   });
-
-  const currencyRelation = computed(() => {
-    return `${currency.value}-${baseCurrency.value}`;
-  });
-
   const getBaseCurrencyValue = computed(() => {
     if (data.value && data.value[baseCurrencyRelation.value]) {
       return parseFloat((baseCurrencyValue.value * data.value[baseCurrencyRelation.value]).toFixed(2));
@@ -66,13 +55,38 @@
     }
   });
 
+  const currency = ref("usd");
+  const currencyValue = ref(1);
+  const currencyRelation = computed(() => {
+    return `${currency.value}-${baseCurrency.value}`;
+  });
   const getCurrencyValue = computed(() => {
     if (data.value && data.value[currencyRelation.value]) {
-      return parseFloat((currencyValue.value * data.value[currencyRelation.value]).toFixed(2));
+      return parseFloat((data.value[currencyRelation.value] * baseCurrencyValue.value).toFixed(2));
     } else {
       return 1;
     }
   });
+  function onChangeBaseCurrencyValue(e: Event) {
+    baseCurrencyValue.value = +(e.target as HTMLInputElement).value;
+    calculateBaseCurrency(e);
+  }
+  function calculateBaseCurrency(e: Event) {
+    if (data.value && data.value[baseCurrencyRelation.value]) {
+      currencyValue.value = getBaseCurrencyValue.value;
+    }
+  }
+
+  function onChangeCurrencyValue(e: Event) {
+    currencyValue.value = +(e.target as HTMLInputElement).value;
+    calculateCurrency(e);
+  }
+
+  function calculateCurrency(e: Event) {
+    if (data.value && data.value[baseCurrencyRelation.value]) {
+      baseCurrencyValue.value = getCurrencyValue.value;
+    }
+  }
 </script>
 <style lang="scss" scoped>
   .buttons {
