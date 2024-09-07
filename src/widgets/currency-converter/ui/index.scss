@@ -4,7 +4,9 @@
   gap: 1.5rem;
 }
 .form {
-  max-width: 22rem;
+  @media (min-width: 479px) {
+    max-width: 22rem;
+  }
 }
 .name {
   display: flex;

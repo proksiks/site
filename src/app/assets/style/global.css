@@ -92,9 +92,9 @@ a:hover {
 
 .wrapper {
   overflow: hidden;
-  @media (min-width: 420px) {
-    display: flex;
-  }
+  /*@media (min-width: 420px) {*/
+  display: flex;
+  /*}*/
   /*&:has(.sidebar.active) .main {
     padding-left: 166px; для левого меню
   }*/
@@ -106,6 +106,9 @@ a:hover {
   color: var(--dark);
   background-color: var(--dark-blue);
   border-radius: 0.625rem;
+  @media (max-width: 480px) {
+    padding: 0.5rem;
+  }
 }
 
 .screen-inner {
@@ -119,6 +122,9 @@ a:hover {
   overflow: auto;
   height: 100%;
   padding: 0.625rem;
+  @media (max-width: 480px) {
+    padding-bottom: 70px;
+  }
 }
 
 .main {
