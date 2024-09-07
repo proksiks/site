@@ -34,10 +34,6 @@
         </div>
       </div>
     </form>
-<!--
-    <div>{{ baseCurrency }}-{{ currency }}={{ getBaseCurrencyValue }}</div>
-    <div>{{ currency }}-{{ baseCurrency }}={{ getCurrencyValue }}</div>
-    <div>{{ baseCurrencyRelation }}={{ getBaseCurrencyRelationValue }}</div>-->
   </div>
 </template>
 
@@ -69,8 +65,6 @@
   });
 
   const getBaseCurrencyValue = computed(() => {
-    console.log(baseCurrencyValue.value, getBaseCurrencyRelationValue.value);
-
     return parseFloat((baseCurrencyValue.value * getBaseCurrencyRelationValue.value).toFixed(2));
   });
 
