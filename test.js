@@ -23,13 +23,29 @@
 2 3 4 5 1
 */
 
+const testArray = [
+    [1, 2, 3, 4, 5],
+    [1, 2, 3, 4, 5],
+    [5, 4, 3, 2, 1],
+    [1, 2, 3, 4, 5],
+    [1, 2, 3, 4, 5],
+]
+
+
 const toOneMatrix = (matrix = []) => {
     // писать код тут
-    matrix.forEach((item) => {
-        console.log(item)
-    })
+function getSquareMatrixDiagData(arr){
+    var n = arr.length;
+    var step = Math.sqrt(arr.length) - 1;
+
+    for (var i = step; i < n - step; i += step) { 
+        console.log(arr[i],'arr[i]' );
+    }
+}
     return matrix
 }
+
+getSquareMatrixDiagData(testArray)
 
 console.assert(
     JSON.stringify(toOneMatrix(

@@ -10,7 +10,7 @@
             <input class="input" min="0" type="number" :value="baseCurrencyValue" @input="onChangeBaseCurrencyValue" />
           </div>
           <div class="field-select">
-            <select class="select" v-model="baseCurrency">
+            <select class="select" v-model="baseCurrency" @change="onSelectBaseCurrency">
               <option class="select-option" :value="currency" v-for="currency in currencies">
                 {{ currency.toUpperCase() }}
               </option>
@@ -25,7 +25,7 @@
             <input class="input" min="0" type="number" :value="currencyValue" @input="onChangeCurrencyValue" />
           </div>
           <div class="field-select">
-            <select class="select" :value="currency" @change="calculateCurrency">
+            <select class="select" :value="currency" @change="onSelectCurrency">
               <option class="select-option" :value="currency" v-for="currency in currencies">
                 {{ currency.toUpperCase() }}
               </option>
@@ -34,6 +34,13 @@
         </div>
       </div>
     </form>
+
+    <div>{{ baseCurrency }}-{{ currency }}={{ getBaseCurrencyValue }}</div>
+    <div>{{ currency }}-{{ baseCurrency }}={{ getCurrencyValue }}</div>
+
+    <pre>
+      {{ data }}
+    </pre>
   </div>
 </template>
 
@@ -47,19 +54,15 @@
   const baseCurrencyRelation = computed(() => {
     return `${baseCurrency.value}-${currency.value}`;
   });
+
   const getBaseCurrencyValue = computed(() => {
     if (data.value && data.value[baseCurrencyRelation.value]) {
       return parseFloat((baseCurrencyValue.value * data.value[baseCurrencyRelation.value]).toFixed(2));
     } else {
-      return 1;
+      return baseCurrencyValue.value;
     }
   });
 
-  const currency = ref("usd");
-  const currencyValue = ref(1);
-  const currencyRelation = computed(() => {
-    return `${currency.value}-${baseCurrency.value}`;
-  });
   const getCurrencyValue = computed(() => {
     if (data.value && data.value[currencyRelation.value]) {
       return parseFloat((data.value[currencyRelation.value] * baseCurrencyValue.value).toFixed(2));
@@ -67,8 +70,15 @@
       return 1;
     }
   });
+  const currency = ref("usd");
+  const currencyValue = ref(1);
+  const currencyRelation = computed(() => {
+    return `${currency.value}-${baseCurrency.value}`;
+  });
+
   function onChangeBaseCurrencyValue(e: Event) {
-    baseCurrencyValue.value = +(e.target as HTMLInputElement).value;
+    const target = e.target as HTMLInputElement;
+    baseCurrencyValue.value = +target.value;
     calculateBaseCurrency(e);
   }
   function calculateBaseCurrency(e: Event) {
@@ -84,7 +94,24 @@
 
   function calculateCurrency(e: Event) {
     if (data.value && data.value[currencyRelation.value]) {
-      baseCurrencyValue.value = +(+(e.target as HTMLInputElement).value * data.value[currencyRelation.value]).toFixed(2);
+      baseCurrencyValue.value = +(e.target as HTMLInputElement).value * +data.value[currencyRelation.value].toFixed(2);
+    }
+  }
+
+  function onSelectCurrency(e: Event) {
+    if((e.target as HTMLInputElement).value) {
+      currency.value = (e.target as HTMLInputElement).value;
+      baseCurrencyValue.value = getCurrencyValue.value
+    } else {
+      currency.value = "usd";
+    }
+  }
+  function onSelectBaseCurrency(e: Event) {
+    if((e.target as HTMLInputElement).value) {
+      baseCurrency.value = (e.target as HTMLInputElement).value;
+      currencyValue.value = getBaseCurrencyValue.value;
+    } else {
+      baseCurrency.value = "rub";
     }
   }
 </script>
