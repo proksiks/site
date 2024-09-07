@@ -2,7 +2,7 @@
   <div class="sidebar-nav">
     <div class="sidebar" ref="sidebarEl" :class="{ active: isMenuOpen }">
       <div class="sidebar-head">
-        <a class="sidebar-title" href="https://t.me/ProKsiKzzz">
+        <a class="sidebar-title" href="t.me/ProKsiKzzz">
           <i class="sidebar-menu-icon bx bxl-telegram"></i>
         </a>
         <button-ui
