@@ -37,10 +37,6 @@
 
     <div>{{ baseCurrency }}-{{ currency }}={{ getBaseCurrencyValue }}</div>
     <div>{{ currency }}-{{ baseCurrency }}={{ getCurrencyValue }}</div>
-
-    <pre>
-      {{ data }}
-    </pre>
   </div>
 </template>
 
@@ -48,24 +44,25 @@
   const { data } = await useFetch<{ [key: string]: number }>("https://status.neuralgeneration.com/api/currency");
   const breadcrumbs = [{ href: "/", title: "Главная" }, { title: "Конвертация" }];
   const currencies = ["rub", "usd", "eur"];
-
   const baseCurrency = ref("rub");
+  const currency = ref("usd");
   const baseCurrencyValue = ref(1);
-  const baseCurrencyRelation = computed(() => {
-    return `${baseCurrency.value}-${currency.value}`;
-  });
+  const currencyValue = ref(1);
+
+  const baseCurrencyRelation = `${baseCurrency.value}-${currency.value}`;
+  const currencyRelation = `${currency.value}-${baseCurrency.value}`;
+
   const getBaseCurrencyRelationValue = computed(() => {
     if (data.value) {
-      return data.value[baseCurrencyRelation.value] as number;
+      return data.value[baseCurrencyRelation] as number;
     } else {
       return 1;
     }
   });
   const getCurrencyRelationValue = computed(() => {
     if (data.value) {
-      return data.value[currencyRelation.value] as number;
+      return data.value[currencyRelation] as number;
     } else {
-      //return data.value[currencyRelation2.value] as number;
       return 1;
     }
   });
@@ -75,58 +72,37 @@
   });
 
   const getCurrencyValue = computed(() => {
-    if (data.value && data.value[currencyRelation.value]) {
-      return parseFloat((data.value[currencyRelation.value] * baseCurrencyValue.value).toFixed(2));
-    } else {
-      return baseCurrencyValue.value;
-    }
-  });
-
-  const currency = ref("usd");
-  const currencyValue = ref(1);
-  const currencyRelation = computed(() => {
-    return `${currency.value}-${baseCurrency.value}`;
+    return parseFloat((currencyValue.value * getCurrencyRelationValue.value).toFixed(2));
   });
 
   function onChangeBaseCurrencyValue(e: Event) {
     const target = e.target as HTMLInputElement;
     baseCurrencyValue.value = +target.value;
-    calculateBaseCurrency(+target.value);
-  }
-  function calculateBaseCurrency(number: number) {
-    if (data.value && baseCurrencyRelation.value) {
-      currencyValue.value = number * getBaseCurrencyRelationValue.value;
-    }
+    currencyValue.value = getBaseCurrencyValue.value;
   }
 
   function onChangeCurrencyValue(e: Event) {
     const target = e.target as HTMLInputElement;
     currencyValue.value = +target.value;
-    calculateCurrency(+target.value);
+    baseCurrencyValue.value = getCurrencyValue.value;
   }
 
-  function calculateCurrency(number: number) {
-    if (data.value && data.value[currencyRelation.value]) {
-      baseCurrencyValue.value = +number.toFixed(2) * +data.value[currencyRelation.value].toFixed(2);
-    }
-  }
-
-  function onSelectCurrency(e: Event) {
-    if ((e.target as HTMLInputElement).value) {
-      currency.value = (e.target as HTMLInputElement).value;
-      baseCurrencyValue.value = getCurrencyValue.value;
-    } else {
-      currency.value = "usd";
-    }
-  }
-  function onSelectBaseCurrency(e: Event) {
-    if ((e.target as HTMLInputElement).value) {
-      baseCurrency.value = (e.target as HTMLInputElement).value;
-      currencyValue.value = getBaseCurrencyValue.value;
-    } else {
-      baseCurrency.value = "rub";
-    }
-  }
+  //function onSelectCurrency(e: Event) {
+  //  if ((e.target as HTMLInputElement).value) {
+  //    currency.value = (e.target as HTMLInputElement).value;
+  //    baseCurrencyValue.value = getCurrencyValue.value;
+  //  } else {
+  //    currency.value = "usd";
+  //  }
+  //}
+  //function onSelectBaseCurrency(e: Event) {
+  //  if ((e.target as HTMLInputElement).value) {
+  //    baseCurrency.value = (e.target as HTMLInputElement).value;
+  //    currencyValue.value = getBaseCurrencyValue.value;
+  //  } else {
+  //    baseCurrency.value = "rub";
+  //  }
+  //}
 </script>
 <style lang="scss" scoped>
   .buttons {
