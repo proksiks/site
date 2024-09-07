@@ -37,6 +37,7 @@
 
     <div>{{ baseCurrency }}-{{ currency }}={{ getBaseCurrencyValue }}</div>
     <div>{{ currency }}-{{ baseCurrency }}={{ getCurrencyValue }}</div>
+    <div>{{ baseCurrencyRelation }}={{ getBaseCurrencyRelationValue }}</div>
   </div>
 </template>
 
@@ -49,25 +50,27 @@
   const baseCurrencyValue = ref(1);
   const currencyValue = ref(1);
 
-  const baseCurrencyRelation = `${baseCurrency.value}-${currency.value}`;
-  const currencyRelation = `${currency.value}-${baseCurrency.value}`;
+  const baseCurrencyRelation = computed(() => `${baseCurrency.value}-${currency.value}`);
+  const currencyRelation = computed(() => `${currency.value}-${baseCurrency.value}`);
 
   const getBaseCurrencyRelationValue = computed(() => {
-    if (data.value) {
-      return data.value[baseCurrencyRelation] as number;
+    if (baseCurrencyRelation.value && data.value) {
+      return data.value[baseCurrencyRelation.value] as number;
     } else {
       return 1;
     }
   });
   const getCurrencyRelationValue = computed(() => {
-    if (data.value) {
-      return data.value[currencyRelation] as number;
+    if (currencyRelation.value && data.value) {
+      return data.value[currencyRelation.value] as number;
     } else {
       return 1;
     }
   });
 
   const getBaseCurrencyValue = computed(() => {
+    console.log(baseCurrencyValue.value, getBaseCurrencyRelationValue.value);
+    
     return parseFloat((baseCurrencyValue.value * getBaseCurrencyRelationValue.value).toFixed(2));
   });
 
@@ -87,22 +90,27 @@
     baseCurrencyValue.value = getCurrencyValue.value;
   }
 
-  //function onSelectCurrency(e: Event) {
-  //  if ((e.target as HTMLInputElement).value) {
-  //    currency.value = (e.target as HTMLInputElement).value;
-  //    baseCurrencyValue.value = getCurrencyValue.value;
-  //  } else {
-  //    currency.value = "usd";
-  //  }
-  //}
-  //function onSelectBaseCurrency(e: Event) {
-  //  if ((e.target as HTMLInputElement).value) {
-  //    baseCurrency.value = (e.target as HTMLInputElement).value;
-  //    currencyValue.value = getBaseCurrencyValue.value;
-  //  } else {
-  //    baseCurrency.value = "rub";
-  //  }
-  //}
+  function onSelectBaseCurrency(e: Event) {
+    const target = e.target as HTMLInputElement;
+    if (target.value) {
+      baseCurrency.value = target.value;
+      currencyValue.value = getBaseCurrencyValue.value;
+    } else {
+      baseCurrency.value = "usd";
+      currencyValue.value = 1;
+    }
+  }
+
+  function onSelectCurrency(e: Event) {
+    const target = e.target as HTMLInputElement;
+    if (target.value) {
+      currency.value = target.value;
+      baseCurrencyValue.value = getCurrencyValue.value;
+    } else {
+      currency.value = "usd";
+      baseCurrencyValue.value = 1;
+    }
+  }
 </script>
 <style lang="scss" scoped>
   .buttons {
