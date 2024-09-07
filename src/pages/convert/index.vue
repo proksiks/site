@@ -34,10 +34,10 @@
         </div>
       </div>
     </form>
-
+<!--
     <div>{{ baseCurrency }}-{{ currency }}={{ getBaseCurrencyValue }}</div>
     <div>{{ currency }}-{{ baseCurrency }}={{ getCurrencyValue }}</div>
-    <div>{{ baseCurrencyRelation }}={{ getBaseCurrencyRelationValue }}</div>
+    <div>{{ baseCurrencyRelation }}={{ getBaseCurrencyRelationValue }}</div>-->
   </div>
 </template>
 
@@ -70,7 +70,7 @@
 
   const getBaseCurrencyValue = computed(() => {
     console.log(baseCurrencyValue.value, getBaseCurrencyRelationValue.value);
-    
+
     return parseFloat((baseCurrencyValue.value * getBaseCurrencyRelationValue.value).toFixed(2));
   });
 
@@ -92,23 +92,23 @@
 
   function onSelectBaseCurrency(e: Event) {
     const target = e.target as HTMLInputElement;
-    if (target.value) {
+    if (target.value === currency.value) {
+      baseCurrency.value = "rub";
+      currencyValue.value = 1;
+    } else {
       baseCurrency.value = target.value;
       currencyValue.value = getBaseCurrencyValue.value;
-    } else {
-      baseCurrency.value = "usd";
-      currencyValue.value = 1;
     }
   }
 
   function onSelectCurrency(e: Event) {
     const target = e.target as HTMLInputElement;
-    if (target.value) {
+    if (target.value === baseCurrency.value) {
+      currency.value = "rub";
+      baseCurrencyValue.value = 1;
+    } else {
       currency.value = target.value;
       baseCurrencyValue.value = getCurrencyValue.value;
-    } else {
-      currency.value = "usd";
-      baseCurrencyValue.value = 1;
     }
   }
 </script>
