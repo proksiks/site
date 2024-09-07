@@ -1,0 +1,135 @@
+{
+  "workbench.startupEditor": "newUntitledFile",
+  "editor.renderWhitespace": "all",
+  "editor.renderControlCharacters": true,
+  "vue3snippets.enable-compile-vue-file-on-did-save-code": false,
+  "editor.comments.insertSpace": false,
+  "liveSassCompile.settings.generateMap": false,
+  "scss.lint.unknownAtRules": "ignore",
+  "liveSassCompile.settings.formats": [
+    {
+      "format": "expanded",
+      "extensionName": ".css",
+      "savePath": "/css"
+    }
+  ],
+  "vscodeGoogleTranslate.preferredLanguage": "EN",
+  "sync.gist": "96f434c9f144e76b65cfa2ca157a052e",
+  "workbench.iconTheme": "vscode-icons",
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "liveServer.settings.donotShowInfoMsg": true,
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "editor.defaultFormatter": "peakchen90.vue-beautify",
+  "editor.codeActionsOnSave": null,
+  "javascript.implicitProjectConfig.experimentalDecorators": true,
+  "[php]": {
+    "editor.defaultFormatter": "DEVSENSE.phptools-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact",
+    "vue-html": "html",
+    "razor": "html",
+    "plaintext": "jade"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.multiCursorModifier": "ctrlCmd",
+  "[xml]": {
+    "editor.defaultFormatter": "redhat.vscode-xml"
+  },
+  "files.autoSave": "afterDelay",
+  "terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe",
+  "terminal.integrated.shellArgs.windows": ["--login"],
+  "editor.inlineHints.enabled": false,
+  "editor.parameterHints.enabled": false,
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "security.workspace.trust.untrustedFiles": "open",
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "prettier.printWidth": 120,
+  "prettier.vueIndentScriptAndStyle": true,
+  "eslint.options": {
+    "rules": {
+      "max-len": ["warn", 120],
+      "no-debugger": 1,
+      "vue/multi-word-component-names": "off"
+    }
+  },
+  "settingsSync.ignoredExtensions": [],
+  "terminal.integrated.automationProfile.linux": {},
+  "editor.unicodeHighlight.allowedCharacters": {
+    "е": true,
+    "Н": true,
+    "’": true
+  },
+  "editor.unicodeHighlight.allowedLocales": {
+    "ru": true
+  },
+  "update.mode": "none",
+  "workbench.layoutControl.enabled": false,
+  "[typescript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "chatgpt.lang": "en",
+  "[jade]": {
+    "editor.defaultFormatter": "ducfilan.pug-formatter"
+  },
+  "remote.SSH.remotePlatform": {
+    "92.242.45.227": "linux"
+  },
+  "liveServer.settings.fullReload": true,
+  "[ftl]": {
+    "editor.defaultFormatter": "AntonLilleby.xp-freemarker-formatter"
+  },
+  "[less]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "workbench.editor.customLabels.patterns": {
+    "**/pages/**/index.vue": "${dirname}/index.vue",
+    "vue": "vue",
+    "html": "html",
+    "css": "css",
+    "javascript": "js",
+    "json": "json"
+  },
+  "liveSassCompile.settings.includeItems": [],
+  "workbench.colorTheme": "Material Theme High Contrast",
+  "codeium.enableCodeLens": "hide_x",
+  "[vue-html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "tailwindCSS.includeLanguages": {
+    "html": "html",
+    "vue": "vue",
+    "javascript": "javascript",
+    "css": "css"
+  },
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+  "editor.indentSize": "tabSize"
+}
