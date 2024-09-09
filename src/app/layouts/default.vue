@@ -1,5 +1,6 @@
 <template>
   <div class="wrapper">
+    <vite-pwa-manifest />
     <navigation-ui :navigation="navigation" />
     <main class="main">
       <div class="screen">

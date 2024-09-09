@@ -7,12 +7,12 @@ export default defineNuxtConfig({
   srcDir: 'src/',
 
   dir: {
-		//plugins: 'app/plugins',
-		assets: 'app/assets',
-		public: 'app/public',
-		layouts: 'app/layouts',
-		//middleware: 'app/providers/router/middleware',
-	},
+    //plugins: 'app/plugins',
+    assets: 'app/assets',
+    public: 'app/public',
+    layouts: 'app/layouts',
+    //middleware: 'app/providers/router/middleware',
+  },
 
   components: [
     {
@@ -36,7 +36,35 @@ export default defineNuxtConfig({
       },
     }
   },
-  
-  modules: ['@nuxt/eslint'],
+
+  modules: ['@nuxt/eslint', '@vite-pwa/nuxt'],
   css: ["normalize.css", "~/app/assets/style/global.css"],
+  pwa: {
+    manifest: {
+      name: "Nuxt 3",
+      short_name: "Nuxt 3",
+      description: "Nuxt 3",
+      theme_color: "#ffffff",
+      icons: [
+        {
+          src: "/site/android-chrome-192x192.png",
+          sizes: "192x192",
+          type: "image/png",
+        },
+        {
+          src: "/site/android-chrome-512x512.png",
+          sizes: "512x512",
+          type: "image/png",
+        },
+      ],
+    },
+    workbox: {
+      cleanupOutdatedCaches: true,
+      navigateFallback: "/",
+    },
+    devOptions: {
+      enabled: true,
+      type: "module",
+    }
+  }
 })
