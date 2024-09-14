@@ -34,17 +34,29 @@ export default defineNuxtConfig({
       htmlAttrs: {
         lang: 'ru',
       },
+      link: [
+        { rel: "icon", type: "image/x-icon", href: "/site/favicon.ico" },
+        { rel: "stylesheet", href: "https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" },
+      ],
     }
   },
 
   modules: ['@nuxt/eslint', '@vite-pwa/nuxt'],
   css: ["normalize.css", "~/app/assets/style/global.css"],
   pwa: {
+    registerType: "autoUpdate",
+    //includeAssets: ["favicon.ico", "apple-touch-icon.png", "masked-icon.png"],
+    manifestFilename: "site.webmanifest",
     manifest: {
       name: "Nuxt 3",
       short_name: "Nuxt 3",
       description: "Nuxt 3",
       theme_color: "#ffffff",
+      background_color: "#ffffff",
+      display: "standalone",
+      lang: "ru",
+      //start_url: "/site/",
+      //scope: "/site/",
       icons: [
         {
           src: "/site/android-chrome-192x192.png",
@@ -60,7 +72,24 @@ export default defineNuxtConfig({
     },
     workbox: {
       cleanupOutdatedCaches: true,
-      navigateFallback: "/",
+      //modifyURLPrefix: {
+      //  "/site/": "/",
+      //},
+      //globIgnores: ["**/sw.js", "**/sw.js.map"],
+      //runtimeCaching: [{
+      //  urlPattern: /^https:\/\/fonts\.googleapis\.com/,
+      //  handler: "CacheFirst",
+      //  options: {
+      //    cacheName: "google-fonts-cache",
+      //    expiration: {
+      //      maxEntries: 10,
+      //      maxAgeSeconds: 60 * 60 * 24 * 30,
+      //    },
+      //    cacheableResponse: {
+      //      statuses: [0, 200],
+      //    },
+      //  },
+      //}],
     },
     devOptions: {
       enabled: true,
