@@ -3,6 +3,7 @@
   <div class="wrapper">
     <navigation-ui :navigation="navigation" />
     <main class="main">
+      <canvas-background-ui />
       <div class="screen">
         <div class="screen-inner">
           <slot />

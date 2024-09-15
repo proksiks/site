@@ -23,13 +23,18 @@
 
   --main-color: 22, 26, 29;
   --main-color-dark: 18, 19, 22;
+  --blue-color-dark: 43, 63, 77;
 
   --dark: rgb(var(--main-color));
   --dark-2: rgb(var(--main-color-dark));
   --dark-75: rgba(var(--main-color), 0.75);
+  --dark-50: rgba(var(--main-color), 0.5);
   --dark-20: rgba(var(--main-color), 0.2);
   --dark-0: rgba(var(--main-color), 0);
-  --dark-blue: rgb(43, 63, 77);
+  --dark-blue: rgb(var(--blue-color-dark));
+  --dark-blue-75: rgba(var(--blue-color-dark), 0.75);
+  --dark-blue-50: rgba(var(--blue-color-dark), 0.5);
+  --dark-blue-20: rgba(var(--blue-color-dark), 0.2);
 
   --light: #00ffff;
   --white: white;
@@ -101,19 +106,33 @@ a:hover {
 }
 
 .screen {
+  position: relative;
+  z-index: 1;
   height: 100%;
   padding: 1.25rem;
   color: var(--dark);
-  background-color: var(--dark-blue);
+  /*background-color: var(--dark-blue);*/
   border-radius: 0.625rem;
   @media (max-width: 480px) {
     padding: 0.5rem;
   }
 }
+.screen::before {
+  display: block;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+  background-color: var(--dark-blue-50);
+  filter: blur(0.625rem);
+  border-radius: 0.375rem;
+}
 
 .screen-inner {
-  background-color: var(--dark);
-  border-radius: 0.375rem;
+  position: relative;
   color: var(--white);
   height: 100%;
   overflow: hidden;
@@ -132,7 +151,7 @@ a:hover {
   min-height: 100vh;
   padding: var(--default-padding);
   /*padding-left: 88px;  для левого меню*/
-  background-color: var(--dark-2);
+  /*background-color: var(--dark-2);*/
   transition: padding 0.6s ease;
   overflow: auto;
 }
