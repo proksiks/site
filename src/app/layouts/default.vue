@@ -37,7 +37,20 @@
     twitterCard: "summary_large_image",
   });
   onMounted(() => {
-    console.log("onMounted");
+    let defaultInstallEvent = null;
+
+    window.addEventListener("beforeinstallprompt", (e) => {
+      e.preventDefault();
+      defaultInstallEvent = e;
+      console.log("beforeinstallprompt", e);
+    });
+
+    setTimeout(() => {
+      if (defaultInstallEvent) {
+        defaultInstallEvent.prompt();
+        defaultInstallEvent = null;
+      }
+    }, 5000);
 
     //const displayConfirmNotification = () => {
     //  if ("serviceWorker" in navigator) {

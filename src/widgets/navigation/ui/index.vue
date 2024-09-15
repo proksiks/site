@@ -2,7 +2,7 @@
   <div class="sidebar-nav">
     <div class="sidebar" ref="sidebarEl" :class="{ active: isMenuOpen }">
       <div class="sidebar-head">
-        <a class="sidebar-title" href="t.me/ProKsiKzzz">
+        <a class="sidebar-title" :href="isMobile ? 't.me/ProKsiKzzz' : 'https://t.me/ProKsiKzzz'">
           <i class="sidebar-menu-icon bx bxl-telegram"></i>
         </a>
         <button-ui
@@ -49,6 +49,10 @@
   const openMenu = () => {
     isMenuOpen.value = !isMenuOpen.value;
   };
+
+  const isMobile = computed(() => {
+    return window.innerWidth < 1024;
+  });
 </script>
 <style lang="scss" scoped>
   @import "./index.scss";
