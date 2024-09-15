@@ -1,5 +1,6 @@
 <template>
   <div class="sidebar-nav">
+    <button-ui id="installApp" class="sidebar-install-button" title="Установить приложение" class-icon="bx-download" />
     <div class="sidebar" ref="sidebarEl" :class="{ active: isMenuOpen }">
       <div class="sidebar-head">
         <a class="sidebar-title" :href="isMobile ? 't.me/ProKsiKzzz' : 'https://t.me/ProKsiKzzz'">
@@ -52,6 +53,24 @@
 
   const isMobile = computed(() => {
     return window.innerWidth < 1024;
+  });
+
+  onMounted(() => {
+    let deferredPrompt;
+    window.addEventListener("beforeinstallprompt", (e) => {
+      deferredPrompt = e;
+    });
+
+    const installApp = document.getElementById("installApp");
+    installApp.addEventListener("click", async () => {
+      if (deferredPrompt !== null) {
+        deferredPrompt.prompt();
+        const { outcome } = await deferredPrompt.userChoice;
+        if (outcome === "accepted") {
+          deferredPrompt = null;
+        }
+      }
+    });
   });
 </script>
 <style lang="scss" scoped>

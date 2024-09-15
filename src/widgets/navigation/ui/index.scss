@@ -59,6 +59,16 @@
   transform: translateX(-1.875rem);
 }
 
+.sidebar-install-button {
+  position: fixed;
+  right: 10px;
+  bottom: 10px;
+  @media (max-width: 480px) {
+    bottom: 80px;
+    right: 50%;
+    transform: translateX(50%);
+  }
+}
 .sidebar-head {
   position: relative;
   z-index: 2;
