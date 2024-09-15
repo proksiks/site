@@ -47,6 +47,12 @@ export default defineNuxtConfig({
     registerType: "autoUpdate",
     //includeAssets: ["favicon.ico", "apple-touch-icon.png", "masked-icon.png"],
     manifestFilename: "site.webmanifest",
+    client: {
+      installPrompt: true,
+      //promptOptions: {
+      //  skip: true,
+      //},
+    },
     manifest: {
       name: "Nuxt 3",
       short_name: "Nuxt 3",
