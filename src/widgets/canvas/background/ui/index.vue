@@ -10,7 +10,7 @@
   const { width, height } = useWindowSize();
 
   const appCanvas = ref();
-  const count = ref(100);
+  const count = ref(200);
 
   function startAnimatedBackground() {
     paper.setup(appCanvas.value);
@@ -19,7 +19,6 @@
       center: [0, 0],
       radius: 5,
       fillColor: "white",
-      strokeColor: "yellow",
     });
 
     let symbol = new paper.SymbolDefinition(path);
@@ -75,13 +74,13 @@
       vector.x = vector.x + (mouseVector.x - vector.x) / 30;
       vector.y = vector.y + (mouseVector.y - vector.y) / 30;
 
-      // как то воркает
       for (let index = 0; index < count.value; index++) {
         let item = paper.project.activeLayer.children[index];
-        let vector = item.data.vector;
-        let position = item.position;
-        position.x = position.x + vector.x;
-        position.y = position.y + vector.y;
+        let size = item.bounds.size;
+        let moveX = ((vector.length / 50) * size.width) / 50;
+        let moveY = ((vector.length / 50) * size.height) / 50;
+        item.position.x += vector.normalize(moveX).x + item.data.vector.x;
+        item.position.y += vector.normalize(moveY).y + item.data.vector.y;
         keepInView(item);
       }
     };
