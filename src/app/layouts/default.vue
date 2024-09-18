@@ -1,5 +1,4 @@
 <template>
-  <nuxt-pwa-manifest />
   <div class="wrapper">
     <navigation-ui :navigation="navigation" />
     <main class="main">

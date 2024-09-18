@@ -15,6 +15,7 @@
   "dependencies": {
     "@vite-pwa/nuxt": "^0.10.5",
     "@vueuse/core": "^11.0.3",
+    "gsap": "^3.12.5",
     "normalize.css": "^8.0.1",
     "nuxt": "^3.13.2",
     "paper": "^0.12.18",
