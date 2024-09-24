@@ -1,15 +1,20 @@
 <template>
   <div class="page">
-    <ul class="articles">
-      <li class="articles-item" v-for="author in data" :key="author.id">
-        <nuxt-link class="articles-link" :to="`/articles/${author.id}`">{{ author }}</nuxt-link>
+    <h1 class="page-title">Автор</h1>
+
+    <ul>
+      <li v-for="post in posts" :key="post.id">
+        <nuxt-link class="articles-link" :to="`/articles/${post.id}`">
+          {{ post.title }}
+        </nuxt-link>
       </li>
     </ul>
   </div>
 </template>
 
 <script lang="ts" setup>
+  const route = useRoute();
   const api = "https://jsonplaceholder.typicode.com";
 
-  const { data, status, error, refresh, clear } = await useAsyncData("users", () => $fetch(`${api}/users`));
+  const { data: posts } = await useAsyncData("posts", () => $fetch(`${api}/posts?userId=${route.params.id}`));
 </script>

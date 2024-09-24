@@ -7,7 +7,9 @@
           {{ post.title }}
         </nuxt-link>
         <p>{{ post.body }}</p>
-        <nuxt-link class="articles-link" :to="`/authors/${post.userId}`">Автор</nuxt-link>
+        <nuxt-link class="articles-link articles-link-author" :to="`/authors/${post.userId}`">
+          {{ post.author }}
+        </nuxt-link>
       </li>
     </ul>
   </div>
@@ -20,7 +22,8 @@
   // TODO вынести в env
   const api = "https://jsonplaceholder.typicode.com";
 
-  const { data } = await useAsyncData<Post[]>("posts", () => $fetch(`${api}/posts`));
+  const { data: posts } = await useAsyncData<Post[]>("posts", () => $fetch(`${api}/posts`));
+  const { data: users } = await useAsyncData<Post[]>("users", () => $fetch(`${api}/users`));
 
   const checkArticle = (id: number) => {
     if (getCheckedArticlesFromStorage) {
@@ -34,14 +37,22 @@
 
   const checkedArticles = computed(() => {
     let result = [];
-    if (data.value) {
-      for (const article of data.value) {
+    if (posts.value) {
+      for (const article of posts.value) {
         if (getCheckedArticlesFromStorage?.includes(String(article.id))) {
           article.checked = true;
           result.push(article);
         } else {
           article.checked = false;
           result.push(article);
+        }
+        
+        if (users.value) {
+          for (const user of users.value) {
+            if (user.id === article.userId) {
+              article.author = user.name;
+            }
+          }
         }
       }
     }
@@ -52,6 +63,9 @@
 <style lang="scss" scoped>
   .page {
     padding: 10px;
+    @media (max-width: 480px) {
+      padding-bottom: 140px;
+    }
   }
   .articles {
     list-style: none;
@@ -74,6 +88,8 @@
     }
   }
   .articles-item {
+    display: flex;
+    flex-direction: column;
     background-color: var(--dark-2);
     border-radius: 0.3125rem;
     padding: 0.625rem;
@@ -92,6 +108,9 @@
     }
     &:active {
       background-color: var(--dark);
+    }
+    &-author {
+      margin-top: auto;
     }
   }
 
