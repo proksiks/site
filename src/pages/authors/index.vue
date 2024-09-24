@@ -1,9 +1,16 @@
 <template>
-  <h2>rewrw</h2>
+  <div>
+    <h2>Авторы</h2>
+    <ul>
+      <li v-for="user in data" :key="user.id">
+        {{ user.name }}
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script lang="ts" setup>
-  console.log(321);
+  const api = "https://jsonplaceholder.typicode.com";
 
-  const api = "https://jsonplaceholder.typicode.com/users";
+  const { data } = await useAsyncData("users", () => $fetch(`${api}/users`));
 </script>
