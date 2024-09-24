@@ -5,7 +5,6 @@
 <script lang="ts" setup>
   import paper from "paper";
   import { useWindowSize } from "@vueuse/core";
-  import { view } from "paper/dist/paper-core";
 
   const { width, height } = useWindowSize();
 
@@ -87,7 +86,9 @@
   }
 
   onMounted(() => {
-    startAnimatedBackground();
+    if (width.value > 1024) {
+      startAnimatedBackground();
+    }
   });
 </script>
 
