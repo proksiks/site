@@ -4,6 +4,10 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
 
+  ignoreOptions: {
+    ignoreCase: false,
+  },
+
   srcDir: 'src/',
 
   dir: {

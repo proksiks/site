@@ -26,6 +26,18 @@
       href: "/convert/",
       icon: "bxs-devices",
     },
+    {
+      id: 3,
+      title: "Статьи",
+      href: "/articles/",
+      icon: "bxs-notepad",
+    },
+    {
+      id: 4,
+      title: "Авторы",
+      href: "/authors/",
+      icon: "bxs-user",
+    },
   ];
   useSeoMeta({
     title: "Site",

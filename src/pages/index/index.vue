@@ -8,17 +8,12 @@
         <option class="select-option" value="eur">EUR</option>
       </select>
     </div>
-    <!--
-        <div class="search">
-          <form @submit.prevent="onSubmit">
-            <input class="search-input" type="text" placeholder="Поиск" />
-          </form>
-        </div>
-      -->
-    <div class="points">
-      <div class="point">1 RUB = {{ getCurrencyValue("rub") }} {{ baseCurrency }}</div>
-      <div class="point">1 USD = {{ getCurrencyValue("usd") }} {{ baseCurrency }}</div>
-      <div class="point">1 EUR = {{ getCurrencyValue("eur") }} {{ baseCurrency }}</div>
+    <div class="info">
+      <div class="points">
+        <div class="point">1 RUB = {{ getCurrencyValue("rub") }} {{ baseCurrency }}</div>
+        <div class="point">1 USD = {{ getCurrencyValue("usd") }} {{ baseCurrency }}</div>
+        <div class="point">1 EUR = {{ getCurrencyValue("eur") }} {{ baseCurrency }}</div>
+      </div>
     </div>
   </div>
 </template>
