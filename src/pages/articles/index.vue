@@ -4,7 +4,7 @@
     <ul class="articles">
       <li class="articles-item" v-for="post in checkedArticles" :key="post.id" :class="{ checked: post.checked }">
         <nuxt-link class="articles-link" :to="`/articles/${post.id}`" @click="checkArticle(post.id)">
-          {{ post.title }}
+          {{ post?.title }}
         </nuxt-link>
         <p>{{ post.body }}</p>
         <nuxt-link class="articles-link articles-link-author" :to="`/authors/${post.userId}`">
@@ -16,14 +16,48 @@
 </template>
 
 <script lang="ts" setup>
-  import type { Post } from "./model";
+  import type { Body } from "./model";
+  interface DataValue {
+    posts: Body[];
+    users: Body[];
+  }
+
+  const nuxt = useNuxtApp();
   const getCheckedArticlesFromStorage = localStorage.getItem("checkedArticlesId");
   const checkedArticlesId = ref<number[]>([]);
   // TODO вынести в env
   const api = "https://jsonplaceholder.typicode.com";
+  const options = {
+    headers: { Accept: "application/json" },
+    transform(input: DataValue) {
+      return { ...input, fetchedAt: new Date() };
+    },
+    getCachedData: cachedData,
+  };
 
-  const { data: posts } = await useAsyncData<Post[]>("posts", () => $fetch(`${api}/posts`));
-  const { data: users } = await useAsyncData<Post[]>("users", () => $fetch(`${api}/users`));
+  function cachedData(key: string) {
+    const data = nuxt.payload.data[key] || nuxt.static.data[key];
+    if (!data) return;
+
+    const expirationDate = new Date(data.fetchedAt);
+    expirationDate.setTime(expirationDate.getTime() + 60 * 60 * 1000);
+    const isExpired = expirationDate.getTime() < Date.now();
+    if (isExpired) return;
+
+    return data;
+  }
+
+  const { data, refresh: refreshPosts } = await useAsyncData<DataValue>(
+    "articles",
+    async () => {
+      const [posts, users] = await Promise.all([$fetch(`${api}/posts`), $fetch(`${api}/users`)]);
+      const postsData: Body[] = posts as Body[];
+      const usersData: Body[] = users as Body[];
+      return { posts: postsData, users: usersData };
+    },
+    { ...options }
+  );
+  if (!data.value) await refreshPosts();
 
   const checkArticle = (id: number) => {
     if (getCheckedArticlesFromStorage) {
@@ -37,8 +71,8 @@
 
   const checkedArticles = computed(() => {
     let result = [];
-    if (posts.value) {
-      for (const article of posts.value) {
+    if (data.value as DataValue) {
+      for (const article of (data.value as DataValue).posts) {
         if (getCheckedArticlesFromStorage?.includes(String(article.id))) {
           article.checked = true;
           result.push(article);
@@ -46,12 +80,10 @@
           article.checked = false;
           result.push(article);
         }
-        
-        if (users.value) {
-          for (const user of users.value) {
-            if (user.id === article.userId) {
-              article.author = user.name;
-            }
+
+        for (const user of (data.value as DataValue).users as Body[]) {
+          if (user.id === article.userId) {
+            article.author = user.name;
           }
         }
       }
