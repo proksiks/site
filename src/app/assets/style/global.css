@@ -18,15 +18,18 @@
   --small-radius: 0.5rem;
 
   --cyanide: #77f8da;
-  --cyanide-dark: #1b3831;
+  --cyanide-dark: rgb(var(--cyanide-dark-color));
+  --cyanide-dark-90: rgba(var(--cyanide-dark-color), 0.9);
+
   /* deprecated */
 
   --main-color: 22, 26, 29;
   --main-color-dark: 18, 19, 22;
   --blue-color-dark: 43, 63, 77;
-
+  --cyanide-dark-color: 27, 56, 49;
   --dark: rgb(var(--main-color));
   --dark-2: rgb(var(--main-color-dark));
+  --dark-90: rgba(var(--main-color), 0.9);
   --dark-75: rgba(var(--main-color), 0.75);
   --dark-50: rgba(var(--main-color), 0.5);
   --dark-20: rgba(var(--main-color), 0.2);

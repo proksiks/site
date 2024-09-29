@@ -3,7 +3,7 @@
     <button-ui id="installApp" class="sidebar-install-button" title="Установить приложение" class-icon="bx-download" />
     <div class="sidebar" ref="sidebarEl" :class="{ active: isMenuOpen }">
       <div class="sidebar-head">
-        <a class="sidebar-title" :href="isMobile ? 't.me/ProKsiKzzz' : 'https://t.me/ProKsiKzzz'">
+        <a class="sidebar-title" aria-label="Телеграм" :href="isMobile ? 't.me/ProKsiKzzz' : 'https://t.me/ProKsiKzzz'">
           <i class="sidebar-menu-icon bx bxl-telegram"></i>
         </a>
         <button-ui

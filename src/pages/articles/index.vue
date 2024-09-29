@@ -2,15 +2,15 @@
   <div class="page">
     <h1 class="page-title">Список статей</h1>
     <ul class="articles" v-if="posts">
-      <li class="articles-item" v-for="post in checkedArticles" :key="post.id" :class="{ checked: post.checked }">
-        <!--<nuxt-link class="articles-link" :to="`/articles/${post.id}`" @click="checkArticle(post.id)">-->
-        <nuxt-link class="articles-link" :to="`/articles/${post.id}`" @click="checkArticle(post.id)">
+      <li class="article" v-for="post in checkedArticles" :key="post.id" :class="{ checked: post.checked }">
+        <nuxt-link class="article-link" :to="`/articles/${post.id}`" @click="checkArticle(post.id)">
           {{ post?.title }}
         </nuxt-link>
         <p>{{ post.body }}</p>
-        <nuxt-link class="articles-link articles-link-author" :to="`/authors/${post.userId}`">
+        <nuxt-link class="article-link article-link-author" :to="`/authors/${post.userId}`">
           {{ post.author }}
         </nuxt-link>
+        <span class="article-prompt" v-if="post.checked">Прочитано</span>
       </li>
     </ul>
   </div>
@@ -64,17 +64,18 @@
     if (posts.value) {
       for (const article of posts.value?.data as Body[]) {
         if (getCheckedArticlesFromStorage) {
-          const checkedArticles = JSON.parse(getCheckedArticlesFromStorage);
-          checkedArticles.forEach((articleId: number) => {
-            if (Number(article.id) === Number(articleId)) {
+          for (const checked of JSON.parse(getCheckedArticlesFromStorage)) {
+            if (Number(checked) === Number(article.id)) {
               article.checked = true;
+              break;
             }
-          });
+          }
         }
         if (users.value?.data) {
           for (const user of users.value?.data) {
             if (Number(user.id) === Number(article.userId)) {
               article.author = user.name;
+              break;
             }
           }
         }
@@ -112,17 +113,34 @@
       grid-template-columns: repeat(1, 1fr);
     }
   }
-  .articles-item {
+  .article {
+    position: relative;
     display: flex;
     flex-direction: column;
-    background-color: var(--dark-2);
     border-radius: 0.3125rem;
     padding: 0.625rem;
     &.checked {
-      background-color: var(--cyanide-dark);
+      &::before {
+        background-color: var(--cyanide-dark-90);
+      }
+    }
+    * {
+      position: relative;
+      z-index: 1;
+    }
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: var(--dark-90);
+      border-radius: 0.3125rem;
+      filter: blur(0.3125rem);
     }
   }
-  .articles-link {
+  .article-link {
     padding: 0.3125rem;
     border-radius: 0.25rem;
     text-decoration: none;
@@ -144,5 +162,16 @@
     @media (max-width: 480px) {
       font-size: 24px;
     }
+  }
+
+  .article-prompt {
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: translateY(-50%);
+    padding: 0.3125rem;
+    border-radius: 0.3125rem;
+    background-color: var(--light);
+    color: var(--dark);
   }
 </style>
