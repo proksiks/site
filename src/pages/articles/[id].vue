@@ -18,10 +18,20 @@
 <script lang="ts" setup>
   const api = "https://jsonplaceholder.typicode.com";
   const { id } = useRoute().params;
-  const { data: posts, data: users } = useNuxtData("posts");
+  const { data: posts } = useNuxtData("posts");
+  const { data: users } = useNuxtData("users");
   const getActiveArticle = computed(() => {
     if (posts.value) {
-      return posts.value.data.find((post: any) => Number(post.id) === Number(id));
+      const post = posts.value?.data.find((post: any) => Number(post.id) === Number(id));
+      if (users.value?.data) {
+        for (const user of users.value?.data) {
+          if (Number(user.id) === Number(post.userId)) {
+            post.name = user.name;
+            break;
+          }
+        }
+      }
+      return post;
     }
   });
 </script>

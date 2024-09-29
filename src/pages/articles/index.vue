@@ -3,10 +3,14 @@
     <h1 class="page-title">Список статей</h1>
     <ul class="articles" v-if="posts">
       <li class="article" v-for="post in checkedArticles" :key="post.id" :class="{ checked: post.checked }">
-        <nuxt-link class="article-link" :to="`/articles/${post.id}`" @click="checkArticle(post.id)">
-          {{ post?.title }}
-        </nuxt-link>
-        <p>{{ post.body }}</p>
+        <div class="article-title">
+          <nuxt-link class="article-link" :to="`/articles/${post.id}`" @click="checkArticle(post.id)">
+            {{ post?.title }}
+          </nuxt-link>
+        </div>
+        <div class="article-body">
+          <p class="article-text">{{ post.body }}</p>
+        </div>
         <nuxt-link class="article-link article-link-author" :to="`/authors/${post.userId}`">
           {{ post.author }}
         </nuxt-link>
@@ -48,6 +52,8 @@
     useFetch(`${api}/posts`, { ...options, key: "posts" }),
     useFetch(`${api}/users`, { ...options, key: "users" }),
   ]);
+
+  console.log(users.value?.data);
 
   const checkArticle = (id: number) => {
     if (getCheckedArticlesFromStorage) {
@@ -153,15 +159,34 @@
     &:active {
       background-color: var(--dark);
     }
-    &-author {
-      margin-top: auto;
-    }
+    // &-author {
+    //   margin-top: auto;
+    // }
   }
 
   .page-title {
     @media (max-width: 480px) {
       font-size: 24px;
     }
+  }
+  .article-title {
+    margin-bottom: 1.25rem;
+  }
+  .article-body {
+    margin-top: auto;
+    margin-bottom: 0.625rem;
+  }
+  .article-text {
+    margin: 0;
+    padding: 0 0.3125rem;
+    font-size: 0.875rem;
+    line-height: 1.25;
+    -webkit-box-orient: vertical;
+    display: block;
+    display: -webkit-box;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 3;
   }
 
   .article-prompt {

@@ -10,9 +10,8 @@
 </template>
 
 <script lang="ts" setup>
-  const api = "https://jsonplaceholder.typicode.com";
+  //const api = "https://jsonplaceholder.typicode.com";
 
-  const { data } = await useAsyncData("users", () => $fetch(`${api}/users`));
-  console.log(data.value);
-  
+  //const { data } = await useAsyncData("users", () => $fetch(`${api}/users`));
+  //console.log(data.value);
 </script>
