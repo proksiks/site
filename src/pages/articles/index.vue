@@ -62,21 +62,23 @@
   const checkedArticles = computed(() => {
     let result = [];
     if (posts.value) {
-      
       for (const article of posts.value?.data as Body[]) {
-        // Не очень хороший способ, можно лучше
-        if (getCheckedArticlesFromStorage?.includes(String(article.id))) {
-          article.checked = true;
-          result.push(article);
-        } else {
-          article.checked = false;
-          result.push(article);
+        if (getCheckedArticlesFromStorage) {
+          const checkedArticles = JSON.parse(getCheckedArticlesFromStorage);
+          checkedArticles.forEach((articleId: number) => {
+            if (Number(article.id) === Number(articleId)) {
+              article.checked = true;
+            }
+          });
         }
-        for (const user of users.value?.data as Body[]) {
-          if (user.id === article.userId) {
-            article.author = user.name;
+        if (users.value?.data) {
+          for (const user of users.value?.data) {
+            if (Number(user.id) === Number(article.userId)) {
+              article.author = user.name;
+            }
           }
         }
+        result.push(article);
       }
     }
     return result;
