@@ -1,8 +1,9 @@
 <template>
   <div class="page">
     <h1 class="page-title">Список статей</h1>
-    <ul class="articles">
+    <ul class="articles" v-if="posts">
       <li class="articles-item" v-for="post in checkedArticles" :key="post.id" :class="{ checked: post.checked }">
+        <!--<nuxt-link class="articles-link" :to="`/articles/${post.id}`" @click="checkArticle(post.id)">-->
         <nuxt-link class="articles-link" :to="`/articles/${post.id}`" @click="checkArticle(post.id)">
           {{ post?.title }}
         </nuxt-link>
@@ -17,10 +18,6 @@
 
 <script lang="ts" setup>
   import type { Body } from "./model";
-  interface DataValue {
-    posts: Body[];
-    users: Body[];
-  }
 
   const nuxt = useNuxtApp();
   const getCheckedArticlesFromStorage = localStorage.getItem("checkedArticlesId");
@@ -29,8 +26,8 @@
   const api = "https://jsonplaceholder.typicode.com";
   const options = {
     headers: { Accept: "application/json" },
-    transform(input: DataValue) {
-      return { ...input, fetchedAt: new Date() };
+    transform(input: Body[]) {
+      return { data: input, fetchedAt: new Date() };
     },
     getCachedData: cachedData,
   };
@@ -47,17 +44,10 @@
     return data;
   }
 
-  const { data, refresh: refreshPosts } = await useAsyncData<DataValue>(
-    "articles",
-    async () => {
-      const [posts, users] = await Promise.all([$fetch(`${api}/posts`), $fetch(`${api}/users`)]);
-      const postsData: Body[] = posts as Body[];
-      const usersData: Body[] = users as Body[];
-      return { posts: postsData, users: usersData };
-    },
-    { ...options }
-  );
-  if (!data.value) await refreshPosts();
+  const [{ data: posts }, { data: users }] = await Promise.all([
+    useFetch(`${api}/posts`, { ...options, key: "posts" }),
+    useFetch(`${api}/users`, { ...options, key: "users" }),
+  ]);
 
   const checkArticle = (id: number) => {
     if (getCheckedArticlesFromStorage) {
@@ -71,8 +61,10 @@
 
   const checkedArticles = computed(() => {
     let result = [];
-    if (data.value as DataValue) {
-      for (const article of (data.value as DataValue).posts) {
+    if (posts.value) {
+      
+      for (const article of posts.value?.data as Body[]) {
+        // Не очень хороший способ, можно лучше
         if (getCheckedArticlesFromStorage?.includes(String(article.id))) {
           article.checked = true;
           result.push(article);
@@ -80,8 +72,7 @@
           article.checked = false;
           result.push(article);
         }
-
-        for (const user of (data.value as DataValue).users as Body[]) {
+        for (const user of users.value?.data as Body[]) {
           if (user.id === article.userId) {
             article.author = user.name;
           }
@@ -135,6 +126,7 @@
     text-decoration: none;
     display: block;
     transition: background-color 0.3s ease;
+    color: var(--light);
     &:hover {
       background-color: var(--dark-blue);
     }

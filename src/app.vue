@@ -1,5 +1,5 @@
 <template>
-  <nuxt-pwa-manifest />
+  <!--<nuxt-pwa-manifest />-->
   <cursor-ui />
   <NuxtLayout>
     <NuxtPage />
