@@ -39,10 +39,32 @@
 
 <script lang="ts" setup>
   import type { NavigationListItem } from "../model/index";
-
-  defineProps<{
-    navigation: NavigationListItem[];
-  }>();
+  const navigation: NavigationListItem[] = [
+    {
+      id: 1,
+      title: "Главная",
+      href: "/",
+      icon: "bx-grid-alt",
+    },
+    {
+      id: 2,
+      title: "Конвертация",
+      href: "/convert/",
+      icon: "bxs-devices",
+    },
+    {
+      id: 3,
+      title: "Статьи",
+      href: "/articles/",
+      icon: "bxs-notepad",
+    },
+    {
+      id: 4,
+      title: "Авторы",
+      href: "/authors/",
+      icon: "bxs-user",
+    },
+  ];
 
   const isMenuOpen = ref(false);
   const sidebarEl = ref();
@@ -62,7 +84,7 @@
     });
 
     const installApp = document.getElementById("installApp");
-    if(installApp) {
+    if (installApp) {
       installApp.addEventListener("click", async () => {
         if (deferredPrompt !== null) {
           deferredPrompt.prompt();

@@ -94,9 +94,9 @@
 
 <style lang="scss" scoped>
   .page {
-    padding: 10px;
+    padding: 1.25rem;
     @media (max-width: 480px) {
-      padding-bottom: 140px;
+      padding-bottom: 8.75rem;
     }
   }
   .articles {
@@ -125,6 +125,7 @@
     flex-direction: column;
     border-radius: 0.3125rem;
     padding: 0.625rem;
+    transition: transform 0.6s ease;
     &.checked {
       &::before {
         background-color: var(--cyanide-dark-90);
@@ -144,6 +145,14 @@
       background-color: var(--dark-90);
       border-radius: 0.3125rem;
       filter: blur(0.3125rem);
+      transition: background-color 0.3s ease;
+    }
+
+    &:hover {
+      transform: scale(1.1);
+      &::before {
+        background-color: var(--dark-75);
+      }
     }
   }
   .article-link {
@@ -151,6 +160,7 @@
     border-radius: 0.25rem;
     text-decoration: none;
     display: block;
+    background-color: transparent;
     transition: background-color 0.3s ease;
     color: var(--light);
     &:hover {
