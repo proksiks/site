@@ -158,8 +158,8 @@ a:hover {
   transition: padding 0.6s ease;
   /*overflow: auto;*/
 }
-/*@media (max-width: 480px) {
+@media (max-width: 480px) {
   .main {
-    --default-padding: 0.625rem;
+    padding-left: 0;
   }
-}*/
+}
