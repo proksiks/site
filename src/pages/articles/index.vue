@@ -4,7 +4,7 @@
     <ul class="articles" v-if="posts">
       <li class="article" v-for="post in checkedArticles" :key="post.id" :class="{ checked: post.checked }">
         <div class="article-title">
-          <nuxt-link class="article-link" :to="`/articles/${post.id}`" @click="checkArticle(post.id)">
+          <nuxt-link class="article-link" :to="`/articles/${post.id}`">
             {{ post?.title }}
           </nuxt-link>
         </div>
@@ -25,7 +25,6 @@
 
   const nuxt = useNuxtApp();
   const getCheckedArticlesFromStorage = localStorage.getItem("checkedArticlesId");
-  const checkedArticlesId = ref<number[]>([]);
   // TODO вынести в env
   const api = "https://jsonplaceholder.typicode.com";
   const options = {
@@ -52,18 +51,6 @@
     useFetch(`${api}/posts`, { ...options, key: "posts" }),
     useFetch(`${api}/users`, { ...options, key: "users" }),
   ]);
-
-  console.log(users.value?.data);
-
-  const checkArticle = (id: number) => {
-    if (getCheckedArticlesFromStorage) {
-      checkedArticlesId.value = JSON.parse(getCheckedArticlesFromStorage);
-    }
-    if (!checkedArticlesId.value.includes(id)) {
-      checkedArticlesId.value.push(id);
-      localStorage.setItem("checkedArticlesId", JSON.stringify(checkedArticlesId.value));
-    }
-  };
 
   const checkedArticles = computed(() => {
     let result = [];
@@ -150,6 +137,12 @@
 
     &:hover {
       transform: scale(1.1);
+      &::before {
+        background-color: var(--dark-75);
+      }
+    }
+    &:has(a:active) {
+      transform: scale(0.98);
       &::before {
         background-color: var(--dark-75);
       }

@@ -10,20 +10,17 @@
     </div>
     <div class="info">
       <div class="points">
-        <div class="point">1 RUB = {{ getCurrencyValue("rub") }} {{ baseCurrency }}</div>
-        <div class="point">1 USD = {{ getCurrencyValue("usd") }} {{ baseCurrency }}</div>
-        <div class="point">1 EUR = {{ getCurrencyValue("eur") }} {{ baseCurrency }}</div>
+        <div class="point">{{ count }} RUB = {{ getCurrencyValue("rub") }} {{ baseCurrency }}</div>
+        <div class="point">{{ count }} USD = {{ getCurrencyValue("usd") }} {{ baseCurrency }}</div>
+        <div class="point">{{ count }} EUR = {{ getCurrencyValue("eur") }} {{ baseCurrency }}</div>
       </div>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-  const breadcrumbs = [{ title: "Главная" }];
-
   const { data } = await useFetch<{ [key: string]: number }>("https://status.neuralgeneration.com/api/currency");
   const baseCurrency = ref("rub");
-
   function getCurrencyValue(currency: string) {
     if (data.value && data.value[`${currency}-${baseCurrency.value}` as keyof typeof data.value]) {
       return data.value[`${currency}-${baseCurrency.value}` as keyof typeof data.value];
@@ -32,9 +29,8 @@
     }
   }
 
-  function onSubmit() {
-    console.log("onSubmit");
-  }
+  const counter = useCountStore();
+  const { count } = storeToRefs(counter);
 </script>
 <style scoped>
   .head {

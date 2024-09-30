@@ -29,7 +29,15 @@ export default defineNuxtConfig({
       extensions: ['.vue'],
     },
   ],
-
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          api: 'modern-compiler',
+        },
+      },
+    }
+  },
   app: {
     baseURL: "/site/",
     pageTransition: { name: "page" },
@@ -45,8 +53,8 @@ export default defineNuxtConfig({
       ],
     }
   },
-
-  modules: ['@nuxt/eslint', '@vite-pwa/nuxt'],
+  modules: ['@nuxt/eslint', '@vite-pwa/nuxt', ['@pinia/nuxt', { autoImports: ['defineStore', 'acceptHMRUpdate'] }]],
+  imports: { dirs: ['app/stores'] },
   css: ["normalize.css", "~/app/assets/style/global.css"],
   pwa: {
     registerType: "autoUpdate",

@@ -16,6 +16,7 @@
 </template>
 
 <script lang="ts" setup>
+  const watchedArticles = localStorage.getItem("checkedArticlesId");
   const api = "https://jsonplaceholder.typicode.com";
   const { id } = useRoute().params;
   const { data: posts } = useNuxtData("posts");
@@ -32,6 +33,16 @@
         }
       }
       return post;
+    }
+  });
+
+  onMounted(() => {
+    if (!watchedArticles) {
+      localStorage.setItem("checkedArticlesId", JSON.stringify([id]));
+    } else {
+      let data = JSON.parse(watchedArticles);
+      data.push(id);
+      localStorage.setItem("checkedArticlesId", JSON.stringify([...new Set(data)]));
     }
   });
 </script>
