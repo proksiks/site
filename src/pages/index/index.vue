@@ -29,7 +29,7 @@
     }
   }
 
-  const counter = useCountStore();
+  const counter = useCount();
   const { count } = storeToRefs(counter);
 </script>
 <style scoped>
