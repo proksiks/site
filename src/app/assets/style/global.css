@@ -144,6 +144,8 @@ a:hover {
   /*overflow: auto;*/
   height: 100%;
   padding: 0.625rem;
+}
+.screen-inner > * {
   @media (max-width: 480px) {
     padding-bottom: 4.375rem;
   }
