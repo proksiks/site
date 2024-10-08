@@ -4,9 +4,10 @@
 
 <script lang="ts" setup>
   import paper from "paper";
-  import { useWindowSize } from "@vueuse/core";
+  import { useWindowSize, usePointer } from "@vueuse/core";
 
   const { width, height } = useWindowSize();
+  const pointer = reactive(usePointer());
 
   const appCanvas = ref();
   const count = ref(200);
@@ -41,9 +42,9 @@
 
     let mouseVector = vector.clone();
 
-    paper.view.onMouseMove = function (event: any) {
-      mouseVector.x = paper.view.center.x - event.point.x;
-      mouseVector.y = paper.view.center.y - event.point.y;
+    paper.view.onMouseMove = function () {
+      mouseVector.x = paper.view.center.x - pointer.x;
+      mouseVector.y = paper.view.center.y - pointer.y;
       return false;
     };
 
@@ -86,9 +87,9 @@
   }
 
   onMounted(() => {
-    if (width.value > 1024) {
-      startAnimatedBackground();
-    }
+    //if (width.value > 1024) {
+    startAnimatedBackground();
+    //}
   });
 </script>
 
