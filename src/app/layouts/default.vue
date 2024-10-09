@@ -16,6 +16,7 @@
 
 <script setup lang="ts">
   import Lenis from "@studio-freight/lenis";
+  import { useWindowSize } from "@vueuse/core";
   useSeoMeta({
     title: "Site",
     ogTitle: "Site",
@@ -25,6 +26,8 @@
     twitterCard: "summary_large_image",
   });
 
+  const { width } = useWindowSize();
+
   const lenis = new Lenis({
     duration: 1.2,
     lerp: 0.05,
@@ -33,12 +36,14 @@
   });
 
   onMounted(() => {
-    function raf(time: number) {
-      lenis.raf(time);
+    if (width.value > 1024) {
+      function raf(time: number) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
+
       requestAnimationFrame(raf);
     }
-
-    requestAnimationFrame(raf);
   });
 
   //onMounted(() => {

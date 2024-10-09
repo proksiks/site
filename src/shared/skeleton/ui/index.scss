@@ -3,6 +3,7 @@
   overflow: hidden;
   border-radius: 0.25rem;
   background-color: var(--dark-blue-20);
+  pointer-events: none;
 }
 
 .skeleton-shadow {
