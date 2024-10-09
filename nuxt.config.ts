@@ -70,6 +70,9 @@ export default defineNuxtConfig({
       //  skip: true,
       //},
     },
+    pwaAssets: {
+      config: true,
+    },
     manifest: {
       name: "Nuxt 3",
       short_name: "Nuxt 3",

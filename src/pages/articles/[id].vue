@@ -2,6 +2,9 @@
   <div>
     <nuxt-link class="back" to="/articles">Назад</nuxt-link>
     <div class="page-content" v-if="article">
+      <img class="page-intro" src="https://loremflickr.com/1366/768" width="1366" height="768" alt="image" loading="lazy"  v-if="article.image"/>
+      <skeleton-ui class="page-intro" v-else width="100%" height="250px" />
+      
       <nuxt-link :to="`/authors/${article?.id}`">
         {{ article?.name }}
       </nuxt-link>
@@ -69,5 +72,15 @@
     background-color: var(--dark);
     padding: 0.625rem;
     border-radius: 0.5rem;
+  }
+  .page-intro {
+    display: block;
+    max-width: 82.5rem;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 0.5rem;
+    width: 100%;
+    object-fit: cover;
+    aspect-ratio: 16 / 9;
   }
 </style>

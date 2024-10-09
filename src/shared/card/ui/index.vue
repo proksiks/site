@@ -1,7 +1,7 @@
 <template>
   <div class="card">
     <nuxt-link class="card-link" :to="`/articles/${post.id}`">
-      <div class="card-picture" v-if="post.id">
+      <div class="card-picture" v-if="false">
         <img
           class="card-image"
           :src="`https://loremflickr.com/500/500?random=${post.id}`"
@@ -10,9 +10,7 @@
           loading="lazy"
         />
       </div>
-      <div v-else>
-        <skeleton-ui />
-      </div>
+      <skeleton-ui width="100%" height="150px" v-else />
       <div class="card-title">
         {{ post.title }}
       </div>

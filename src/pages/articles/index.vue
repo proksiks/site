@@ -121,13 +121,13 @@
       z-index: 100;
       transform: scale(1.1);
       &::before {
-      //  background-color: var(--dark-75);
+        //  background-color: var(--dark-75);
       }
     }
     &:has(a:active) {
       transform: scale(1.25);
       &::before {
-      //  background-color: var(--dark-75);
+        //  background-color: var(--dark-75);
       }
     }
   }

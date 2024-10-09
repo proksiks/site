@@ -1,51 +1,15 @@
 <template>
-  <div class="skeleton">
-    <div class="skeleton-container">
-      <center>
-        <div class="skeleton-header1">Ошибка</div>
-      </center>
-      <div class="skeleton-header"></div>
-      <div class="skeleton-paragraph"></div>
-      <div class="skeleton-paragraph"></div>
-      <div class="skeleton-paragraph"></div>
-      <div class="skeleton-paragraph"></div>
-      <div class="skeleton-paragraph"></div>
-      <div class="skeleton-paragraph"></div>
-      <div class="skeleton-header"></div>
-      <div class="skeleton-paragraph"></div>
-      <div class="skeleton-paragraph"></div>
-      <div class="skeleton-paragraph"></div>
-      <div class="skeleton-paragraph"></div>
-      <div class="skeleton-paragraph"></div>
-      <div class="skeleton-paragraph"></div>
-      <div class="skeleton-paragraph"></div>
-      <div class="skeleton-paragraph"></div>
-      <div class="skeleton-paragraph"></div>
-      <div class="skeleton-header"></div>
-      <div class="skeleton-paragraph"></div>
-      <div class="skeleton-paragraph"></div>
-      <div class="skeleton-paragraph"></div>
-      <div class="skeleton-paragraph"></div>
-      <div class="skeleton-paragraph"></div>
-      <div class="skeleton-paragraph"></div>
-      <div class="skeleton-header"></div>
-      <div class="skeleton-paragraph"></div>
-      <div class="skeleton-paragraph"></div>
-      <div class="skeleton-paragraph"></div>
-      <div class="skeleton-paragraph"></div>
-      <div class="skeleton-paragraph"></div>
-      <div class="skeleton-paragraph"></div>
-      <div class="skeleton-paragraph"></div>
-      <div class="skeleton-paragraph"></div>
-      <div class="skeleton-paragraph"></div>
-      <br /><br />
-      <div class="skeleton-paragraph"></div>
-      <div class="skeleton-paragraph"></div>
-    </div>
+  <div class="skeleton" :width="width" :style="{ width: width, height: height }">
+    <div class="skeleton-shadow"></div>
   </div>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+  defineProps<{
+    width?: string;
+    height?: string;
+  }>();
+</script>
 
 <style lang="scss" scoped>
   @import "index.scss";
