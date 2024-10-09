@@ -9,6 +9,7 @@
     "dev:host": "nuxt dev -- --host",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
+    "analyze": "nuxt build --analyze",
     "postinstall": "nuxt prepare",
     "lint": "eslint --fix"
   },

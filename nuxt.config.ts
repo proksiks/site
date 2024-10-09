@@ -3,7 +3,24 @@ export default defineNuxtConfig({
   ssr: false,
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
+  nitro: {
+    esbuild: {
+      options: {
+        target: 'esnext',
+      },
+    },
+    prerender: {
+      routes: ['/', '/articles'],
+    },
+  },
 
+  optimization: {
+    //splitChunks: {
+    //  layouts: true,
+    //  pages: true,
+    //  commons: true,
+    //},
+  },
   appConfig: {
     buildDate: new Date().toISOString(),
   },
@@ -61,7 +78,8 @@ export default defineNuxtConfig({
   imports: { dirs: ['app/stores'] },
   css: ["normalize.css", "~/app/assets/style/global.css"],
   pwa: {
-    registerType: "autoUpdate",
+    registerType: 'autoUpdate',
+    //strategies: 'generateSW',
     //includeAssets: ["favicon.ico", "apple-touch-icon.png", "masked-icon.png"],
     manifestFilename: "site.webmanifest",
     client: {
@@ -70,9 +88,11 @@ export default defineNuxtConfig({
       //  skip: true,
       //},
     },
-    pwaAssets: {
-      config: true,
-    },
+
+    // Раскоментить pwa-assets.config.ts
+    //pwaAssets: {
+    //  config: true,
+    //},
     manifest: {
       name: "Nuxt 3",
       short_name: "Nuxt 3",

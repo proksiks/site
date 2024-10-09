@@ -137,4 +137,7 @@
   background-color: var(--light);
   color: var(--dark);
   z-index: 1;
+  @media (max-width: 480px) {
+    font-size: 0.75rem;
+  }
 }

@@ -18,7 +18,7 @@
     let path = new paper.Path.Circle({
       center: [0, 0],
       radius: 5,
-      fillColor: "white",
+      fillColor: "rgba(255,255,255, 0.5)",
     });
 
     let symbol = new paper.SymbolDefinition(path);
@@ -52,11 +52,11 @@
     window.addEventListener("mousemove", (e) => {
       mouseVector.x = width.value / 2 - pointer.x;
       mouseVector.y = height.value / 2 - pointer.y;
-    })
+    });
     document.addEventListener("click", (e) => {
       mouseVector.x = width.value / 2 - e.clientX;
       mouseVector.y = height.value / 2 - e.clientY;
-    })
+    });
 
     function keepInView(item: { position: paper.Point; bounds: paper.Rectangle }) {
       var position = item.position;

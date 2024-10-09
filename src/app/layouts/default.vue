@@ -4,7 +4,7 @@
   <div class="wrapper">
     <navigation-ui />
     <main class="main">
-      <canvas-background-ui />
+      <lazy-canvas-background-ui />
       <div class="screen">
         <div class="screen-inner">
           <slot />
