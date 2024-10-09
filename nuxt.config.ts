@@ -4,6 +4,10 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
 
+  appConfig: {
+    buildDate: new Date().toISOString(),
+  },
+
   ignoreOptions: {
     ignoreCase: false,
   },
@@ -113,7 +117,10 @@ export default defineNuxtConfig({
     },
     devOptions: {
       enabled: true,
-      type: "module",
+      suppressWarnings: true,
+      navigateFallback: '/site/',
+      navigateFallbackAllowlist: [/^\/$/],
+      type: 'module',
     },
   },
 })

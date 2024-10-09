@@ -47,12 +47,6 @@
       icon: "bx-grid-alt",
     },
     {
-      id: 2,
-      title: "Конвертация",
-      href: "/convert/",
-      icon: "bxs-devices",
-    },
-    {
       id: 3,
       title: "Статьи",
       href: "/articles/",
@@ -88,7 +82,7 @@
       installApp.addEventListener("click", async () => {
         if (deferredPrompt !== null) {
           deferredPrompt.prompt();
-          const { outcome } = await deferredPrompt.userChoice;
+          const { outcome } = await deferredPrompt?.userChoice;
           if (outcome === "accepted") {
             deferredPrompt = null;
           }

@@ -1,9 +1,9 @@
 export interface Body {
-    id: number;
-    title: string;
-    body: string;
-    checked: boolean;
-    userId: number;
+    id?: number;
+    title?: string;
+    body?: string;
     author?: string;
-    name: string;
+    userId?: number;
+    checked?: boolean;
+    name?: string;
 }

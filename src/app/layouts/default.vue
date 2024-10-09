@@ -1,4 +1,6 @@
 <template>
+  <nuxt-pwa-manifest />
+  <cursor-ui />
   <div class="wrapper">
     <navigation-ui />
     <main class="main">

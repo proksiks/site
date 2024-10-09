@@ -1,7 +1,7 @@
 <template>
   <div>
     <nuxt-link class="back" to="/articles">Назад</nuxt-link>
-    <div class="page-content">
+    <div class="page-content" v-if="article">
       <nuxt-link :to="`/authors/${article?.id}`">
         {{ article?.name }}
       </nuxt-link>
@@ -11,6 +11,9 @@
       <p>
         {{ article?.body }}
       </p>
+    </div>
+    <div v-else>
+      <skeleton-ui />
     </div>
   </div>
 </template>
@@ -40,12 +43,6 @@
   }
 
   sessionStorage.setItem("article", JSON.stringify(article.value));
-  if (storeArticle === "undefined") {
-    const [{ data: posts }, { data: users }] = await Promise.all([
-      useFetch(`${api}/posts?id=${id}`, { key: "post" }),
-      useFetch(api, { key: "user" }),
-    ]);
-  }
 
   onMounted(() => {
     if (!watchedArticles) {
@@ -56,6 +53,11 @@
       localStorage.setItem("checkedArticlesId", JSON.stringify([...new Set(data)]));
     }
   });
+
+  //if (storeArticle === "undefined" || null) {
+  //  const [{ data: fetchedPosts }] = await Promise.all([useFetch(`${api}/posts?id=${id}`, { key: "post" })]);
+  //  console.log(fetchedPosts.value, "post");
+  //}
 </script>
 
 <style lang="scss" scoped>

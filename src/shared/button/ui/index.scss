@@ -6,7 +6,7 @@
   color: var(--dark);
   background-color: transparent;
   text-decoration: none;
-  transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease, border 0.3s ease;
+  transition: transform 0.3s var(--cubic-bezier), background-color 0.3s var(--cubic-bezier), color 0.3s var(--cubic-bezier), border 0.3s var(--cubic-bezier);
   &::before {
     pointer-events: none;
     content: "";
@@ -18,7 +18,7 @@
     border-radius: 0.5rem;
     background-color: var(--white);
     border: 0.0625rem solid transparent;
-    transition: all 0.3s ease;
+    transition: all 0.3s var(--cubic-bezier);
   }
   @media (any-hover) {
     &:hover {
@@ -80,7 +80,7 @@
   font-size: 1.125rem;
   flex-shrink: 0;
   transform-origin: center;
-  transition: transform 0.3s ease, color 0.3s ease;
+  transition: transform 0.3s var(--cubic-bezier), color 0.3s var(--cubic-bezier);
 }
 .button-name {
   position: relative;
@@ -89,7 +89,7 @@
   pointer-events: none;
   font-size: 0.9375rem;
   font-weight: 400;
-  transition: all 0.3s ease;
+  transition: all 0.3s var(--cubic-bezier);
 }
 .button-name-text {
   display: block;
@@ -97,7 +97,7 @@
   opacity: 1;
   z-index: 1;
   transform: translateY(0) scaleY(1);
-  transition: all 0.3s ease;
+  transition: all 0.3s var(--cubic-bezier);
   &:last-child {
     position: absolute;
     left: 0;

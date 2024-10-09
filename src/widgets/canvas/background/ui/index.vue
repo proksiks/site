@@ -53,7 +53,7 @@
       mouseVector.x = width.value / 2 - pointer.x;
       mouseVector.y = height.value / 2 - pointer.y;
     })
-    window.addEventListener("click", (e) => {
+    document.addEventListener("click", (e) => {
       mouseVector.x = width.value / 2 - e.clientX;
       mouseVector.y = height.value / 2 - e.clientY;
     })
