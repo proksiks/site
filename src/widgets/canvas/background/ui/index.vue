@@ -42,11 +42,21 @@
 
     let mouseVector = vector.clone();
 
-    paper.view.onMouseMove = function () {
-      mouseVector.x = paper.view.center.x - pointer.x;
-      mouseVector.y = paper.view.center.y - pointer.y;
-      return false;
-    };
+    // Вызывает баг со скроллом, перестаёт работать на мобилках
+    //paper.view.onMouseMove = function () {
+    //  mouseVector.x = paper.view.center.x - pointer.x;
+    //  mouseVector.y = paper.view.center.y - pointer.y;
+    //  return false;
+    //}; Ниже без бага аналог
+
+    window.addEventListener("mousemove", (e) => {
+      mouseVector.x = width.value / 2 - pointer.x;
+      mouseVector.y = height.value / 2 - pointer.y;
+    })
+    window.addEventListener("click", (e) => {
+      mouseVector.x = width.value / 2 - e.clientX;
+      mouseVector.y = height.value / 2 - e.clientY;
+    })
 
     function keepInView(item: { position: paper.Point; bounds: paper.Rectangle }) {
       var position = item.position;

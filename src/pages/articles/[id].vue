@@ -2,14 +2,14 @@
   <div>
     <nuxt-link class="back" to="/articles">Назад</nuxt-link>
     <div class="page-content">
-      <nuxt-link :to="`/authors/${getActiveArticle?.id}`">
-        {{ getActiveArticle?.name }}
+      <nuxt-link :to="`/authors/${article?.id}`">
+        {{ article?.name }}
       </nuxt-link>
       <h1>
-        {{ getActiveArticle?.title }}
+        {{ article?.title }}
       </h1>
       <p>
-        {{ getActiveArticle?.body }}
+        {{ article?.body }}
       </p>
     </div>
   </div>
@@ -17,24 +17,35 @@
 
 <script lang="ts" setup>
   const watchedArticles = localStorage.getItem("checkedArticlesId");
-  const api = "https://jsonplaceholder.typicode.com";
+  const storeArticle = sessionStorage.getItem("article");
+
   const { id } = useRoute().params;
+  const api = ref(`https://jsonplaceholder.typicode.com/posts?id=${id}`);
+
   const { data: posts } = useNuxtData("posts");
   const { data: users } = useNuxtData("users");
-  const getActiveArticle = computed(() => {
-    if (posts.value) {
-      const post = posts.value?.data.find((post: any) => Number(post.id) === Number(id));
-      if (users.value?.data) {
-        for (const user of users.value?.data) {
-          if (Number(user.id) === Number(post.userId)) {
-            post.name = user.name;
-            break;
-          }
+  const article = ref();
+
+  if (posts.value) {
+    const post = posts.value?.data.find((post: any) => Number(post.id) === Number(id));
+    if (users.value?.data) {
+      for (const user of users.value?.data) {
+        if (Number(user.id) === Number(post.userId)) {
+          post.name = user.name;
+          break;
         }
       }
-      return post;
     }
-  });
+    article.value = post;
+  }
+
+  sessionStorage.setItem("article", JSON.stringify(article.value));
+  if (storeArticle === "undefined") {
+    const [{ data: posts }, { data: users }] = await Promise.all([
+      useFetch(`${api}/posts?id=${id}`, { key: "post" }),
+      useFetch(api, { key: "user" }),
+    ]);
+  }
 
   onMounted(() => {
     if (!watchedArticles) {

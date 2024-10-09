@@ -2,7 +2,7 @@
   <div class="page">
     <h1 class="page-title">Список статей</h1>
     <ul class="articles" v-if="posts">
-      <li class="article" v-for="post in checkedArticles" :key="post.id" :class="{ checked: post.checked }">
+      <li class="article" v-for="post in articles" :key="post.id" :class="{ checked: post.checked }">
         <div class="article-title">
           <nuxt-link class="article-link" :to="`/articles/${post.id}`">
             {{ post?.title }}
@@ -52,7 +52,7 @@
     useFetch(`${api}/users`, { ...options, key: "users" }),
   ]);
 
-  const checkedArticles = computed(() => {
+  const articles = computed(() => {
     let result = [];
     if (posts.value) {
       for (const article of posts.value?.data as Body[]) {
