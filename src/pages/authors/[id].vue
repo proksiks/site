@@ -2,6 +2,11 @@
   <div class="page">
     <h1 class="page-title">Автор</h1>
 
+    <nuxt-link class="back" to="/articles">Назад</nuxt-link>
+
+    <div class="page-content">
+      <card-ui :post="{}" />
+    </div>
     <!--<ul>
       <li v-for="post in posts" :key="post.id">
         <nuxt-link class="articles-link" :to="`/articles/${post.id}`">

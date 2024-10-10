@@ -40,6 +40,10 @@ export default defineNuxtConfig({
     //middleware: 'app/providers/router/middleware',
   },
 
+  fonts: {
+      baseUrl: ''
+  },
+
   components: [
     {
       path: "~/shared",
@@ -74,7 +78,19 @@ export default defineNuxtConfig({
       ],
     }
   },
-  modules: ['@nuxt/eslint', '@vite-pwa/nuxt', ['@pinia/nuxt', { autoImports: ['defineStore', 'acceptHMRUpdate'] }]],
+  //fonts: {
+  //  src: "~/app/assets/fonts",
+  //  lazy: true,
+  //  prefetch: true,
+  //  preload: true,
+  //  preconnect: true,
+  //  crossorigin: true,
+  //  display: "swap",
+  //  formats: ["woff2", "woff"],
+  //  injectTo: 'head',
+  //  global: true,
+  //},
+  modules: ['@nuxt/eslint', '@nuxt/fonts', '@vite-pwa/nuxt', ['@pinia/nuxt', { autoImports: ['defineStore', 'acceptHMRUpdate'] }]],
   imports: { dirs: ['app/stores'] },
   css: ["normalize.css", "~/app/assets/style/global.css"],
   pwa: {

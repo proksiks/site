@@ -1,10 +1,7 @@
 <template>
-  <nuxt-pwa-manifest />
-  <cursor-ui />
   <div class="wrapper">
     <navigation-ui />
     <main class="main">
-      <lazy-canvas-background-ui />
       <div class="screen">
         <div class="screen-inner">
           <slot />
