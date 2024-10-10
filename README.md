@@ -1,6 +1,6 @@
-# Nuxt 3 Minimal Starter
+# Nuxt 3
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+[Nuxt 3](https://nuxt.com/docs/getting-started/introduction).
 
 ## Feature-Sliced Design (FSD)
 
@@ -17,7 +17,7 @@ Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introdu
 `nvm install 20.9.0 && nvm -list && nvm use 20.9.0`
 
 В папке проекта запустить `npm i && npm run dev`
-Список команд можно посмотреть в файле package.json
+Список команд можно посмотреть в файле `package.json`
 
 ## Установка
 
@@ -37,6 +37,8 @@ npm run dev
 
 ## Сборка для продакшена
 
+Собрать проект
+
 ```bash
 # npm
 npm run build
@@ -53,4 +55,4 @@ npm run preview
 [Инструкция развёртывания](https://nuxt.com/docs/getting-started/deployment).
 
 Картинки nuxt-image `npx nuxi@latest module add image` если ошибка с \_ipx в новой версии тогда лучше устрановить старую
-npm install -D @nuxt/image@rc
+`npm install -D @nuxt/image@rc`
