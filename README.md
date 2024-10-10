@@ -1,84 +1,56 @@
-Версия NODE.js 20.9.0
-`nvm install 20.9.0 && nvm -list && nvm use 20.9.0`
-
-# Feature-Sliced Design (FSD)
-https://feature-sliced.design/ru/docs/get-started/overview
-
 # Nuxt 3 Minimal Starter
 
 Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
-## Setup
+## Feature-Sliced Design (FSD)
 
-Make sure to install the dependencies:
+**[Сслыка на документацию](https://feature-sliced.design/ru/docs/get-started/overview)**
+
+## Посмотреть
+
+**[Сслыка](https://proksiks.github.io/site/convert/)**
+
+## Информация
+
+Версия Node.js 20.9.0
+
+`nvm install 20.9.0 && nvm -list && nvm use 20.9.0`
+
+В папке проекта запустить `npm i && npm run dev`
+Список команд можно посмотреть в файле package.json
+
+## Установка
 
 ```bash
 # npm
 npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
 ```
 
-## Development Server
+## Для разработки
 
-Start the development server on `http://localhost:3000`:
+Запустит сервер `http://localhost:3000`:
 
 ```bash
 # npm
 npm run dev
-
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
 
-## Production
-
-Build the application for production:
+## Сборка для продакшена
 
 ```bash
 # npm
 npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
 ```
 
-Locally preview production build:
+Посмотреть сборку локально
 
 ```bash
 # npm
 npm run preview
 
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+[Инструкция развёртывания](https://nuxt.com/docs/getting-started/deployment).
 
-Картинки
+Картинки nuxt-image `npx nuxi@latest module add image` если ошибка с \_ipx в новой версии тогда лучше устрановить старую
 npm install -D @nuxt/image@rc
