@@ -5,7 +5,7 @@
     <nuxt-link class="back" to="/articles">Назад</nuxt-link>
 
     <div class="page-content">
-      <card-ui :post="{}" />
+      <skeleton-ui class="page-intro" width="100%" height="250px" />
     </div>
     <!--<ul>
       <li v-for="post in posts" :key="post.id">
@@ -23,3 +23,9 @@
 
   //const { data: posts } = await useAsyncData("posts", () => $fetch(`${api}/posts?userId=${route.params.id}`));
 </script>
+
+<style scoped>
+  .page-intro {
+    margin-top: 1.25rem;
+  }
+</style>

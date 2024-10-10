@@ -14,14 +14,14 @@
       <div class="card-title">
         {{ post.title }}
       </div>
-      <div class="card-body">
-        <p class="card-text">{{ post.body }}</p>
-      </div>
-      <span class="card-text">
-        {{ post.author }}
-      </span>
-      <span class="card-prompt" v-if="post.checked">Прочитано</span>
     </nuxt-link>
+    <div class="card-body">
+      <p class="card-text">{{ post.body }}</p>
+    </div>
+    <nuxt-link class="card-author" :to="`/authors/${post.userId}`">
+      {{ post.author }}
+    </nuxt-link>
+    <span class="card-prompt" v-if="post.checked">Прочитано</span>
   </div>
 </template>
 

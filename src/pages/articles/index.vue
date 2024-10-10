@@ -37,8 +37,8 @@
   }
 
   const [{ data: posts }, { data: users }] = await Promise.all([
-    useFetch(`${api}/posts`, { ...options, key: "posts" }),
-    useFetch(`${api}/users`, { ...options, key: "users" }),
+    useFetch(`${api}/posts?_limit=20`, { ...options, key: "posts" }),
+    useFetch(`${api}/users?_limit=20`, { ...options, key: "users" }),
   ]);
 
   const articles = computed(() => {
@@ -104,31 +104,5 @@
   }
   .articles-item {
     position: relative;
-  }
-  .articles-card {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    border-radius: 0.3125rem;
-    transition: transform 0.3s var(--cubic-bezier);
-
-    > * {
-      position: relative;
-      z-index: 1;
-    }
-
-    &:hover {
-      z-index: 100;
-      transform: scale(1.1);
-      &::before {
-        //  background-color: var(--dark-75);
-      }
-    }
-    &:has(a:active) {
-      transform: scale(1.25);
-      &::before {
-        //  background-color: var(--dark-75);
-      }
-    }
   }
 </style>
