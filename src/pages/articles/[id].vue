@@ -2,15 +2,7 @@
   <div>
     <nuxt-link class="back" to="/articles">Назад</nuxt-link>
     <div class="page-content" v-if="article">
-      <img
-        class="page-intro"
-        :src="article.image"
-        width="1366"
-        height="768"
-        alt="image"
-        loading="lazy"
-        v-if="article.image"
-      />
+      <img class="page-intro" :src="article.image" width="1366" height="768" alt="image" loading="lazy" v-if="article.image"/>
       <skeleton-ui class="page-intro" v-else width="100%" height="250px" />
 
       <nuxt-link :to="`/authors/${article?.id}`" class="page-author">

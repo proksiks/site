@@ -84,6 +84,7 @@ a:hover {
 .page-leave-active,
 .page-leave-to {
   position: absolute;
+  width: 100%;
 }
 .page-enter-active,
 .page-leave-active {
