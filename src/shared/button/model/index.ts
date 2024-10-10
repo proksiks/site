@@ -3,5 +3,5 @@ export default interface Button {
     href?: string;
     to?: string;
     target?: string;
-    classIcon?: string;
+    icon?: string;
 }

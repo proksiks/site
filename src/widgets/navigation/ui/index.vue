@@ -1,36 +1,50 @@
 <template>
   <div class="sidebar-nav">
-    <button-ui id="installApp" class="sidebar-install-button" title="Установить приложение" class-icon="bx-download" />
+    <button-ui id="installApp" class="sidebar-install-button" title="Установить приложение">
+      <template #icon>
+        <span class="sidebar-menu-icon">
+          <icon name="ic:baseline-install-desktop" />
+        </span>
+      </template>
+    </button-ui>
     <div class="sidebar" ref="sidebarEl" :class="{ active: isMenuOpen }">
       <div class="sidebar-head">
         <a class="sidebar-title" aria-label="Телеграм" :href="isMobile ? 't.me/ProKsiKzzz' : 'https://t.me/ProKsiKzzz'">
-          <i class="sidebar-menu-icon bx bxl-telegram"></i>
+          <span class="sidebar-menu-icon">
+            <icon name="ei:sc-telegram" />
+          </span>
         </a>
         <button-ui
           aria-label="Открыть меню"
           class="sidebar-menu-button"
-          class-icon="bx-menu"
           :class="{ active: isMenuOpen }"
           @click="openMenu"
-        ></button-ui>
+        >
+          <template #icon>
+            <span class="sidebar-menu-icon">
+              <icon name="material-symbols:event-list-outline-rounded" />
+            </span>
+          </template>
+        </button-ui>
       </div>
       <ul class="sidebar-list" v-if="navigation">
         <li class="sidebar-item" v-for="route in navigation" :key="route.id">
-          <button-ui
-            class="sidebar-item-button"
-            :class-icon="route.icon"
-            :title="route.title"
-            :to="route.href"
-          ></button-ui>
+          <button-ui class="sidebar-item-button" :class-icon="route.icon" :title="route.title" :to="route.href">
+            <template #icon>
+              <span class="sidebar-menu-icon">
+                <icon style="width: 22px; height: 22px" class="sidebar-menu-icon" :name="route.icon" />
+              </span>
+            </template>
+          </button-ui>
         </li>
         <li class="sidebar-item sidebar-item-bottom">
-          <button-ui
-            class="sidebar-item-button"
-            class-icon="bxl-telegram"
-            title="Телеграмм"
-            to="https://t.me/ProKsiKzzz"
-            target="_blank"
-          ></button-ui>
+          <button-ui class="sidebar-item-button" title="Телеграмм" to="https://t.me/ProKsiKzzz" target="_blank">
+            <template #icon>
+              <span class="sidebar-menu-icon">
+                <icon style="width: 22px; height: 22px" name="ei:sc-telegram" />
+              </span>
+            </template>
+          </button-ui>
         </li>
       </ul>
     </div>
@@ -44,19 +58,19 @@
       id: 1,
       title: "Главная",
       href: "/",
-      icon: "bx-grid-alt",
+      icon: "tdesign:money",
     },
     {
       id: 3,
       title: "Статьи",
       href: "/articles/",
-      icon: "bxs-notepad",
+      icon: "si:grid-line",
     },
     {
       id: 4,
       title: "Авторы",
       href: "/authors/",
-      icon: "bxs-user",
+      icon: "mage:users-fill",
     },
   ];
 

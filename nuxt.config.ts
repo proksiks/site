@@ -41,7 +41,13 @@ export default defineNuxtConfig({
   },
 
   fonts: {
-      baseUrl: ''
+    assets: {
+      prefix: '/_fonts',
+    },
+  },
+
+  build: {
+    transpile: ['gsap'],
   },
 
   components: [
@@ -74,7 +80,6 @@ export default defineNuxtConfig({
       },
       link: [
         { rel: "icon", type: "image/x-icon", href: "/site/favicon.ico" },
-        { rel: "stylesheet", href: "https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" },
       ],
     }
   },
@@ -90,7 +95,7 @@ export default defineNuxtConfig({
   //  injectTo: 'head',
   //  global: true,
   //},
-  modules: ['@nuxt/eslint', '@nuxt/fonts', '@vite-pwa/nuxt', ['@pinia/nuxt', { autoImports: ['defineStore', 'acceptHMRUpdate'] }]],
+  modules: ['@nuxt/eslint', '@nuxt/fonts', '@vite-pwa/nuxt', ['@pinia/nuxt', { autoImports: ['defineStore', 'acceptHMRUpdate'] }], "@nuxt/icon"],
   imports: { dirs: ['app/stores'] },
   css: ["normalize.css", "~/app/assets/style/global.css"],
   pwa: {

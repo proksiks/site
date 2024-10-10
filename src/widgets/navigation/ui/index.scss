@@ -111,13 +111,18 @@
   }
 }
 
-.sidebar-title .sidebar-menu-icon {
+.sidebar-title > * {
+  display: block;
   color: var(--white);
   font-size: 1.375rem;
-  padding: 0.875rem;
-  padding: 0.875rem;
+  padding: 9px;
   border-radius: 0.5rem;
   transition: color 0.3s var(--cubic-bezier), background-color 0.6s var(--cubic-bezier);
+  * {
+    display: block;
+    width: 2rem;
+    height: 2rem;
+  }
 }
 .sidebar-list {
   display: flex;

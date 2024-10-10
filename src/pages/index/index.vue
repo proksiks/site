@@ -10,9 +10,9 @@
     </div>
     <div class="info">
       <div class="points">
-        <div class="point">{{ count }} RUB = {{ getCurrencyValue("rub") }} {{ baseCurrency }}</div>
-        <div class="point">{{ count }} USD = {{ getCurrencyValue("usd") }} {{ baseCurrency }}</div>
-        <div class="point">{{ count }} EUR = {{ getCurrencyValue("eur") }} {{ baseCurrency }}</div>
+        <div class="point">{{ count }} RUB = {{ getCurrencyValue("rub").toFixed(2) }} {{ baseCurrency }}</div>
+        <div class="point">{{ count }} USD = {{ getCurrencyValue("usd").toFixed(2) }} {{ baseCurrency }}</div>
+        <div class="point">{{ count }} EUR = {{ getCurrencyValue("eur").toFixed(2) }} {{ baseCurrency }}</div>
       </div>
     </div>
   </div>
