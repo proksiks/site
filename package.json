@@ -24,7 +24,6 @@
     "gsap": "^3.12.5",
     "normalize.css": "^8.0.1",
     "nuxt": "^3.13.2",
-    "nuxt-precompress": "^0.5.9",
     "paper": "^0.12.18",
     "vue": "latest"
   },
