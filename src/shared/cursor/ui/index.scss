@@ -5,6 +5,14 @@
   position: fixed;
   z-index: 1;
   pointer-events: none;
+  @media (max-width: 768px) {
+    width: 200px;
+    height: 200px;
+  }
+  @media (max-width: 480px) {
+    width: 100px;
+    height: 100px;
+  }
   &::before {
     content: "";
     mix-blend-mode: difference;

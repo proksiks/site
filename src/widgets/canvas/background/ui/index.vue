@@ -12,6 +12,10 @@
   const appCanvas = ref();
   const count = ref(200);
 
+  if(width.value < 480) {
+    count.value = 100
+  }
+
   function startAnimatedBackground() {
     paper.setup(appCanvas.value);
 
@@ -41,13 +45,6 @@
     });
 
     let mouseVector = vector.clone();
-
-    // Вызывает баг со скроллом, перестаёт работать на мобилках
-    //paper.view.onMouseMove = function () {
-    //  mouseVector.x = paper.view.center.x - pointer.x;
-    //  mouseVector.y = paper.view.center.y - pointer.y;
-    //  return false;
-    //}; Ниже без бага аналог
 
     window.addEventListener("mousemove", (e) => {
       mouseVector.x = width.value / 2 - pointer.x;
@@ -96,11 +93,7 @@
     };
   }
 
-  onMounted(() => {
-    //if (width.value > 1024) {
-    startAnimatedBackground();
-    //}
-  });
+  onMounted(() => { startAnimatedBackground() });
 </script>
 
 <style lang="scss" scoped>
