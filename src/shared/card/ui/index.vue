@@ -22,6 +22,6 @@
   defineProps<Card>();
 </script>
 
-<style lang="scss">
-  @import "index.scss";
+<style lang="scss" scoped>
+  @use "index.scss" as *;
 </style>

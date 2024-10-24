@@ -13,10 +13,7 @@
 </template>
 
 <script lang="ts" setup>
-  import type Breadcrumb from "../model/index";
-  defineProps<{
-    breadcrumbs: Breadcrumb[];
-  }>();
+  defineProps<{ breadcrumbs: Breadcrumb[] }>();
 </script>
 
 <style scoped>

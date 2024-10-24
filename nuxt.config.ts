@@ -54,6 +54,14 @@ export default defineNuxtConfig({
       path: "~/widgets",
       extensions: ['.vue'],
     },
+    {
+      path: "~/features",
+      extensions: ['.vue'],
+    },
+    {
+      path: "~/entities",
+      extensions: ['.vue'],
+    },
   ],
   vite: {
     build:{
@@ -101,7 +109,7 @@ export default defineNuxtConfig({
     "@nuxt/icon",
     "@nuxt/scripts",
   ],
-  imports: { dirs: ['app/stores'] },
+  imports: { dirs: ['app/stores', '**/model/*.ts'] },
   css: ["normalize.css", "~/app/assets/style/global.css"],
   pwa: {
     registerType: 'autoUpdate',

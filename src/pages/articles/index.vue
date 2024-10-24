@@ -20,7 +20,8 @@
     image: '/site/images/photos/cover.jpg',
     title: "Разработчик",
     body: "С 14 лет занимаю программированием",
-    author: "Хлюпнев Владимир"
+    userId: 0,
+    author: "Хлюпнев Владимир",
   };
 
   const nuxt = useNuxtApp();

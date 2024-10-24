@@ -1,4 +1,4 @@
-export default interface Breadcrumb {
+export interface Breadcrumb {
     title?: string;
     href?: string;
 }
