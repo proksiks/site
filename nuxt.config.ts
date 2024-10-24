@@ -56,6 +56,9 @@ export default defineNuxtConfig({
     },
   ],
   vite: {
+    build:{
+      minify: 'terser',
+    },
     css: {
       preprocessorOptions: {
         scss: {

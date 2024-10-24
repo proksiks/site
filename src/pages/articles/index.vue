@@ -2,6 +2,9 @@
   <div class="page">
     <h1 class="page-title">Список статей</h1>
     <ul class="articles" v-if="articles">
+      <li class="articles-item">
+        <card-ui class="articles-card" :post="myPost"/>
+      </li>
       <li class="articles-item" v-for="post in articles" :key="post.id" :class="{ checked: post.checked }">
         <card-ui class="articles-card" :post="post" v-if="post" />
       </li>
@@ -11,6 +14,14 @@
 
 <script lang="ts" setup>
   import type { Body } from "./model";
+
+  const myPost = { 
+    id: 0, 
+    image: '/site/images/photos/cover.jpg',
+    title: "Разработчик",
+    body: "С 14 лет занимаю программированием",
+    author: "Хлюпнев Владимир"
+  };
 
   const nuxt = useNuxtApp();
   const getCheckedArticlesFromStorage = localStorage.getItem("checkedArticlesId");
@@ -104,5 +115,10 @@
   }
   .articles-item {
     position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+  .articles-card {
+    flex: 1;
   }
 </style>

@@ -81,7 +81,7 @@
     border-radius: 0.5rem;
     width: 100%;
     object-fit: cover;
-    aspect-ratio: 16 / 9;
+  //aspect-ratio: 16 / 9;
   }
   .page-author {
     display: block;

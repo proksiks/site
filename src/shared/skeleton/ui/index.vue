@@ -1,6 +1,8 @@
 <template>
-  <div class="skeleton" :width="width" :style="{ width: width, height: height }">
-    <div class="skeleton-shadow"></div>
+  <div class="skeleton">
+    <div class="skeleton-holder" :width="width" :style="{ width: width, height: height }">
+      <div class="skeleton-shadow"></div>
+    </div>
   </div>
 </template>
 
