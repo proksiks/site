@@ -91,7 +91,7 @@ export default defineNuxtConfig({
     }
   },
   app: {
-    //baseURL: "/site/",
+    baseURL: "/site/",
     pageTransition: { name: "page" },
     head: {
       charset: 'utf-8',
