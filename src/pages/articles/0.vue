@@ -14,39 +14,10 @@
       </div>
       <nuxt-link :to="`/authors/0`" class="my-article-author"> Хлюпнев Владимир </nuxt-link>
       <h1>Продуктовая разработка</h1>
+      <p>Это ещё заготовка проекта, тут мои мысли, задумки, наработки</p>
       <p>
-        Это ещё заготовка проекта, тут мои мысли, задумки, наработки
-      </p>
-      <p>
-        Тут должна быть большая красочная история описывающая мою жизнь и мою деятельность, что я за человек и чем занимаюсь.
-      </p>
-      <hr />
-      <hr />
-      <hr />
-      <hr />
-      <p>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugiat provident eius, nam asperiores magni, vel
-        reiciendis, perspiciatis enim laboriosam minus beatae vero iusto quod ipsum numquam. Iure aut commodi facere.
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugiat provident eius, nam asperiores magni, vel
-        reiciendis, perspiciatis enim laboriosam minus beatae vero iusto quod ipsum numquam. Iure aut commodi facere.
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugiat provident eius, nam asperiores magni, vel
-        reiciendis, perspiciatis enim laboriosam minus beatae vero iusto quod ipsum numquam. Iure aut commodi facere.
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugiat provident eius, nam asperiores magni, vel
-        reiciendis, perspiciatis enim laboriosam minus beatae vero iusto quod ipsum numquam. Iure aut commodi facere.
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugiat provident eius, nam asperiores magni, vel
-        reiciendis, perspiciatis enim laboriosam minus beatae vero iusto quod ipsum numquam. Iure aut commodi facere.
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugiat provident eius, nam asperiores magni, vel
-        reiciendis, perspiciatis enim laboriosam minus beatae vero iusto quod ipsum numquam. Iure aut commodi facere.
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugiat provident eius, nam asperiores magni, vel
-        reiciendis, perspiciatis enim laboriosam minus beatae vero iusto quod ipsum numquam. Iure aut commodi facere.
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugiat provident eius, nam asperiores magni, vel
-        reiciendis, perspiciatis enim laboriosam minus beatae vero iusto quod ipsum numquam. Iure aut commodi facere.
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugiat provident eius, nam asperiores magni, vel
-        reiciendis, perspiciatis enim laboriosam minus beatae vero iusto quod ipsum numquam. Iure aut commodi facere.
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugiat provident eius, nam asperiores magni, vel
-        reiciendis, perspiciatis enim laboriosam minus beatae vero iusto quod ipsum numquam. Iure aut commodi facere.
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugiat provident eius, nam asperiores magni, vel
-        reiciendis, perspiciatis enim laboriosam minus beatae vero iusto quod ipsum numquam. Iure aut commodi facere.
+        Тут должна быть большая красочная история описывающая мою жизнь и мою деятельность, что я за человек и чем
+        занимаюсь.
       </p>
     </div>
   </div>

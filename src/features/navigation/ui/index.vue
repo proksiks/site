@@ -3,7 +3,7 @@
     <button-ui id="installApp" class="sidebar-install-button" title="Установить приложение">
       <template #icon>
         <span class="sidebar-menu-icon">
-          <icon name="ic:baseline-install-desktop" />
+          <icon style="width: 1.375rem; height: 1.375rem" name="icon:install" />
         </span>
       </template>
     </button-ui>
@@ -11,7 +11,7 @@
       <div class="sidebar-head">
         <a class="sidebar-title" aria-label="Телеграм" :href="isMobile ? 't.me/ProKsiKzzz' : 'https://t.me/ProKsiKzzz'">
           <span class="sidebar-menu-icon">
-            <icon name="ei:sc-telegram" />
+            <icon name="icon:tg" />
           </span>
         </a>
         <button-ui
@@ -21,8 +21,10 @@
           @click="openMenu"
         >
           <template #icon>
-            <span class="sidebar-menu-icon">
-              <icon name="material-symbols:event-list-outline-rounded" />
+            <span class="sidebar-burger">
+              <span></span>
+              <span></span>
+              <span></span>
             </span>
           </template>
         </button-ui>
@@ -41,7 +43,7 @@
           <button-ui class="sidebar-item-button" title="Телеграмм" to="https://t.me/ProKsiKzzz" target="_blank">
             <template #icon>
               <span class="sidebar-menu-icon">
-                <icon style="width: 22px; height: 22px" name="ei:sc-telegram" />
+                <icon style="width: 1.375rem; height: 1.375rem" name="icon:tg" />
               </span>
             </template>
           </button-ui>
@@ -58,19 +60,19 @@
       id: 1,
       title: "Главная",
       href: "/",
-      icon: "tdesign:money",
+      icon: "icon:wallet",
     },
     {
       id: 3,
       title: "Статьи",
       href: "/articles/",
-      icon: "si:grid-line",
+      icon: "icon:grid",
     },
     {
       id: 4,
       title: "Авторы",
       href: "/authors/",
-      icon: "mage:users-fill",
+      icon: "icon:users",
     },
   ];
 

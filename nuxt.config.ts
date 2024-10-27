@@ -41,6 +41,16 @@ export default defineNuxtConfig({
     },
   },
 
+  icon: {
+    provider: 'server',
+    customCollections: [
+      {
+        prefix: 'icon',
+        dir: './src/app/assets/icons'
+      },
+    ],
+  },
+
   build: {
     transpile: ['gsap'],
   },

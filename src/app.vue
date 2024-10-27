@@ -1,5 +1,5 @@
 <template>
-  <!--<nuxt-pwa-manifest />-->
+  <nuxt-pwa-manifest />
   <cursor-ui />
   <lazy-canvas-background-ui />
   <NuxtLayout>
