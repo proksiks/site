@@ -74,6 +74,11 @@ body {
   height: 100%;
 }
 
+/* Фишка со скролоом, для дочернего элемента задать */
+.child-scroll {
+  overscroll-behavior: none;
+}
+
 a {
   color: var(--global);
 }

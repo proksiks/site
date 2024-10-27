@@ -64,7 +64,7 @@ export default defineNuxtConfig({
     },
   ],
   vite: {
-    build:{
+    build: {
       minify: 'terser',
     },
     css: {
