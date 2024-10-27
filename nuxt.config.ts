@@ -40,6 +40,12 @@ export default defineNuxtConfig({
     },
   },
 
+  image: {
+    cloudinary: {
+      baseURL: 'https://proksiks.github.io/site/'
+    }
+  },
+
   icon: {
     //provider: 'server',
     customCollections: [
@@ -85,7 +91,7 @@ export default defineNuxtConfig({
     }
   },
   app: {
-    baseURL: "/site/",
+    //baseURL: "/site/",
     pageTransition: { name: "page" },
     head: {
       charset: 'utf-8',
@@ -117,6 +123,7 @@ export default defineNuxtConfig({
     '@vite-pwa/nuxt',
     "@nuxt/icon",
     "@nuxt/scripts",
+    "@nuxt/image",
   ],
   imports: { dirs: ['app/stores', '**/model/*.ts'] },
   css: ["normalize.css", "~/app/assets/style/global.css"],

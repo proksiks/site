@@ -1,11 +1,22 @@
 <template>
   <div class="card">
     <nuxt-link class="card-link" :to="`/articles/${post.id}`">
-      <div class="card-picture" >
-        <img class="card-image" :src="post.image" width="100%" alt="image" loading="lazy" v-if="post.image" />
+      <div class="card-picture">
+        <NuxtPicture
+          class="card-image"
+          format="avif,webp"
+          placeholder
+          loading="lazy"
+          width="260"
+          height="260"
+          quality="25"
+          :src="post.image"
+          :alt="post.title"
+          v-if="post.image"
+        />
         <skeleton-ui class="card-image" width="100%" height="100%" v-else />
       </div>
-      <div class="card-title"> {{ post.title }} </div>
+      <div class="card-title">{{ post.title }}</div>
     </nuxt-link>
     <div class="card-body">
       <p class="card-text">{{ post.body }}</p>

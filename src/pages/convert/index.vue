@@ -1,8 +1,8 @@
 <template>
   <!-- TODO вынести конвертер в виджет -->
   <div class="wrap">
-    <breadcrumbs-ui :breadcrumbs="breadcrumbs" />
-    <currency-converter-ui :data="data" />
+    <lazy-breadcrumbs-ui :breadcrumbs="breadcrumbs" />
+    <lazy-currency-converter-ui :data="data" />
   </div>
 </template>
 

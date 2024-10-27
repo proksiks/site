@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <navigation-ui />
+    <lazy-navigation-ui />
     <main class="main">
       <div class="screen">
         <div class="screen-inner">

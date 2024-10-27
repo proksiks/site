@@ -24,7 +24,7 @@
       </p>
     </div>
     <div v-else>
-      <skeleton-ui />
+      <skeleton-ui class="page-intro" width="100%" height="250px"  />
     </div>
   </div>
 </template>

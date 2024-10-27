@@ -3,10 +3,10 @@
     <h1 class="page-title">Список статей</h1>
     <ul class="articles" v-if="articles">
       <li class="articles-item">
-        <card-ui class="articles-card" :post="myPost"/>
+        <lazy-card-ui class="articles-card" :post="myPost"/>
       </li>
       <li class="articles-item" v-for="post in articles" :key="post.id" :class="{ checked: post.checked }">
-        <card-ui class="articles-card" :post="post" v-if="post" />
+        <lazy-card-ui class="articles-card" :post="post" v-if="post" />
       </li>
     </ul>
   </div>
@@ -17,7 +17,7 @@
 
   const myPost = { 
     id: 0, 
-    image: '/site/images/photos/cover.jpg',
+    image: '/images/photos/cover.jpg',
     title: "Разработчик",
     body: "С 14 лет занимаю программированием",
     userId: 0,
