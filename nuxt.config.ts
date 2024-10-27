@@ -41,6 +41,7 @@ export default defineNuxtConfig({
   },
 
   image: {
+    provider: 'ipx',
     cloudinary: {
       baseURL: 'https://proksiks.github.io/site/'
     }
