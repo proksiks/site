@@ -11,7 +11,7 @@
           height="260"
           sizes="xs:160px sm:260px"
           fit="cover"
-          :img-attrs="{ alt: '' }"
+          :img-attrs="{ alt: '', fetchpriority: 'high' }"
           :src="post.image"
           v-if="post.image"
         />
