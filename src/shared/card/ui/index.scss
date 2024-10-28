@@ -72,6 +72,9 @@
   overflow: hidden;
   max-width: 100%;
   object-fit: cover;
+  &:deep(img) {
+    object-fit: cover;
+  }
 }
 .card-title {
   margin-bottom: 1.25rem;
