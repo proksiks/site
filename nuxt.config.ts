@@ -90,8 +90,8 @@ export default defineNuxtConfig({
     }
   },
   app: {
-    baseURL: "/site/",
-    buildAssetsDir: "/",
+    //baseURL: "/site/",
+    //buildAssetsDir: "/",
     pageTransition: { name: "page" },
     head: {
       charset: 'utf-8',
