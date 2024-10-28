@@ -100,7 +100,7 @@ export default defineNuxtConfig({
         lang: 'ru',
       },
       link: [
-        { rel: "icon", type: "image/x-icon", href: "/site/favicon.ico" },
+        { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
       ],
     }
   },
@@ -155,12 +155,12 @@ export default defineNuxtConfig({
       //scope: "/site/",
       icons: [
         {
-          src: "/site/android-chrome-192x192.png",
+          src: "/android-chrome-192x192.png",
           sizes: "192x192",
           type: "image/png",
         },
         {
-          src: "/site/android-chrome-512x512.png",
+          src: "/android-chrome-512x512.png",
           sizes: "512x512",
           type: "image/png",
         },
@@ -191,7 +191,7 @@ export default defineNuxtConfig({
     devOptions: {
       enabled: true,
       suppressWarnings: true,
-      navigateFallback: '/site/',
+      navigateFallback: '/',
       navigateFallbackAllowlist: [/^\/$/],
       type: 'module',
     },
