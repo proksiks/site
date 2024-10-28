@@ -9,10 +9,10 @@
           loading="lazy"
           width="260"
           height="260"
-          quality="25"
-          :img-attrs="{ alt: post.title }"
+          sizes="xs:160px sm:260px"
+          fit="cover"
+          :img-attrs="{ alt: '' }"
           :src="post.image"
-          :alt="post.title"
           v-if="post.image"
         />
         <skeleton-ui class="card-image" width="100%" height="100%" v-else />
