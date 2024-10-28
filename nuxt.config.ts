@@ -41,8 +41,7 @@ export default defineNuxtConfig({
   },
 
   image: {
-    dir: 'app/public',
-    provider: 'ipx',
+    provider: 'netlify',
   },
 
   icon: {
