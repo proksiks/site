@@ -1,3 +1,0 @@
-User-agent: *
-Clean-param: etext
-Host: https://delicate-biscochitos-943cd3.netlify.app

@@ -40,6 +40,13 @@ export default defineNuxtConfig({
     },
   },
 
+  robots: {
+    rules: [
+      { UserAgent: '*' },
+      { Host: 'https://delicate-biscochitos-943cd3.netlify.app' },
+    ]
+  },
+
   image: {
     provider: 'netlify',
   },
@@ -123,6 +130,7 @@ export default defineNuxtConfig({
     "@nuxt/icon",
     "@nuxt/scripts",
     "@nuxt/image",
+    "@nuxtjs/robots",
   ],
   imports: { dirs: ['app/stores', '**/model/*.ts'] },
   css: ["normalize.css", "~/app/assets/style/global.css"],

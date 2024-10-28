@@ -18,6 +18,7 @@
     "@nuxt/icon": "^1.5.8",
     "@nuxt/image": "^1.8.1",
     "@nuxt/scripts": "^0.9.4",
+    "@nuxtjs/robots": "^4.1.9",
     "@pinia/nuxt": "^0.5.5",
     "@studio-freight/lenis": "^1.0.42",
     "@vite-pwa/nuxt": "^0.10.5",

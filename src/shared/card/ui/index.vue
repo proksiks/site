@@ -10,6 +10,7 @@
           width="260"
           height="260"
           quality="25"
+          :img-attrs="{ alt: post.title }"
           :src="post.image"
           :alt="post.title"
           v-if="post.image"
