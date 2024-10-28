@@ -76,6 +76,9 @@
     object-fit: cover;
     max-width: 100%;
     height: auto;
+    @media (max-width: 768px) {
+      width: 100%;
+    }
   }
 }
 .card-title {
