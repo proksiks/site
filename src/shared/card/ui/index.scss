@@ -75,6 +75,7 @@
   &:deep(img) {
     object-fit: cover;
     max-width: 100%;
+    height: auto;
   }
 }
 .card-title {
