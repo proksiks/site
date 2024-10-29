@@ -32,7 +32,6 @@ export default withNuxt(
     },
     // Плагин с наборами правил для TypeScript
     "plugins": ["@typescript-eslint"],
-    "rules": {}
   }
 
 )

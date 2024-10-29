@@ -1,12 +1,17 @@
 <template>
   <div class="sidebar-nav">
-    <button-ui id="installApp" class="sidebar-install-button" title="Установить приложение">
-      <template #icon>
-        <span class="sidebar-menu-icon">
-          <icon style="width: 1.375rem; height: 1.375rem" name="icon:install" />
-        </span>
-      </template>
-    </button-ui>
+    <transition name="fade">
+      <div class="sidebar-nav-install" v-if="showInstallPrompt">
+        <button-ui title="Установить приложение" @click="installPWA">
+          <template #icon>
+            <span class="sidebar-menu-icon">
+              <icon style="width: 1.375rem; height: 1.375rem" name="icon:install" />
+            </span>
+          </template>
+        </button-ui>
+        <button-ui title="Нет спасибо" @click="hidePrompt"></button-ui>
+      </div>
+    </transition>
     <div class="sidebar" ref="sidebarEl" :class="{ active: isMenuOpen }">
       <div class="sidebar-head">
         <a class="sidebar-title" aria-label="Телеграм" :href="isMobile ? 't.me/ProKsiKzzz' : 'https://t.me/ProKsiKzzz'">
@@ -78,6 +83,7 @@
 
   const isMenuOpen = ref(false);
   const sidebarEl = ref();
+  const installEvent = ref();
 
   const openMenu = () => {
     isMenuOpen.value = !isMenuOpen.value;
@@ -87,25 +93,31 @@
     return window.innerWidth < 1024;
   });
 
-  onMounted(() => {
-    let deferredPrompt: Event | null;
+  const showInstallPrompt = ref(false);
+
+  onBeforeMount(() => {
     window.addEventListener("beforeinstallprompt", (e) => {
-      deferredPrompt = e;
+      e.preventDefault();
+      installEvent.value = e;
+      showInstallPrompt.value = true;
     });
 
-    const installApp = document.getElementById("installApp");
-    if (installApp) {
-      installApp.addEventListener("click", async () => {
-        if (deferredPrompt && deferredPrompt !== null) {
-          deferredPrompt.prompt();
-          const { outcome } = await deferredPrompt?.userChoice;
-          if (outcome === "accepted") {
-            deferredPrompt = null;
-          }
-        }
-      });
-    }
+    window.addEventListener("appinstalled", () => {
+      hidePrompt();
+      installEvent.value = null;
+    });
   });
+
+  function hidePrompt() {
+    showInstallPrompt.value = false;
+  }
+
+  function installPWA() {
+    installEvent.value.prompt();
+    installEvent.value.userChoice.then(() => {
+      hidePrompt();
+    });
+  }
 </script>
 <style lang="scss" scoped>
   @use "index.scss" as *;
