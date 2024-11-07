@@ -2,8 +2,7 @@
   <div class="page">
     <h1 class="page-title">Список статей</h1>
     <ul class="articles" v-if="articles">
-      <li class="articles-item" v-for="(post, index) in articles" :key="post.id" :class="{ checked: post.checked }">
-        <!--@mouseout="mouseMoveEvent($event, index)"-->
+      <li class="articles-item" v-for="post in articles" :key="post.id" :class="{ checked: post.checked }">
         <lazy-card-ui class="articles-card" :post="post" v-if="post" />
       </li>
     </ul>
@@ -28,9 +27,6 @@
   const nuxt = useNuxtApp();
   const getCheckedArticlesFromStorage = localStorage.getItem("checkedArticlesId");
 
-  // Туду переделать в звёздные войны
-  // https://swapi.dev/documentation
-  // https://swapi.dev/api/
   // TODO вынести в env
   const api = "https://jsonplaceholder.typicode.com";
   const options = {
@@ -106,7 +102,7 @@
     padding: 1.25rem;
     @media (max-width: 480px) {
       padding: 0.625rem;
-      padding-bottom: 8.75rem;
+      padding-bottom: 3.125rem;
     }
   }
   .articles {

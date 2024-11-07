@@ -60,7 +60,6 @@
   position: relative;
   z-index: 1;
   display: block;
-  margin-bottom: 0.625rem;
   padding-bottom: 100%;
 }
 .card-image {
@@ -84,7 +83,7 @@
   }
 }
 .card-title {
-  margin-bottom: 1.25rem;
+  margin: 1.25rem 0;
   line-height: 1.5;
   display: block;
   display: -webkit-box;

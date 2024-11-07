@@ -1,18 +1,16 @@
 <template>
   <div class="sidebar-nav">
     <Teleport to="body">
-      <div>
-        <transition name="fade">
-          <div class="sidebar-nav-install" v-if="showInstallPrompt">
-            <button-ui class="sidebar-nav-install-button" title="Установить приложение" @click="installPWA">
-              <template #icon>
-                <icon class="sidebar-icon" name="icon:install" />
-              </template>
-            </button-ui>
-            <button-ui title="Нет спасибо" @click="hidePrompt"></button-ui>
-          </div>
-        </transition>
-      </div>
+      <transition name="fade">
+        <div class="sidebar-nav-install" v-if="showInstallPrompt">
+          <button-ui class="sidebar-nav-install-button" title="Установить приложение" @click="installPWA">
+            <template #icon>
+              <icon class="sidebar-icon" name="icon:install" />
+            </template>
+          </button-ui>
+          <button-ui title="Нет спасибо" @click="hidePrompt"></button-ui>
+        </div>
+      </transition>
     </Teleport>
     <div class="sidebar" ref="sidebarEl" :class="{ active: isMenuOpen }">
       <div class="sidebar-head">
@@ -80,6 +78,12 @@
       title: "Авторы",
       href: "/authors/",
       icon: "icon:users",
+    },
+    {
+      id: 5,
+      title: "Корабли",
+      href: "/starships/",
+      icon: "icon:starwars",
     },
   ];
 

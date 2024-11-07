@@ -1,0 +1,43 @@
+.starships {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1.25rem;
+  @media (max-width: 1440px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @media (max-width: 768px) {
+    gap: 0.625rem;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (max-width: 350px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+.starship {
+  font-size: 0.75rem;
+  padding: 1.25rem;
+  border-radius: 0.25rem;
+  background-color: var(--dark);
+}
+.starship-link {
+  font-size: 0.875rem;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  display: block;
+  margin-bottom: 0.625rem;
+  &:hover {
+    color: var(--light);
+  }
+}
+
+.starship-item {
+  & + & {
+    margin-top: 0.5rem;
+  }
+}

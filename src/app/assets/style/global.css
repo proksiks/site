@@ -139,6 +139,11 @@ a:hover {
   /*filter: blur(0.625rem);*/
   border-radius: 0.375rem;
 }
+@media (max-width: 480px) {
+  .screen::before {
+    opacity: 0.25;
+  }
+}
 
 .screen-inner {
   position: relative;
