@@ -37,6 +37,7 @@
 </template>
 
 <script setup lang="ts">
+  import type { CurrencyConverter } from "../model";
   const props = defineProps<CurrencyConverter>();
 
   const currencies = ["rub", "usd", "eur"];
