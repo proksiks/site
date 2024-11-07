@@ -1,23 +1,23 @@
 <template>
   <div class="sidebar-nav">
-    <transition name="fade">
-      <div class="sidebar-nav-install" v-if="showInstallPrompt">
-        <button-ui title="Установить приложение" @click="installPWA">
-          <template #icon>
-            <span class="sidebar-menu-icon">
-              <icon style="width: 1.375rem; height: 1.375rem" name="icon:install" />
-            </span>
-          </template>
-        </button-ui>
-        <button-ui title="Нет спасибо" @click="hidePrompt"></button-ui>
+    <Teleport to="body">
+      <div>
+        <transition name="fade">
+          <div class="sidebar-nav-install" v-if="showInstallPrompt">
+            <button-ui class="sidebar-nav-install-button" title="Установить приложение" @click="installPWA">
+              <template #icon>
+                <icon class="sidebar-icon" name="icon:install" />
+              </template>
+            </button-ui>
+            <button-ui title="Нет спасибо" @click="hidePrompt"></button-ui>
+          </div>
+        </transition>
       </div>
-    </transition>
+    </Teleport>
     <div class="sidebar" ref="sidebarEl" :class="{ active: isMenuOpen }">
       <div class="sidebar-head">
-        <a class="sidebar-title" aria-label="Телеграм" :href="isMobile ? 't.me/ProKsiKzzz' : 'https://t.me/ProKsiKzzz'">
-          <span class="sidebar-menu-icon">
-            <icon name="icon:tg" />
-          </span>
+        <a class="sidebar-share" aria-label="Телеграм" :href="isMobile ? 't.me/ProKsiKzzz' : 'https://t.me/ProKsiKzzz'">
+          <icon class="sidebar-icon sidebar-share-icon" name="icon:tg" />
         </a>
         <button-ui
           aria-label="Открыть меню"
@@ -38,18 +38,19 @@
         <li class="sidebar-item" v-for="route in navigation" :key="route.id">
           <button-ui class="sidebar-item-button" :class-icon="route.icon" :title="route.title" :to="route.href">
             <template #icon>
-              <span class="sidebar-menu-icon">
-                <icon style="width: 22px; height: 22px" class="sidebar-menu-icon" :name="route.icon" />
-              </span>
+              <icon class="sidebar-icon" :name="route.icon" />
             </template>
           </button-ui>
         </li>
         <li class="sidebar-item sidebar-item-bottom">
-          <button-ui class="sidebar-item-button" title="Телеграмм" to="https://t.me/ProKsiKzzz" target="_blank">
+          <button-ui
+            class="sidebar-item-button"
+            :title="isMobile ? 'ТГ' : 'Телеграм'"
+            to="https://t.me/ProKsiKzzz"
+            target="_blank"
+          >
             <template #icon>
-              <span class="sidebar-menu-icon">
-                <icon style="width: 1.375rem; height: 1.375rem" name="icon:tg" />
-              </span>
+              <icon class="sidebar-icon" name="icon:tg" />
             </template>
           </button-ui>
         </li>
@@ -59,6 +60,7 @@
 </template>
 
 <script lang="ts" setup>
+  import { useWindowSize } from "@vueuse/core";
   import type { NavigationListItem } from "../model/index";
   const navigation: NavigationListItem[] = [
     {
@@ -89,8 +91,10 @@
     isMenuOpen.value = !isMenuOpen.value;
   };
 
+  const { width } = useWindowSize();
+
   const isMobile = computed(() => {
-    return window.innerWidth < 1024;
+    return width.value < 768;
   });
 
   const showInstallPrompt = ref(false);

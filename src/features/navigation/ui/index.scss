@@ -13,12 +13,15 @@
     width: 100%;
     height: auto;
     top: auto;
+    max-width: 16rem;
+    background-color: transparent;
+    left: 50%;
+    transform: translateX(-50%);
   }
 }
 
 .sidebar-nav::before {
   pointer-events: none;
-  content: "";
   position: absolute;
   right: 0;
   top: 0;
@@ -27,6 +30,9 @@
   width: 0.625rem;
   height: 100%;
   background: var(--shadow-vertical);
+  @media (min-width: 481px) {
+    content: "";
+  }
 }
 
 .sidebar {
@@ -55,35 +61,30 @@
     width: auto;
   }
 }
-.sidebar.active .sidebar-title {
+.sidebar.active .sidebar-share {
   opacity: 1;
-  transform: translateX(-1.875rem);
+  //transform: translateX(-30px);
 }
 
 .sidebar-nav-install {
   display: flex;
-  justify-content: center;
-  gap: 0.625rem;
-  background-color: var(--dark);
   position: fixed;
-  z-index: 2;
-  padding: 1.25rem;
+  z-index: 1;
   border-radius: 0.5rem;
-  right: 0;
-  bottom: 0;
-  @media (max-width: 768px) {
-    padding: 0.5rem;
-  }
+  right: 0.625rem;
+  bottom: 0.625rem;
+  gap: 0.25rem;
   @media (max-width: 480px) {
-    bottom: 80px;
+    bottom: 3.125rem;
+    right: 0;
+    display: flex;
+    width: 100%;
+    justify-content: center;
   }
-  @media (max-width: 420px) {
-    flex-direction: column;
-  }
-  &:deep(.button-content) {
-    @media (max-width: 420px) {
-      justify-content: center;
-    }
+}
+.sidebar-nav-install-button {
+  @media (max-width: 480px) {
+    padding: 0.5rem 0.25rem;
   }
 }
 .sidebar-head {
@@ -110,23 +111,41 @@
   background: var(--shadow-horizontal);
 }
 
-.sidebar-title {
+.sidebar-share {
   color: var(--white);
   white-space: nowrap;
   position: absolute;
   opacity: 0;
-  padding-left: 1.875rem;
+  padding: 0.875rem;
+  border-radius: 8px;
   transform: translateX(0);
-  transition: opacity 0.3s var(--cubic-bezier), transform 0.6s var(--cubic-bezier);
+  transition: all 0.3s var(--cubic-bezier);
   @media (any-hover) {
-    &:hover .sidebar-menu-icon {
-      color: var(--dark);
+    &:hover {
       background-color: var(--white);
+      .sidebar-share-icon {
+        color: var(--dark);
+      }
     }
   }
 }
 
-.sidebar-title > * {
+.sidebar-icon {
+  --button-size: 1rem;
+  width: var(--button-size);
+  height: var(--button-size);
+  @media (min-width: 481px) {
+    --button-size: 1.375rem;
+  }
+  * {
+    @media (min-width: 481px) {
+      width: var(--button-size);
+      height: var(--button-size);
+    }
+  }
+}
+
+.sidebar-share > * {
   display: block;
   color: var(--white);
   font-size: 1.375rem;
@@ -135,8 +154,6 @@
   transition: color 0.3s var(--cubic-bezier), background-color 0.6s var(--cubic-bezier);
   * {
     display: block;
-    width: 2rem;
-    height: 2rem;
   }
 }
 .sidebar-list {
@@ -155,7 +172,7 @@
     flex-direction: row;
     align-items: center;
     overflow: auto;
-    padding: 0.625rem;
+    padding: 0.25rem;
     gap: 0.3125rem;
   }
 }
@@ -228,7 +245,7 @@
   :deep(.button-icon) {
     @media (max-width: 480px) {
       line-height: 1;
-      margin-bottom: 0.3125rem;
+      margin-bottom: 0.125rem;
     }
   }
 }

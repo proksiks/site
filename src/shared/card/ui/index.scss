@@ -33,16 +33,18 @@
     z-index: 1;
   }
 
-  &:hover {
-    transform: scale(1.1);
-    &::before {
-      opacity: 0.5;
+  @media (any-hover) {
+    &:hover {
+      transform: scale(1.1);
+      &::before {
+        opacity: 0.5;
+      }
     }
-  }
-  &:has(a:active) {
-    transform: scale(0.95);
-    &::before {
-      opacity: 0.25;
+    &:has(a:active) {
+      transform: scale(0.95);
+      &::before {
+        opacity: 0.25;
+      }
     }
   }
 }
@@ -94,7 +96,7 @@
   font-size: 1.5rem;
   margin-top: 0.625rem;
   @media (max-width: 480px) {
-    font-size: 0.875rem;
+    font-size: 1.125rem;
   }
 }
 .card-body {
@@ -111,6 +113,9 @@
   text-overflow: ellipsis;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
+  @media (max-width: 480px) {
+    font-size: 0.875rem;
+  }
 }
 
 .card-author {
