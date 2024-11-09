@@ -1,3 +1,6 @@
+.page {
+  position: relative;
+}
 .starships {
   list-style-type: none;
   padding: 0;
@@ -25,6 +28,11 @@
   border-radius: 0.25rem;
   background-color: var(--dark);
 }
+.starship__item {
+  & + & {
+    margin-top: 0.625rem;
+  }
+}
 .starship-link {
   font-size: 0.875rem;
   text-decoration: none;
@@ -40,4 +48,24 @@
   & + & {
     margin-top: 0.5rem;
   }
+}
+
+.pagination-nav {
+  position: absolute;
+  left: 0;
+  bottom: 0.625rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.25rem;
+  @media (max-width: 480px) {
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 20px;
+    justify-content: space-between;
+    width: 100%;
+    z-index: 4;
+  }
+}
+.pagination-nav-button {
+  padding: 0.5rem;
 }

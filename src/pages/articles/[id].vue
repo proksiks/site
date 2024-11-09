@@ -24,7 +24,7 @@
       </p>
     </div>
     <div v-else>
-      <skeleton-ui class="page-intro" width="100%" height="250px"  />
+      <skeleton-ui class="page-intro" width="100%" height="250px" />
     </div>
   </div>
 </template>
@@ -75,6 +75,17 @@
   //  const [{ data: fetchedPosts }] = await Promise.all([useFetch(`${api}/posts?id=${id}`, { key: "post" })]);
   //  console.log(fetchedPosts.value, "post");
   //}
+
+  definePageMeta({
+    pageTransition: {
+      name: "slide-right",
+      mode: "out-in",
+    },
+    middleware(to, from) {
+      if (to.meta.pageTransition && typeof to.meta.pageTransition !== "boolean")
+        to.meta.pageTransition.name = +to.params.id! > +from.params.id! ? "slide-left" : "slide-right";
+    },
+  });
 </script>
 
 <style lang="scss" scoped>

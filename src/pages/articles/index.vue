@@ -6,11 +6,13 @@
         <lazy-card-ui class="articles-card" :post="post" v-if="post" />
       </li>
     </ul>
+    <div v-else>
+      <skeleton-ui class="page-intro" width="100%" height="250px" />
+    </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-  //import { useEventListener } from "@vueuse/core";
   import type { Body } from "./model";
 
   const myPost = {
@@ -22,36 +24,16 @@
     author: "Хлюпнев Владимир",
   };
 
-  const eachNElement = ref(7);
-  const eachNElements = ref<number[]>([]);
-  const nuxt = useNuxtApp();
   const getCheckedArticlesFromStorage = localStorage.getItem("checkedArticlesId");
 
   // TODO вынести в env
-  const api = "https://jsonplaceholder.typicode.com";
-  const options = {
-    headers: { Accept: "application/json" },
-    transform(input: Body[]) {
-      return { data: input, fetchedAt: new Date() };
-    },
-    getCachedData: cachedData,
-  };
-
-  function cachedData(key: string) {
-    const data = nuxt.payload.data[key] || nuxt.static.data[key];
-    if (!data) return;
-
-    const expirationDate = new Date(data.fetchedAt);
-    expirationDate.setTime(expirationDate.getTime() + 60 * 60 * 1000);
-    const isExpired = expirationDate.getTime() < Date.now();
-    if (isExpired) return;
-
-    return data;
-  }
+  // OR https://jsonplaceholder.org
+  const postsApi = "https://jsonplaceholder.typicode.com/posts?_limit=20";
+  const usersApi = "https://jsonplaceholder.typicode.com/users?_limit=20";
 
   const [{ data: posts }, { data: users }] = await Promise.all([
-    useFetch(`${api}/posts?_limit=20`, { ...options, key: "posts" }),
-    useFetch(`${api}/users?_limit=20`, { ...options, key: "users" }),
+    useCustomFetch(postsApi),
+    useCustomFetch(usersApi),
   ]);
 
   const articles = computed(() => {
@@ -75,7 +57,7 @@
           }
         }
         if (users.value?.data) {
-          for (const user of users.value?.data) {
+          for (const user of users.value?.data as Body[]) {
             if (Number(user.id) === Number(article.userId)) {
               article.author = user.name;
               break;
@@ -98,13 +80,6 @@
 </script>
 
 <style lang="scss" scoped>
-  .page {
-    padding: 1.25rem;
-    @media (max-width: 480px) {
-      padding: 0.625rem;
-      padding-bottom: 3.125rem;
-    }
-  }
   .articles {
     list-style: none;
     margin: 0;

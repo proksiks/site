@@ -132,7 +132,7 @@ export default defineNuxtConfig({
     "@nuxt/image",
     "@nuxtjs/robots",
   ],
-  imports: { dirs: ['app/stores', '**/model/*.ts'] },
+  imports: { dirs: ['app/stores', '**/model/*.ts', 'app/composables', 'app/utils'] },
   css: ["normalize.css", "~/app/assets/style/global.css"],
   pwa: {
     registerType: 'autoUpdate',
