@@ -27,6 +27,9 @@
   padding: 1.25rem;
   border-radius: 0.25rem;
   background-color: var(--dark);
+  @media (max-width: 480px) {
+    padding: 0.5rem;
+  }
 }
 .starship__item {
   & + & {
@@ -51,16 +54,20 @@
 }
 
 .pagination-nav {
-  position: absolute;
-  left: 0;
-  bottom: 0.625rem;
+  position: fixed;
+  right: 0;
+  top: 0.625rem;
+  z-index: 1;
+  //z-index: 1;
   display: flex;
   align-items: flex-start;
   gap: 0.25rem;
+  padding: 0 0.25rem;
   @media (max-width: 480px) {
     left: 50%;
     transform: translateX(-50%);
-    bottom: 20px;
+    top: auto;
+    bottom: 3.125rem;
     justify-content: space-between;
     width: 100%;
     z-index: 4;

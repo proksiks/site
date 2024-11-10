@@ -177,7 +177,7 @@ a:hover {
   padding: 1.25rem;
   @media (max-width: 480px) {
     padding: 0.25rem;
-    padding-bottom: 3.125rem;
+    padding-bottom: 5.3125rem;
   }
 }
 .screen-inner > * {
@@ -192,7 +192,7 @@ a:hover {
 
 .main {
   width: 100vw;
-  min-height: 100vh;
+  min-height: 100svh;
   /*padding: var(--default-padding);*/
   padding-left: 70px; /*  для левого меню */
   background-color: var(--dark-2);

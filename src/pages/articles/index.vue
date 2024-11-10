@@ -14,16 +14,6 @@
 
 <script lang="ts" setup>
   import type { Body } from "./model";
-
-  const myPost = {
-    id: 0,
-    image: "/images/photos/cover.jpg",
-    title: "Разработчик",
-    body: "С 14 лет занимаюсь программированием",
-    userId: 0,
-    author: "Хлюпнев Владимир",
-  };
-
   const getCheckedArticlesFromStorage = localStorage.getItem("checkedArticlesId");
 
   // TODO вынести в env
@@ -40,14 +30,6 @@
     let result = [];
     if (posts.value) {
       for (const article of posts.value?.data as Body[]) {
-        if (article.id === 1) {
-          article.title = myPost.title;
-          article.body = myPost.body;
-          article.image = myPost.image;
-          article.userId = myPost.userId;
-          article.author = myPost.author;
-          article.id = myPost.id;
-        }
         if (getCheckedArticlesFromStorage) {
           for (const checked of JSON.parse(getCheckedArticlesFromStorage)) {
             if (Number(checked) === Number(article.id)) {
@@ -99,11 +81,6 @@
     }
     @media (max-width: 350px) {
       grid-template-columns: repeat(1, 1fr);
-    }
-  }
-  .page-title {
-    @media (max-width: 480px) {
-      font-size: 24px;
     }
   }
   .articles-item {

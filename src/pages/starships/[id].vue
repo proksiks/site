@@ -1,17 +1,19 @@
 <template>
   <div class="page">
-    <nav class="pagination-nav">
-      <button-ui class="pagination-nav-button pagination-nav-prev" :to="`/starships/${id - 1}`" v-if="id > 1">
-        <template #icon>
-          <icon name="icon:prev" />
-        </template>
-      </button-ui>
-      <button-ui class="pagination-nav-button pagination-nav-next" :to="`/starships/${id + 1}`">
-        <template #icon>
-          <icon name="icon:next" />
-        </template>
-      </button-ui>
-    </nav>
+    <Teleport to="body">
+      <nav class="pagination-nav">
+        <button-ui class="pagination-nav-button pagination-nav-prev" :to="`/starships/${id - 1}`" v-if="id > 1">
+          <template #icon>
+            <icon name="icon:prev" />
+          </template>
+        </button-ui>
+        <button-ui class="pagination-nav-button pagination-nav-next" :to="`/starships/${id + 1}`">
+          <template #icon>
+            <icon name="icon:next" />
+          </template>
+        </button-ui>
+      </nav>
+    </Teleport>
     <div v-if="data">
       <h1 class="page-title">Звездолет {{ data.name }}</h1>
       <div class="starship__item">Модель: {{ data.model }}</div>
@@ -42,6 +44,7 @@
 
 <script setup lang="ts">
   // https://swapi.dev/documentation
+  import { Teleport } from "vue";
   import type { Starship } from "./model";
   const api = "https://swapi.dev/api/starships/";
 
