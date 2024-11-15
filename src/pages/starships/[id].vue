@@ -28,6 +28,7 @@
     </div>
     <div v-else>
       <h1>Звездолет</h1>
+      <skeleton-ui class="starship__item" width="55%" height="200px" />
       <skeleton-ui class="starship__item" width="15%" height="20px" />
       <skeleton-ui class="starship__item" width="20%" height="20px" />
       <skeleton-ui class="starship__item" width="25%" height="20px" />
@@ -50,8 +51,13 @@
 
   const route = useRoute();
   const id = ref(Number(route.params.id || 1));
-  const { data } = useFetch<Starship | null>(`${api}${id.value.toString()}`, { key: "starship" });
+  console.log(id.value);
+  
+  const { data } = await useFetch<Starship | null>(`${api}${id.value.toString()}`, { key: "starship" });
 
+  if (data.value) {
+    console.log(data.value);
+  }
   const costFormated = (cost: number) => {
     if (!cost) return 0;
     return new Intl.NumberFormat("ru-RU").format(cost);
@@ -62,7 +68,6 @@
       mode: "out-in",
     },
     middleware(to, from) {
-      console.log(+to.params.id! > +from.params.id!);
       if (to.meta.pageTransition && typeof to.meta.pageTransition !== "boolean") {
         to.meta.pageTransition.name = +to.params.id! > +from.params.id! ? "slide-left" : "slide-right";
       }

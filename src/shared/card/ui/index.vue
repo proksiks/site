@@ -1,6 +1,6 @@
 <template>
-  <div class="card">
-    <nuxt-link class="card-link" :to="`/articles/${post.id}`">
+  <div class="card" v-if="post.id">
+    <nuxt-link class="card-link" :to="`${post.to}`">
       <div class="card-picture">
         <NuxtPicture
           class="card-image"

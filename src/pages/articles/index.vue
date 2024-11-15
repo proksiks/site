@@ -13,7 +13,7 @@
 </template>
 
 <script lang="ts" setup>
-  import type { Body } from "./model";
+  import type { Post } from "./model";
   const getCheckedArticlesFromStorage = localStorage.getItem("checkedArticlesId");
 
   // TODO вынести в env
@@ -29,7 +29,7 @@
   const articles = computed(() => {
     let result = [];
     if (posts.value) {
-      for (const article of posts.value?.data as Body[]) {
+      for (const article of posts.value?.data as Post[]) {
         if (getCheckedArticlesFromStorage) {
           for (const checked of JSON.parse(getCheckedArticlesFromStorage)) {
             if (Number(checked) === Number(article.id)) {
@@ -39,7 +39,7 @@
           }
         }
         if (users.value?.data) {
-          for (const user of users.value?.data as Body[]) {
+          for (const user of users.value?.data as Post[]) {
             if (Number(user.id) === Number(article.userId)) {
               article.author = user.name;
               break;

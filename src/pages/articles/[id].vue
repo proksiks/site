@@ -67,7 +67,7 @@
     if (storageArticle !== null) {
       article.value = JSON.parse(storageArticle);
     } else {
-      console.log(1);
+      console.log('if (article.value === undefined)');
     }
   }
 
@@ -80,10 +80,6 @@
     pageTransition: {
       name: "slide-right",
       mode: "out-in",
-    },
-    middleware(to, from) {
-      if (to.meta.pageTransition && typeof to.meta.pageTransition !== "boolean")
-        to.meta.pageTransition.name = +to.params.id! > +from.params.id! ? "slide-left" : "slide-right";
     },
   });
 </script>

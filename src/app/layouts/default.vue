@@ -32,7 +32,7 @@
     easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
   });
 
-  onMounted(() => {
+  onNuxtReady(() => {
     if (width.value > 1024) {
       function raf(time: number) {
         lenis.raf(time);

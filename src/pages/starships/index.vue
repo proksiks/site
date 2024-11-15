@@ -2,15 +2,12 @@
   <div class="page">
     <h1>Звездолеты</h1>
     <ul class="starships" v-if="starshipsData">
-      <li class="starship" v-for="starship in starshipsData?.results">
-        <nuxt-link class="starship-link" :to="`/starships/${getUrlShip(starship.url)}`">
-          Название: {{ starship.name }}
-        </nuxt-link>
-        <div class="starship-item">Класс: {{ starship.starship_class }}</div>
-        <div class="starship-item">Количество мест: {{ starship.pilots.length }}</div>
+      <li v-for="starship in starshipsData" :key="starship.id">
+        <span v-if="starship">
+          <lazy-card-ui class="articles-card" :post="starship" v-if="starship" />
+        </span>
       </li>
     </ul>
-    <skeleton-ui v-else width="100%" height="250px" />
   </div>
 </template>
 
@@ -20,7 +17,27 @@
   const shipsApi = "https://swapi.dev/api/starships/";
   const [{ data: starships }] = await Promise.all([useCustomFetch(shipsApi)]);
   const getUrlShip = (url: string) => url.replace(shipsApi, "");
-  const starshipsData = computed(() => starships.value?.data as StarshipsResponse | undefined);
+  const starshipsData = computed(() => {
+    const data = starships.value?.data as StarshipsResponse | undefined;
+    console.log(data?.results);
+
+    const result = [];
+    if (data) {
+      for (let index = 0; index < data.results.length; index++) {
+        const element = data.results[index];
+
+        const obj = {
+          id: getUrlShip(element.url).replaceAll("/", ""),
+          to: getUrlShip(element.url).replaceAll("/", ""),
+          title: element.name,
+          body: element.passengers === "n/a" ? `Вместимость: 0 чел` : `Вместимость: ${element.passengers} чел`,
+        };
+
+        result.push(obj);
+      }
+    }
+    return result;
+  });
 </script>
 
 <style lang="scss" scoped>

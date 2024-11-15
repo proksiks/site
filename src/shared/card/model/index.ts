@@ -1,7 +1,8 @@
 export interface Card {
     post: {
-        id?: number;
+        id?: number | string;
         title?: string;
+        to?: string;
         image?: string;
         body?: string;
         checked?: boolean;
