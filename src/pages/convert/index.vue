@@ -1,7 +1,7 @@
 <template>
-  <!-- TODO вынести конвертер в виджет -->
-  <div class="wrap">
-    <lazy-breadcrumbs-ui :breadcrumbs="breadcrumbs" />
+  <div class="page">
+    <lazy-breadcrumbs-ui class="convert-breadcrumbs" :breadcrumbs="breadcrumbs" />
+    <h1 class="page-title">Конвертер</h1>
     <lazy-currency-converter-ui :data="data" />
   </div>
 </template>
@@ -14,7 +14,6 @@
   //const { data: xmlData } = await useFetch(xmlApi);
 
   //console.log(xmlData.value);
-  
 
   //https://www.cbr-xml-daily.ru/daily_json.js ссылка на api
 
@@ -33,4 +32,8 @@
   //      .then((data) => setApiData(data.Valute));
   //  }, [apiUrl]);
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+  .convert-breadcrumbs {
+    margin-bottom: 1.25rem;
+  }
+</style>

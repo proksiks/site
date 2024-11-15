@@ -1,7 +1,8 @@
 <template>
-  <div class="wrap">
+  <div class="page">
+    <lazy-breadcrumbs-ui class="currency-rate" :breadcrumbs="breadcrumbs" />
     <div class="head">
-      <nuxt-link to="/convert/">Конвертация</nuxt-link>
+      <h1 class="page-title">Будущий курс валют</h1>
       <select class="select" v-model="baseCurrency">
         <option class="select-option" value="rub">RUB</option>
         <option class="select-option" value="usd">USD</option>
@@ -20,6 +21,8 @@
 
 <script lang="ts" setup>
   const { data } = await useFetch<{ [key: string]: number }>("https://status.neuralgeneration.com/api/currency");
+  const breadcrumbs = [{ href: "/convert/", title: "Конвертация" }];
+
   const baseCurrency = ref("rub");
   function getCurrencyValue(currency: string) {
     if (data.value && data.value[`${currency}-${baseCurrency.value}` as keyof typeof data.value]) {
@@ -33,6 +36,9 @@
   const { count } = storeToRefs(counter);
 </script>
 <style scoped>
+  .currency-rate {
+    margin-bottom: 1.25rem;
+  }
   .head {
     display: flex;
     align-items: center;
@@ -44,10 +50,11 @@
     gap: 1.5rem;
   }
   .select {
-    padding: 0.625rem;
-    border-radius: 0.375rem;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
     background-color: transparent;
     color: var(--white);
+    font-size: 0.75rem;
   }
   .select-option {
     color: var(--dark);
@@ -56,19 +63,19 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding-top: 10px;
-    margin-top: 10px;
-    border-top: 1px solid var(--white);
+    padding-top: 1.25rem;
+    margin-top: 1.25rem;
+    border-top: 0.0625rem solid var(--white);
   }
   .point {
     text-transform: uppercase;
     background-color: var(--white);
     color: var(--dark);
-    padding: 10px;
-    border-radius: 6px;
+    padding: 0.625rem;
+    border-radius: 0.375rem;
   }
   .point + .point {
-    margin-top: 10px;
+    margin-top: 0.625rem;
   }
 
   .inner-navigation {
@@ -82,7 +89,7 @@
     border-radius: 0.375rem;
     background-color: transparent;
     color: var(--white);
-    border: 1px solid var(--white);
+    border: 0.0625rem solid var(--white);
     width: 100%;
   }
 </style>

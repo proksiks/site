@@ -1,4 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+const isProduction = process.env.CURRENT_BRANCH === 'prod'
+
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   //devtools: { enabled: true },
@@ -17,6 +19,8 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       CURRENT_BRANCH: process.env.CURRENT_BRANCH,
+      STARWARS_PLACEHOLDER: process.env.STARWARS_PLACEHOLDER,
+      JSON_PLACEHOLDER: process.env.JSON_PLACEHOLDER,
     }
   },
 
@@ -53,7 +57,7 @@ export default defineNuxtConfig({
   },
 
   image: {
-    provider: process.env.CURRENT_BRANCH === 'prod' ? '' : 'netlify',
+    provider: isProduction ? 'netlify' : '',
   },
 
   icon: {
@@ -103,7 +107,7 @@ export default defineNuxtConfig({
   app: {
     //baseURL: "/site/",
     //buildAssetsDir: "/",
-    pageTransition: { name: "page" },
+    pageTransition: { name: "page", mode: "out-in", },
     head: {
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1',
@@ -140,6 +144,7 @@ export default defineNuxtConfig({
   ],
   imports: { dirs: ['app/stores', '**/model/*.ts', 'app/composables', 'app/utils'] },
   css: ["normalize.css", "~/app/assets/style/global.css"],
+
   pwa: {
     registerType: 'autoUpdate',
     //strategies: 'generateSW',

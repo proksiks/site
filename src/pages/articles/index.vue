@@ -7,7 +7,7 @@
       </li>
     </ul>
     <div v-else>
-      <skeleton-ui class="page-intro" width="100%" height="250px" />
+      <skeleton-ui class="page-intro" width="100%" height="15.625rem" />
     </div>
   </div>
 </template>
@@ -30,6 +30,7 @@
     let result = [];
     if (posts.value) {
       for (const article of posts.value?.data as Post[]) {
+        article.to = `/articles/${article.id}`;
         if (getCheckedArticlesFromStorage) {
           for (const checked of JSON.parse(getCheckedArticlesFromStorage)) {
             if (Number(checked) === Number(article.id)) {
@@ -68,7 +69,8 @@
     padding: 0;
     display: grid;
     grid-template-columns: repeat(6, 1fr);
-    gap: 20px;
+    gap: 1.25rem;
+    margin-top: 1.25rem;
     @media (max-width: 1440px) {
       grid-template-columns: repeat(4, 1fr);
     }
