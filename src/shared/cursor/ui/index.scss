@@ -1,17 +1,17 @@
 .custom-cursor {
   position: relative;
-  width: 400px;
-  height: 400px;
+  width: 25rem;
+  height: 25rem;
   position: fixed;
   z-index: 1;
   pointer-events: none;
   @media (max-width: 768px) {
-    width: 200px;
-    height: 200px;
+    width: 12.5rem;
+    height: 12.5rem;
   }
   @media (max-width: 480px) {
-    width: 100px;
-    height: 100px;
+    width: 6.25rem;
+    height: 6.25rem;
   }
   &::before {
     content: "";

@@ -15,7 +15,8 @@
 <script lang="ts" setup>
   const myPost = [
     {
-      id: 0,
+      id: '0',
+      to: "/authors/0",
       image: "/images/photos/cover.jpg",
       title: "Разработчик",
       body: "С 14 лет занимаюсь программированием",
@@ -23,8 +24,6 @@
       author: "Хлюпнев Владимир",
     },
   ];
-
-  
   //const api = "https://jsonplaceholder.typicode.com";
 
   //const { data } = await useAsyncData("users", () => $fetch(`${api}/users`));

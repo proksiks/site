@@ -1,6 +1,6 @@
 <template>
   <div class="my-article">
-    <nuxt-link class="my-article-back" to="/articles">Назад</nuxt-link>
+    <nuxt-link class="my-article-back" to="/authors/">Назад</nuxt-link>
     <div class="my-article-content">
       <div class="my-article-intro">
         <img
@@ -12,7 +12,7 @@
           loading="lazy"
         />
       </div>
-      <nuxt-link :to="`/authors/0`" class="my-article-author"> Хлюпнев Владимир </nuxt-link>
+      <nuxt-link :to="`/authors/0/`" class="my-article-author"> Хлюпнев Владимир </nuxt-link>
       <h1>Продуктовая разработка</h1>
       <p>Это ещё заготовка проекта, тут мои мысли, задумки, наработки</p>
       <p>

@@ -1,6 +1,6 @@
 <template>
   <div class="page">
-    <h1>Звездолеты</h1>
+    <h1 class="page-title">Звездолеты</h1>
     <ul class="starships" v-if="starshipsData">
       <li v-for="starship in starshipsData" :key="starship.id">
         <span v-if="starship">

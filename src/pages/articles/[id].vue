@@ -1,6 +1,7 @@
 <template>
   <div>
     <nuxt-link class="back" to="/articles">Назад</nuxt-link>
+    <h1 class="page-title">Статья</h1>
     <div class="page-content" v-if="article">
       <img
         class="page-intro"
@@ -11,7 +12,7 @@
         loading="lazy"
         v-if="article.image"
       />
-      <skeleton-ui class="page-intro" v-else width="100%" height="250px" />
+      <skeleton-ui class="page-intro" v-else width="100%" height="15.625rem" />
 
       <nuxt-link :to="`/authors/${article?.id}`" class="page-author">
         {{ article?.name }}
@@ -24,7 +25,7 @@
       </p>
     </div>
     <div v-else>
-      <skeleton-ui class="page-intro" width="100%" height="250px" />
+      <skeleton-ui class="page-intro" width="100%" height="15.625rem" />
     </div>
   </div>
 </template>
@@ -67,7 +68,7 @@
     if (storageArticle !== null) {
       article.value = JSON.parse(storageArticle);
     } else {
-      console.log('if (article.value === undefined)');
+      console.log("if (article.value === undefined)");
     }
   }
 

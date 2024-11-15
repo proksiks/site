@@ -39,7 +39,7 @@
           :src="`/images/starships/${getId}.webp`"
           v-if="getId"
         />
-        <skeleton-ui width="25%" height="200px" v-else />
+        <skeleton-ui width="25%" height="12.5rem" v-else />
       </div>
       <div class="starship__item">
         Модель:
