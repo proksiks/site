@@ -3,7 +3,7 @@
     <h1 class="page-title">Список авторов</h1>
     <ul class="authors" v-if="myPost">
       <li class="authors-item" v-for="post in myPost" :key="post.id">
-        <lazy-card-ui class="authors-card" :post="post" v-if="post" />
+        <lazy-card-ui class="authors-card" :post="post" />
       </li>
     </ul>
     <div v-else>

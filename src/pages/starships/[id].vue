@@ -16,22 +16,35 @@
     </Teleport>
     <div class="starship">
       <h1 class="page-title starship__item">
+        {{ getId }}
         Звездолет
-        <span v-if="data">
-          {{ data.name }}
+        <span v-if="article.name">
+          {{ article.name }}
         </span>
         <span v-else>
           <skeleton-ui width="9.375rem" height="2.25rem" />
         </span>
       </h1>
       <div class="starship__cover">
-        <img v-if="data" :src="`/images/starships/${id}.webp`" alt="image" />
-        <skeleton-ui width="55%" height="200px" v-else />
+        <NuxtPicture
+          class="card-image"
+          format="avif,webp"
+          placeholder
+          loading="lazy"
+          width="260"
+          height="260"
+          sizes="xs:160px sm:260px"
+          fit="cover"
+          :img-attrs="{ alt: '', fetchpriority: 'high' }"
+          :src="`/images/starships/${getId}.webp`"
+          v-if="getId"
+        />
+        <skeleton-ui width="25%" height="200px" v-else />
       </div>
       <div class="starship__item">
         Модель:
-        <span v-if="data">
-          {{ data.model }}
+        <span v-if="article.model">
+          {{ article.model }}
         </span>
         <span v-else>
           <skeleton-ui width="3.125rem" height="1.1494rem" />
@@ -39,8 +52,8 @@
       </div>
       <div class="starship__item">
         Стоимость:
-        <span v-if="data">
-          {{ costFormated(Number(data.cost_in_credits)) }}
+        <span v-if="article.cost_in_credits">
+          {{ costFormated(Number(article.cost_in_credits)) }}
         </span>
         <span v-else>
           <skeleton-ui width="3.125rem" height="1.1494rem" />
@@ -49,8 +62,8 @@
       </div>
       <div class="starship__item">
         Максимальная скорость:
-        <span v-if="data">
-          {{ data.max_atmosphering_speed }}
+        <span v-if="article.max_atmosphering_speed">
+          {{ article.max_atmosphering_speed }}
         </span>
         <span v-else>
           <skeleton-ui width="3.125rem" height="1.1494rem" />
@@ -59,8 +72,8 @@
       </div>
       <div class="starship__item">
         Количество пассажиров:
-        <span v-if="data">
-          {{ data.passengers }}
+        <span v-if="article.passengers">
+          {{ article.passengers }}
         </span>
         <span v-else>
           <skeleton-ui width="3.125rem" height="1.1494rem" />
@@ -69,8 +82,8 @@
       </div>
       <div class="starship__item">
         Грузоподъемность:
-        <span v-if="data">
-          {{ data.cargo_capacity }}
+        <span v-if="article.cargo_capacity">
+          {{ article.cargo_capacity }}
         </span>
         <span v-else>
           <skeleton-ui width="3.125rem" height="1.1494rem" />
@@ -79,8 +92,8 @@
       </div>
       <div class="starship__item">
         Производитель:
-        <span v-if="data">
-          {{ data.manufacturer }}
+        <span v-if="article.manufacturer">
+          {{ article.manufacturer }}
         </span>
         <span v-else>
           <skeleton-ui width="3.125rem" height="1.1494rem" />
@@ -88,8 +101,8 @@
       </div>
       <div class="starship__item">
         Класс:
-        <span v-if="data">
-          {{ data.starship_class }}
+        <span v-if="article.starship_class">
+          {{ article.starship_class }}
         </span>
         <span v-else>
           <skeleton-ui width="3.125rem" height="1.1494rem" />
@@ -97,8 +110,8 @@
       </div>
       <div class="starship__item">
         Количество мест:
-        <span v-if="data">
-          {{ data.length }}
+        <span v-if="article.length">
+          {{ article.length }}
         </span>
         <span v-else>
           <skeleton-ui width="3.125rem" height="1.1494rem" />
@@ -107,8 +120,8 @@
       </div>
       <div class="starship__item">
         Количество пилотов:
-        <span v-if="data">
-          {{ data.pilots.length }}
+        <span v-if="article.pilots">
+          {{ article.pilots.length }}
         </span>
         <span v-else>
           <skeleton-ui width="3.125rem" height="1.1494rem" />
@@ -119,22 +132,25 @@
 </template>
 
 <script setup lang="ts">
-  // https://swapi.dev/documentation
-  import { Teleport } from "vue";
-  //import type { Starship } from "./model";
   import { result } from "~/app/content/StarshipMoc.json";
-  //const api = "https://swapi.dev/api/starships/";
-  //const { data } = await useFetch<Starship | null>(`${api}${id.value.toString()}`, { key: "starship" });
-  const runtimeConfig = useRuntimeConfig();
-
-
-  onMounted(() => {
-    console.log(runtimeConfig.public.CURRENT_BRANCH);
-  });
+  import type { Starship } from "./model";
 
   const route = useRoute();
+  const runtimeConfig = useRuntimeConfig();
+  const api = runtimeConfig.public.STARWARS_PLACEHOLDER;
   const id = ref(Number(route.params.id || 1));
-  const data = result[id.value];
+
+  const article = ref();
+  const { data, error } = await useFetch<Starship | null>(`${api}${id.value.toString()}`, { key: "starship" });
+  if (error.value?.data) {
+    article.value = result;
+  } else {
+    article.value = data.value;
+  }
+
+  const getUrlShip = (url: string) => url?.replace(runtimeConfig.public.STARWARS_PLACEHOLDER, "");
+  const getId = computed(() => getUrlShip(article.value?.url)?.replaceAll("/", ""));
+
   const costFormated = (cost: number) => {
     if (!cost) return 0;
     return new Intl.NumberFormat("ru-RU").format(cost);
@@ -146,7 +162,7 @@
     },
     middleware(to, from) {
       if (to.meta.pageTransition && typeof to.meta.pageTransition !== "boolean") {
-        to.meta.pageTransition.name = +to.params.id! > +from.params.id! ? "slide-left" : "slide-right";
+        to.meta.pageTransition.name = +to.params.id! > +from.params.id! ? "page" : "slide-right";
       }
     },
   });
