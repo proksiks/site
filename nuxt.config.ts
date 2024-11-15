@@ -53,7 +53,7 @@ export default defineNuxtConfig({
   },
 
   image: {
-    provider: process.env.CURRENT_BRANCH === 'main' ? '' : 'netlify',
+    provider: process.env.CURRENT_BRANCH === 'prod' ? 'netlify' : '',
   },
 
   icon: {
