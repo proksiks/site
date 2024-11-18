@@ -3,13 +3,15 @@
     <nuxt-link class="my-article-back" to="/authors/">Назад</nuxt-link>
     <div class="my-article-content">
       <div class="my-article-intro">
-        <img
+        <NuxtPicture
           class="my-article-image"
-          src="/images/photos/main.jpg"
-          width="960"
-          height="440"
-          alt="image"
+          format="avif,webp"
+          placeholder
           loading="lazy"
+          sizes="xs:440px sm:720px"
+          fit="cover"
+          :img-attrs="{ alt: '', fetchpriority: 'high' }"
+          src="/images/photos/main.jpg"
         />
       </div>
       <nuxt-link :to="`/authors/0/`" class="my-article-author"> Хлюпнев Владимир </nuxt-link>
@@ -25,7 +27,7 @@
 
 <style lang="scss" scoped>
   .my-article-content {
-    max-width: 62.5rem;
+    max-width: 45rem;
     margin: 0 auto;
     padding: 1.25rem;
     border-radius: 0.5rem;
@@ -40,10 +42,17 @@
   }
   .my-article-image {
     display: block;
+    width: 45rem;
+    height: 28.125rem;
     max-width: 100%;
     object-fit: cover;
     margin: 0 auto;
     border-radius: 0.5rem;
+    text-align: center;
+    &:deep(*) {
+      max-width: 100%;
+      border-radius: 0.5rem;
+    }
   }
   .my-article-author {
     display: block;

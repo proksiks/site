@@ -3,7 +3,7 @@ export interface StarshipsResponse {
 }
 
 export interface Starship {
-    name: string;
+    name?: string;
     model: string;
     manufacturer: string;
     cost_in_credits: string;
@@ -21,4 +21,11 @@ export interface Starship {
     created: Date;
     edited: Date;
     url: string;
+    id?: number;
+    title?: string;
+    image?: string;
+    body?: string;
+    author?: string;
+    userId?: number;
+    checked?: boolean;
 }
