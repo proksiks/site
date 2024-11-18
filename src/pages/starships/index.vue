@@ -4,7 +4,7 @@
     <ul class="starships" v-if="starshipsData">
       <li v-for="starship in starshipsData" :key="starship.id">
         <span v-if="starship">
-          <lazy-card-ui class="articles-card" :post="starship" v-if="starship" />
+          <lazy-card-ui class="articles-card" :post="{ ...starship, image: starship.image as string }" v-if="starship" />
         </span>
       </li>
     </ul>

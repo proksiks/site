@@ -179,6 +179,12 @@ a:hover {
   margin: 0;
 }
 
+@media (max-width: 480px) {
+  .page-title {
+    font-size: 1.5rem;
+  }
+}
+
 /*html.lenis,
 html.lenis body {
   height: auto;

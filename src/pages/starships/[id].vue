@@ -15,8 +15,7 @@
       </nav>
     </Teleport>
     <div class="starship">
-      <h1 class="page-title starship__item">
-        {{ getId }}
+      <h1 class="page-title">
         Звездолет
         <span v-if="article.name">
           {{ article.name }}
@@ -31,8 +30,6 @@
           format="avif,webp"
           placeholder
           loading="lazy"
-          width="260"
-          height="260"
           sizes="xs:160px sm:260px"
           fit="cover"
           :img-attrs="{ alt: '', fetchpriority: 'high' }"

@@ -60,6 +60,10 @@
   display: flex;
   align-items: center;
   gap: 0.375rem;
+
+  @media (max-width: 480px) {
+    font-size: 14px;
+  }
   & + & {
     margin-top: 0.625rem;
   }
@@ -68,6 +72,15 @@
   display: block;
   margin-top: 1.25rem;
   margin-bottom: 2.5rem;
+  .card-image {
+    display: block;
+    width: 16.25rem;
+    height: 16.25rem;
+    @media (max-width: 480px) {
+      width: 10rem;
+      height: 10rem;
+    }
+  }
 }
 .starship-link {
   font-size: 0.875rem;
@@ -103,7 +116,6 @@
 .pagination-nav-button {
   padding: 0.5rem;
 }
-
 
 //.starship-content-enter-active,
 //.starship-content-leave-active {
