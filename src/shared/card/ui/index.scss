@@ -70,7 +70,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  max-width: 18.75rem;
+  width: 20rem;
+  height: 20rem;
   &:deep(img) {
     object-fit: cover;
     max-width: 100%;

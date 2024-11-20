@@ -2,13 +2,11 @@
   <div class="card" v-if="post.id">
     <nuxt-link class="card-link" :to="`${post.to}`">
       <div class="card-picture">
-        <NuxtPicture
+        <nuxt-picture
           class="card-image"
           format="avif,webp"
           placeholder
           loading="lazy"
-          sizes="xs:240px sm:320px"
-          fit="cover"
           :img-attrs="{ alt: '', fetchpriority: 'high' }"
           :src="post.image"
           v-if="post.image"
