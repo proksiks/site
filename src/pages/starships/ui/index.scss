@@ -1,8 +1,5 @@
 .page {
   position: relative;
-  h1 {
-    margin: 0;
-  }
 }
 .page-content {
   position: relative;
@@ -74,12 +71,6 @@
   margin-bottom: 2.5rem;
   .card-image {
     display: block;
-    width: 16.25rem;
-    height: 16.25rem;
-    @media (max-width: 480px) {
-      width: 10rem;
-      height: 10rem;
-    }
   }
 }
 .starship-link {

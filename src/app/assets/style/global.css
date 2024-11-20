@@ -176,9 +176,10 @@ a:hover {
 }
 
 .page-title {
-  margin: 0;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
-
 @media (max-width: 480px) {
   .page-title {
     font-size: 1.5rem;
