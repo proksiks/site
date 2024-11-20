@@ -34,6 +34,10 @@ export default defineNuxtConfig({
 
   srcDir: 'src/',
 
+  devServer: {
+    port: 7777
+  },
+
   dir: {
     //plugins: 'app/plugins',
     assets: 'app/assets',

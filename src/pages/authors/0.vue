@@ -15,7 +15,7 @@
             format="avif,webp"
             placeholder
             loading="lazy"
-            sizes="xs:440px sm:720px"
+            sizes="xs:320px sm:680px"
             fit="cover"
             :img-attrs="{ alt: '', fetchpriority: 'high' }"
             src="/images/photos/main.jpg"
@@ -81,18 +81,18 @@
   .my-article-image {
     position: relative;
     display: block;
-    width: 680px;
-    height: 18rem;
+    width: 42.5rem;
+    height: 26.5625rem;
     max-width: 100%;
     object-fit: cover;
     margin: 0 auto;
     border-radius: 0.5rem;
     text-align: center;
+    @media (max-width: 480px) {
+      height: 12.5rem;
+    }
     &:deep(*) {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
+      max-width: 100%;
       border-radius: 0.5rem;
       object-fit: cover;
     }
