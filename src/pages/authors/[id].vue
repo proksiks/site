@@ -2,7 +2,7 @@
   <div class="page">
     <h1 class="page-title">Автор</h1>
 
-    <nuxt-link class="back" to="/articles">Назад</nuxt-link>
+    <nuxt-link class="back" to="/articles/">Назад</nuxt-link>
 
     <div class="page-content">
       <skeleton-ui class="page-intro" width="100%" height="15.625rem" />
