@@ -41,6 +41,9 @@
   }
   .pagination-nav__button {
     display: inline-block;
+    @media (max-width: 480px) {
+      padding: 1rem 0.75rem;
+    }
   }
   .my-article-intro {
     margin-bottom: 1.25rem;
@@ -79,7 +82,7 @@
     position: relative;
     display: block;
     width: 680px;
-    height: 28.125rem;
+    height: 18rem;
     max-width: 100%;
     object-fit: cover;
     margin: 0 auto;
