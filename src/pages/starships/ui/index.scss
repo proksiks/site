@@ -73,6 +73,21 @@
     display: block;
   }
 }
+.starship__picture {
+  display: block;
+  &:deep(img) {
+    @media (max-width: 480px) {
+      width: 100%;
+    }
+  }
+}
+.starship__image {
+  margin-bottom: 2.5rem;
+}
+.starship__holder {
+  max-width: 60rem;
+  margin: 0 auto;
+}
 .starship-link {
   font-size: 0.875rem;
   text-decoration: none;
