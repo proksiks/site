@@ -7,9 +7,7 @@
           format="avif,webp"
           placeholder
           loading="lazy"
-          width="260"
-          height="260"
-          sizes="xs:160px sm:260px"
+          sizes="xs:240px sm:320px"
           fit="cover"
           :img-attrs="{ alt: '', fetchpriority: 'high' }"
           :src="post.image"

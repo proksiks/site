@@ -50,6 +50,7 @@
   }
   .my-article-box {
     position: relative;
+    padding: 1.25rem;
     &::before {
       content: "";
       position: absolute;
@@ -68,7 +69,6 @@
     position: relative;
     max-width: 45rem;
     margin: 0 auto;
-    padding: 1.25rem;
     border-radius: 0.5rem;
   }
   .my-article-back {

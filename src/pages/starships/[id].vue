@@ -1,26 +1,26 @@
 <template>
   <div class="page">
-    <Teleport to="body">
-      <nav class="pagination-nav">
-        <button-ui class="pagination-nav-button pagination-nav-prev" :to="`/starships/${id - 1}`" v-if="id > 1">
-          <template #icon>
-            <icon name="icon:prev" />
-          </template>
-        </button-ui>
-        <button-ui class="pagination-nav-button pagination-nav-next" :to="`/starships/${id + 1}`">
-          <template #icon>
-            <icon name="icon:next" />
-          </template>
-        </button-ui>
-      </nav>
-    </Teleport>
     <div class="starship">
+      <Teleport to="body">
+        <nav class="pagination-nav">
+          <button-ui class="pagination-nav-button pagination-nav-prev" :to="`/starships/${id - 1}`" v-if="id > 1">
+            <template #icon>
+              <icon name="icon:prev" />
+            </template>
+          </button-ui>
+          <button-ui class="pagination-nav-button pagination-nav-next" :to="`/starships/${id + 1}`">
+            <template #icon>
+              <icon name="icon:next" />
+            </template>
+          </button-ui>
+        </nav>
+      </Teleport>
       <h1 class="page-title">
         Звездолет
         <span v-if="article.name">
           {{ article.name }}
         </span>
-        <skeleton-ui v-else width="9.375rem" height="2.25rem" />
+        <skeleton-ui v-else width="150px" height="2.25rem" />
       </h1>
       <div class="starship__image">
         <NuxtPicture
@@ -34,7 +34,7 @@
           v-if="getId"
         />
         <div class="starship__holder" v-else>
-          <skeleton-ui width="100%" height="12.5rem" />
+          <skeleton-ui width="100%" height="20rem" />
         </div>
       </div>
       <div class="starship__item">

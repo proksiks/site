@@ -73,6 +73,9 @@
   //overflow: hidden;
   max-width: 100%;
   object-fit: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   &:deep(img) {
     object-fit: cover;
     max-width: 100%;

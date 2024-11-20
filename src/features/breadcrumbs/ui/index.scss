@@ -26,12 +26,12 @@
   }
 }
 a.breadcrumbs-link {
-  text-decoration: none;
+  text-decoration: underline;
   &:hover {
-    text-decoration: underline;
+    text-decoration: none;
   }
   &:active {
-    text-decoration: none;
+    text-decoration: underline;
   }
 }
 span.breadcrumbs-link {

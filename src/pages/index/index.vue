@@ -15,6 +15,13 @@
         <div class="point">{{ count }} USD = {{ getCurrencyValue("usd").toFixed(2) }} {{ baseCurrency }}</div>
         <div class="point">{{ count }} EUR = {{ getCurrencyValue("eur").toFixed(2) }} {{ baseCurrency }}</div>
       </div>
+      <nav class="pagination-nav">
+        <button-ui class="pagination-nav__button pagination__nav--next" to="/convert/" title="Конвертер">
+          <template #icon>
+            <icon name="icon:wallet" />
+          </template>
+        </button-ui>
+      </nav>
     </div>
   </div>
 </template>
@@ -36,6 +43,12 @@
   const { count } = storeToRefs(counter);
 </script>
 <style scoped>
+  .pagination-nav__button {
+    display: inline-block;
+    @media (max-width: 480px) {
+      padding: 1rem 0.75rem;
+    }
+  }
   .currency-rate {
     margin-bottom: 1.25rem;
   }
@@ -59,13 +72,19 @@
   .select-option {
     color: var(--dark);
   }
-  .points {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+
+  .info {
     padding-top: 1.25rem;
     margin-top: 1.25rem;
     border-top: 0.0625rem solid var(--white);
+    display: flex;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+  }
+
+  .points {
+    display: flex;
+    flex-direction: column;
   }
   .point {
     text-transform: uppercase;

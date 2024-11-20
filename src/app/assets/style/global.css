@@ -114,6 +114,7 @@ a:hover {
 
 .wrapper {
   display: flex;
+  min-height: 100%;
 }
 
 .screen {
