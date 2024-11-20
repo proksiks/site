@@ -92,12 +92,14 @@
 }
 .starship__image {
   display: flex;
-  align-items: center;
   justify-content: center;
+  width: 100%;
   margin-bottom: 2.5rem;
-  max-width: 25rem;
 }
 .starship__picture {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 320px;
   height: 320px;
   &:deep(img) {
@@ -144,6 +146,10 @@
 }
 .pagination-nav-button {
   padding: 0.5rem;
+}
+
+.starships-item-card {
+  height: 100%;
 }
 
 //.starship-content-enter-active,

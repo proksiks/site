@@ -15,8 +15,8 @@
         />
         <skeleton-ui class="card-image" width="100%" height="100%" v-else />
       </div>
-      <div class="card-title" v-if="post.title">{{ post.title }}</div>
     </nuxt-link>
+    <nuxt-link class="card-title" v-if="post.title" :to="`${post.to}`">{{ post.title }}</nuxt-link>
     <div class="card-body" v-if="post.body">
       <p class="card-text">{{ post.body }}</p>
     </div>
