@@ -22,19 +22,21 @@
         </span>
         <skeleton-ui v-else width="150px" height="2.25rem" />
       </h1>
-      <div class="starship__image">
-        <NuxtPicture
-          class="starship__picture"
-          format="avif,webp"
-          loading="lazy"
-          sizes="xs:320px sm:720px"
-          fit="cover"
-          :img-attrs="{ alt: '', fetchpriority: 'high' }"
-          :src="`/images/starships/${getId}.webp`"
-          v-if="getId"
-        />
-        <div class="starship__holder" v-else>
-          <skeleton-ui width="100%" height="20rem" />
+      <div class="starship__main">
+        <div class="starship__image">
+          <NuxtPicture
+            class="starship__picture"
+            format="avif,webp"
+            loading="lazy"
+            sizes="xs:320px sm:720px"
+            fit="cover"
+            :img-attrs="{ alt: '', fetchpriority: 'high' }"
+            :src="`/images/starships/${getId}.webp`"
+            v-if="getId"
+          />
+          <div class="starship__holder" v-else>
+            <skeleton-ui width="100%" height="20rem" />
+          </div>
         </div>
       </div>
       <div class="starship__item">

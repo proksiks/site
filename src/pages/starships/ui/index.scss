@@ -90,18 +90,23 @@
   margin-top: 1.25rem;
   margin-bottom: 2.5rem;
 }
+
+.starship__main {
+  display: flex;
+  justify-content: center;
+}
+
 .starship__image {
   display: flex;
   justify-content: center;
-  width: 100%;
   margin-bottom: 2.5rem;
+  width: 320px;
+  height: 320px;
 }
 .starship__picture {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 320px;
-  height: 320px;
   &:deep(img) {
     max-width: 100%;
     @media (max-width: 480px) {
@@ -110,6 +115,7 @@
   }
 }
 .starship__holder {
+  width: 100%;
   max-width: 60rem;
   margin: 0 auto;
 }
