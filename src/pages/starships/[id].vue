@@ -15,24 +15,18 @@
       </nav>
     </Teleport>
     <div class="starship">
-      <h1 class="page-title starship__item">
-        {{ getId }}
+      <h1 class="page-title">
         Звездолет
         <span v-if="article.name">
           {{ article.name }}
         </span>
-        <span v-else>
-          <skeleton-ui width="9.375rem" height="2.25rem" />
-        </span>
+        <skeleton-ui v-else width="9.375rem" height="2.25rem" />
       </h1>
       <div class="starship__cover">
         <NuxtPicture
           class="card-image"
           format="avif,webp"
-          placeholder
           loading="lazy"
-          width="260"
-          height="260"
           sizes="xs:160px sm:260px"
           fit="cover"
           :img-attrs="{ alt: '', fetchpriority: 'high' }"
