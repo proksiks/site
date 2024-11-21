@@ -3,7 +3,7 @@
     <div class="my-article-content">
       <div class="my-article-box">
         <nav class="pagination-nav">
-          <button-ui class="pagination-nav__button pagination__nav--next" to="/starships/3/">
+          <button-ui class="pagination-nav__button pagination__nav--next" to="/starships/9/">
             <template #icon>
               <icon name="icon:next" />
             </template>
@@ -96,6 +96,7 @@
     text-align: center;
     @media (max-width: 480px) {
       height: 12.5rem;
+      width: 100%;
     }
     &:deep(*) {
       max-width: 100%;
