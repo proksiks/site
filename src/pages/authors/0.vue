@@ -9,7 +9,7 @@
             </template>
           </button-ui>
         </nav>
-        <div class="my-article-intro">
+        <figure class="my-article-intro">
           <NuxtPicture
             class="my-article-image"
             format="avif,webp"
@@ -18,8 +18,8 @@
             :img-attrs="{ alt: '', fetchpriority: 'high' }"
             src="/images/photos/main.jpg"
           />
-        </div>
-        <nuxt-link :to="`/authors/0/`" class="my-article-author"> Хлюпнев Владимир </nuxt-link>
+          <figcaption class="my-article-author">Хлюпнев Владимир</figcaption>
+        </figure>
         <h1>Продуктовая разработка</h1>
         <p>Это ещё заготовка проекта, тут мои мысли, задумки, наработки</p>
         <p>
@@ -43,7 +43,15 @@
       padding: 1rem 0.75rem;
     }
   }
+
+  .my-article {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
   .my-article-intro {
+    margin: 0;
     margin-bottom: 1.25rem;
   }
   .my-article-box {
@@ -65,7 +73,7 @@
   }
   .my-article-content {
     position: relative;
-    max-width: 45rem;
+    max-width: 36rem;
     margin: 0 auto;
     border-radius: 0.5rem;
   }
@@ -79,8 +87,8 @@
   .my-article-image {
     position: relative;
     display: block;
-    width: 42.5rem;
-    height: 26.5625rem;
+    width: 33.75rem;
+    height: 21.0625rem;
     max-width: 100%;
     object-fit: cover;
     margin: 0 auto;

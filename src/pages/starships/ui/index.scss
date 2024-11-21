@@ -15,6 +15,10 @@
   max-width: 640px;
   padding: 1.25rem;
   margin: 0 auto;
+
+  @media (max-width: 480px) {
+    padding: 0.5rem;
+  }
   &::before {
     content: "";
     position: absolute;
@@ -103,11 +107,19 @@
   margin-bottom: 2.5rem;
   width: 320px;
   height: 320px;
+  @media (max-width: 480px) {
+    height: auto;
+    min-height: 17.5rem;
+    width: 100%;
+  }
 }
 .starship__picture {
   display: flex;
   align-items: center;
   justify-content: center;
+  @media (max-width: 480px) {
+    width: 100%;
+  }
   &:deep(img) {
     max-width: 100%;
     @media (max-width: 480px) {
