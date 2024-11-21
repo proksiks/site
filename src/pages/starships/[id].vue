@@ -28,7 +28,6 @@
             class="starship__picture"
             format="avif,webp"
             loading="lazy"
-            sizes="xs:320px sm:720px"
             fit="cover"
             :img-attrs="{ alt: '', fetchpriority: 'high' }"
             :src="`/images/starships/${getId}.webp`"
