@@ -13,9 +13,7 @@
           <NuxtPicture
             class="my-article-image"
             format="avif,webp"
-            placeholder
             loading="lazy"
-            sizes="xs:320px sm:680px"
             fit="cover"
             :img-attrs="{ alt: '', fetchpriority: 'high' }"
             src="/images/photos/main.jpg"
