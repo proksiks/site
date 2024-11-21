@@ -63,16 +63,16 @@
   position: relative;
   z-index: 1;
   display: block;
+  padding-bottom: 100%;
 }
 .card-image {
-  border-radius: 0.25rem;
-  object-fit: cover;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 20rem;
-  height: 20rem;
+  position: absolute;
+  inset: 0;
   &:deep(img) {
+    border-radius: 0.25rem;
     object-fit: cover;
     max-width: 100%;
   }
