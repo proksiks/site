@@ -40,6 +40,7 @@
   --dark-blue-20: rgba(var(--blue-color-dark), 0.2);
 
   --light: #00ffff;
+  --dark-light: #00bed2;
   --gray-light: #ebebeb;
   --gray-second: #b6b6b6;
   --shadow-horizontal: linear-gradient(180deg, var(--dark), var(--dark-0));

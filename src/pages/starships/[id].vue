@@ -1,7 +1,7 @@
 <template>
   <div class="page">
     <div class="starship">
-      <Teleport to="body">
+      <teleport to="body">
         <nav class="pagination-nav">
           <button-ui class="pagination-nav-button pagination-nav-prev" :to="`/starships/${id - 1}`" v-if="id > 1">
             <template #icon>
@@ -14,7 +14,7 @@
             </template>
           </button-ui>
         </nav>
-      </Teleport>
+      </teleport>
       <h1 class="page-title">
         Звездолет
         <span v-if="article.name">

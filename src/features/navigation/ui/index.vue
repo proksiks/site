@@ -1,7 +1,7 @@
 <template>
   <aside class="aside">
     <div class="sidebar-nav">
-      <Teleport to="body">
+      <teleport to="body">
         <transition name="fade">
           <div class="sidebar-nav-install" v-if="showInstallPrompt">
             <button-ui class="sidebar-nav-install-button" title="Установить приложение" @click="installPWA">
