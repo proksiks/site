@@ -145,6 +145,7 @@ export default defineNuxtConfig({
     "@nuxt/scripts",
     "@nuxt/image",
     "@nuxtjs/robots",
+    'nuxt-purgecss',
   ],
   imports: { dirs: ['app/stores', '**/model/*.ts', 'app/composables', 'app/utils'] },
   css: ["normalize.css", "~/app/assets/style/global.css"],
