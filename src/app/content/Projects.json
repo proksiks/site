@@ -1,43 +1,11 @@
 {
   "list": [
     {
-      "link": "https://proksiks.github.io/greatYa.github.io/",
-      "img": "images/projects/greatYa.png",
-      "feedback": "/my-pet-projects/images/feedbacks/greatYa-rev.png",
-      "feedbackShow": false,
-      "title": "Харизмы",
-      "tags": ["Frontend", "Вёрстка"],
-      "technologies": ["Nuxt", "Tailwind", "Vue 3", "GSAP"],
-      "time": 36,
-      "priceHour": 2000,
-      "totalPrice": "72 000т.р"
-    },
-    {
-      "link": "https://proksiks.github.io/agata-demo/user-index.html",
-      "img": "images/projects/agata.png",
-      "feedback": "/my-pet-projects/images/feedbacks/agata-rev.png",
-      "feedbackShow": false,
-      "title": "Приложение для работы с трафиком",
-      "tags": ["Вёрстка"],
-      "technologies": ["GULP", "Scss", "JavaScript"],
-      "time": 60,
-      "priceHour": 1800,
-      "totalPrice": "108 000т.р"
-    },
-    {
-      "link": "https://proksiks.github.io/nero/",
-      "img": "images/projects/nero.png",
-      "title": "Демо экран",
-      "tags": ["Вёрстка"],
-      "technologies": ["HTML", "CSS", "JavaScript", "GSAP"],
-      "time": 20
-    },
-    {
       "link": "https://www.haulmont.ru/",
       "img": "images/projects/haulmont.jpg",
       "title": "Haulmont",
       "tags": ["Вёрстка", "Разработка", "Frontend", "Backend", "FullStack"],
-      "technologies": ["Vue 2", "Nuxt", "Strapi", "Scss", "Pinia"],
+      "technologies": ["Vue 2", "Nuxt 2", "Strapi", "Scss", "Pinia"],
       "time": 336
     },
     {
@@ -45,7 +13,7 @@
       "img": "images/projects/job.jpg",
       "title": "Haulmont Vacancy",
       "tags": ["Вёрстка", "Разработка", "Frontend", "Backend", "FullStack"],
-      "technologies": ["Vue 2", "Nuxt", "Strapi", "Scss", "Webpack"],
+      "technologies": ["Vue 2", "Nuxt 2", "Strapi", "Scss", "Webpack"],
       "time": 363
     },
     {
@@ -53,7 +21,7 @@
       "img": "images/projects/jmix.jpg",
       "title": "Jmix",
       "tags": ["Вёрстка", "Разработка", "Frontend", "Backend", "FullStack"],
-      "technologies": ["Vue 2", "Nuxt", "Strapi", "Scss", "Webpack", "Vuex"],
+      "technologies": ["Vue 2", "Nuxt 2", "Strapi", "Scss", "Webpack", "Vuex"],
       "time": 487
     },
     {
@@ -61,7 +29,7 @@
       "img": "images/projects/tezis.jpg",
       "title": "Tezis",
       "tags": ["Вёрстка", "Разработка", "Frontend", "Backend", "FullStack"],
-      "technologies": ["Vue 2", "Nuxt", "Strapi", "Scss", "Webpack"],
+      "technologies": ["Vue 2", "Nuxt 2", "Strapi", "Scss", "Webpack"],
       "time": 454
     },
     {
@@ -69,7 +37,7 @@
       "img": "images/projects/sherlock.jpg",
       "title": "Sherlock",
       "tags": ["Вёрстка", "Разработка", "Frontend", "Backend", "FullStack"],
-      "technologies": ["Vue 2", "Nuxt", "Strapi", "Scss", "Webpack"],
+      "technologies": ["Vue 2", "Nuxt 2", "Strapi", "Scss", "Webpack"],
       "time": 162
     },
     {
@@ -77,7 +45,7 @@
       "img": "images/projects/tech.jpg",
       "title": "Haulmont Tech",
       "tags": ["Вёрстка", "Разработка", "Frontend", "Backend", "FullStack"],
-      "technologies": ["Vue 2", "Nuxt", "Strapi", "Scss", "Webpack"],
+      "technologies": ["Vue 2", "Nuxt 2", "Strapi", "Scss", "Webpack"],
       "time": 91
     },
     {
@@ -85,7 +53,7 @@
       "img": "images/projects/jpa.jpg",
       "title": "Jpa Buddy",
       "tags": ["Вёрстка", "Разработка", "Frontend", "Backend", "FullStack"],
-      "technologies": ["Vue 2", "Nuxt", "Strapi", "Scss", "Webpack"],
+      "technologies": ["Vue 2", "Nuxt 2", "Strapi", "Scss", "Webpack"],
       "time": 224
     },
     {
@@ -93,7 +61,7 @@
       "img": "images/projects/amplicode.jpg",
       "title": "Amplicode",
       "tags": ["Вёрстка", "Разработка", "Frontend", "Backend", "FullStack"],
-      "technologies": ["Vue 2", "Nuxt", "Strapi", "Scss", "Webpack"],
+      "technologies": ["Vue 2", "Nuxt 2", "Strapi", "Scss", "Webpack"],
       "time": 128
     },
     {
@@ -149,6 +117,38 @@
       "time": 51
     },
     {
+      "link": "https://proksiks.github.io/greatYa.github.io/",
+      "img": "images/projects/greatYa.png",
+      "feedback": "/my-pet-projects/images/feedbacks/greatYa-rev.png",
+      "feedbackShow": false,
+      "title": "Харизмы",
+      "tags": ["Frontend", "Вёрстка"],
+      "technologies": ["Nuxt", "Tailwind", "Vue 3", "GSAP"],
+      "time": 36,
+      "priceHour": 2000,
+      "totalPrice": "72 000т.р"
+    },
+    {
+      "link": "https://proksiks.github.io/agata-demo/user-index.html",
+      "img": "images/projects/agata.png",
+      "feedback": "/my-pet-projects/images/feedbacks/agata-rev.png",
+      "feedbackShow": false,
+      "title": "Приложение для работы с трафиком",
+      "tags": ["Вёрстка"],
+      "technologies": ["GULP", "Scss", "JavaScript"],
+      "time": 60,
+      "priceHour": 1800,
+      "totalPrice": "108 000т.р"
+    },
+    {
+      "link": "https://proksiks.github.io/nero/",
+      "img": "images/projects/nero.png",
+      "title": "Демо экран",
+      "tags": ["Вёрстка"],
+      "technologies": ["HTML", "CSS", "JavaScript", "GSAP"],
+      "time": 20
+    },
+    {
       "link": "https://proksiks.github.io/movies/",
       "img": "images/projects/movies.jpg",
       "title": "Топ 10 фильмов",
@@ -168,7 +168,7 @@
       "link": "https://proksiks.github.io/idaproject/",
       "img": "images/projects/idaproject.jpg",
       "title": "Тестовое задание",
-      "technologies": ["Vue 2", "Nuxt", "Scss"],
+      "technologies": ["Vue 2", "Nuxt 2", "Scss"],
       "tags": ["Вёрстка"],
       "time": 6
     },
@@ -179,14 +179,6 @@
       "technologies": ["GULP", "JavaScript", "Scss"],
       "tags": ["Вёрстка"],
       "time": 44
-    },
-    {
-      "link": "/projects/hls-player/",
-      "img": "images/projects/hls-player.jpg",
-      "title": "HLS-Player",
-      "tags": ["Разработка", "Frontend"],
-      "technologies": ["Vue 3", "Nuxt 3", "JavaScript", "Scss"],
-      "time": 4
     },
     {
       "link": "https://codesandbox.io/p/sandbox/todolist-forked-5xgcwt?file=%2Fsrc%2Fmain.js",

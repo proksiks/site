@@ -71,6 +71,12 @@ body {
   width: 100%;
   font-family: "Noto Sans", sans-serif;
 }
+
+img {
+  max-width: 100%;
+  object-fit: cover;
+}
+
 #__nuxt {
   height: 100%;
 }
@@ -185,6 +191,25 @@ a:hover {
 @media (max-width: 480px) {
   .page-title {
     font-size: 1.5rem;
+  }
+}
+
+.ripple {
+  border-radius: 50%;
+  background: var(--dark-blue-75);
+  transform: scale(0);
+  position: absolute;
+  opacity: 1;
+}
+
+.ripple-effect {
+  animation: ripple-drop 0.5s linear;
+}
+
+@keyframes ripple-drop {
+  100% {
+    transform: scale(2);
+    opacity: 0;
   }
 }
 

@@ -1,6 +1,7 @@
 export interface Card {
     post: {
         id?: number | string;
+        target?: string;
         title?: string;
         to?: string;
         image?: string;

@@ -1,6 +1,6 @@
 <template>
   <div class="card" v-if="post.id">
-    <nuxt-link class="card-link" :to="`${post.to}`">
+    <nuxt-link class="card-link" :to="`${post.to}`" :aria-label="post.title" :target="post?.target">
       <div class="card-picture">
         <nuxt-picture
           class="card-image"

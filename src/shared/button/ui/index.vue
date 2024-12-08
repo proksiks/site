@@ -1,4 +1,5 @@
 <template>
+  <!-- ADD RIPPLE EFFECT TO CLICK ON BUTTON -->
   <nuxt-link class="button" :to="to" v-if="to && target !== '_blank'">
     <span class="button-content">
       <span class="button-icon" v-if="!!slots.icon">

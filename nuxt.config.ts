@@ -39,7 +39,6 @@ export default defineNuxtConfig({
   },
 
   dir: {
-    //plugins: 'app/plugins',
     assets: 'app/assets',
     public: 'app/public',
     layouts: 'app/layouts',
