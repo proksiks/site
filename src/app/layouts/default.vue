@@ -14,15 +14,6 @@
 <script setup lang="ts">
   import Lenis from "@studio-freight/lenis";
   import { useWindowSize } from "@vueuse/core";
-  useSeoMeta({
-    title: "Site",
-    ogTitle: "Site",
-    description: "site",
-    ogDescription: "site",
-    ogImage: "https://example.com/image.png",
-    twitterCard: "summary_large_image",
-  });
-
   const { width } = useWindowSize();
 
   onNuxtReady(() => {

@@ -23,6 +23,7 @@
         </button-ui>
       </nav>
     </div>
+    <nuxt-picture class="qr-tg" src="/images/qr-tg.jpg" width="390" height="378" alt="telegram" />
   </div>
 </template>
 
@@ -110,5 +111,15 @@
     color: var(--white);
     border: 0.0625rem solid var(--white);
     width: 100%;
+  }
+  .qr-tg {
+    margin-top: 1.25rem;
+    display: block;
+    max-width: 12.5rem;
+    &:deep(*) {
+      border-radius: 0.5rem;
+      max-width: 100%;
+      height: auto;
+    }
   }
 </style>

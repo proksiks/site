@@ -41,7 +41,7 @@
 .page-preloader {
     position: fixed;
     inset: 0;
-    z-index: 98;
+    z-index: 3;
     display: flex;
     justify-content: center;
     align-items: center;

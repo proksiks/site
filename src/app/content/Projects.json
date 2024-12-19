@@ -1,6 +1,14 @@
 {
   "list": [
     {
+      "link": "https://forpeople.su/",
+      "img": "images/projects/forpeople.jpg",
+      "title": "ПИПЛ",
+      "tags": ["Разработка", "Frontend", "Backend", "FullStack"],
+      "technologies": ["Vue 3", "Nuxt 3", "Strapi", "Scss", "Pinia"],
+      "time": 470
+    },
+    {
       "link": "https://www.haulmont.ru/",
       "img": "images/projects/haulmont.jpg",
       "title": "Haulmont",

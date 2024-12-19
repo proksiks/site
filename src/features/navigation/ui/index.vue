@@ -27,7 +27,6 @@
             class="sidebar-menu-button"
             :class="{ active: isMenuOpen }"
             @click="openMenu"
-            v-ripple
           >
             <template #icon>
               <span class="sidebar-burger">
@@ -40,7 +39,7 @@
         </div>
         <ul class="sidebar-list" v-if="navigation">
           <li class="sidebar-item" v-for="route in navigation" :key="route.id">
-            <button-ui class="sidebar-item-button" :class-icon="route.icon" :title="route.title" :to="route.href" v-ripple>
+            <button-ui class="sidebar-item-button" :class-icon="route.icon" :title="route.title" :to="route.href">
               <template #icon>
                 <icon class="sidebar-icon" :name="route.icon" />
               </template>

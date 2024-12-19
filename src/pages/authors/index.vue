@@ -24,10 +24,6 @@
       author: "Хлюпнев Владимир",
     },
   ];
-  //const api = "https://jsonplaceholder.typicode.com";
-
-  //const { data } = await useAsyncData("users", () => $fetch(`${api}/users`));
-  //console.log(data.value);
 </script>
 
 <style lang="scss" scoped>

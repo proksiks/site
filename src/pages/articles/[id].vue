@@ -1,6 +1,19 @@
 <template>
   <div>
-    <nuxt-link class="back" to="/articles">Назад</nuxt-link>
+    <teleport to="body">
+      <nav class="pagination-nav">
+        <button-ui class="pagination-nav-button pagination-nav-prev" :to="`/articles/${Number(id) - 1}`" v-if="Number(id) > 1">
+          <template #icon>
+            <icon name="icon:prev" />
+          </template>
+        </button-ui>
+        <button-ui class="pagination-nav-button pagination-nav-next" :to="`/articles/${Number(id) + 1}`">
+          <template #icon>
+            <icon name="icon:next" />
+          </template>
+        </button-ui>
+      </nav>
+    </teleport>
     <h1 class="page-title">Статья</h1>
     <div class="page-content" v-if="article">
       <img
@@ -68,7 +81,7 @@
     if (storageArticle !== null) {
       article.value = JSON.parse(storageArticle);
     } else {
-      console.log("if (article.value === undefined)");
+      // console.log("if (article.value === undefined)");
     }
   }
 
@@ -108,5 +121,28 @@
   .page-author {
     display: block;
     margin-top: 0.625rem;
+  }
+  .pagination-nav {
+    position: fixed;
+    right: 0;
+    top: 0.625rem;
+    z-index: 1;
+    //z-index: 1;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.25rem;
+    padding: 0 0.25rem;
+    @media (max-width: 480px) {
+      left: 50%;
+      transform: translateX(-50%);
+      top: auto;
+      bottom: 4.125rem;
+      justify-content: space-between;
+      width: 100%;
+      z-index: 4;
+    }
+  }
+  .pagination-nav-button {
+    padding: 0.5rem;
   }
 </style>

@@ -114,13 +114,22 @@ export default defineNuxtConfig({
     head: {
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1',
-      title: 'KkN',
-      htmlAttrs: {
-        lang: 'ru',
-      },
-      link: [
-        { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
-      ],
+      title: process.env.APP_NAME,
+      htmlAttrs: { lang: 'ru' },
+      link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
+      meta: [
+        { charset: 'utf-8' },
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        { hid: 'description', name: 'description', content: 'My amazing site' },
+        { name: 'format-detection', content: 'telephone=no' },
+        { name: 'msapplication-TileColor', content: '#da532c' },
+        { name: 'theme-color', content: '#ffffff' },
+        { hid:'og:url', property: 'og:url', content: process.env.APP_URL },
+        { hid:'og:type', property: 'og:type', content: 'app' },
+        { hid:'og:title', property: 'og:title', content: process.env.APP_NAME },
+        { hid:'og:description', property: 'og:description', content: process.env.APP_NAME },
+        { hid:'og:image', property: 'og:image', content: 'https://dummyimage.com/16:9x1080/' },
+      ]
     }
   },
   //fonts: {
@@ -144,7 +153,7 @@ export default defineNuxtConfig({
     "@nuxt/scripts",
     "@nuxt/image",
     "@nuxtjs/robots",
-    // 'nuxt-purgecss',
+    // 'nuxt-purgecss', // удаляет стили в папке assets
   ],
   imports: { dirs: ['app/stores', '**/model/*.ts', 'app/composables', 'app/utils'] },
   css: ["normalize.css", "~/app/assets/style/global.css"],
@@ -166,9 +175,9 @@ export default defineNuxtConfig({
     //  config: true,
     //},
     manifest: {
-      name: "Nuxt 3",
-      short_name: "Nuxt 3",
-      description: "Nuxt 3",
+      name: process.env.APP_NAME,
+      short_name: process.env.APP_NAME,
+      description: process.env.APP_NAME,
       theme_color: "#161a1d",
       background_color: "#161a1d",
       display: "standalone",

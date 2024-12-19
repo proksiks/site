@@ -2,8 +2,8 @@
   <div class="my-article">
     <div class="my-article-content">
       <div class="my-article-box">
-        <nav class="pagination-nav">
-          <button-ui class="pagination-nav__button pagination__nav--next" to="/starships/9/">
+        <nav class="my-article-nav">
+          <button-ui class="my-article-nav__button" to="/starships/9/">
             <template #icon>
               <icon name="icon:next" />
             </template>
@@ -213,12 +213,12 @@
 </template>
 
 <style lang="scss" scoped>
-  .pagination-nav {
+  .my-article-nav {
     display: flex;
     justify-content: flex-end;
     margin-bottom: 0.625rem;
   }
-  .pagination-nav__button {
+  .my-article-nav__button {
     display: inline-block;
     @media (max-width: 480px) {
       padding: 1rem 0.75rem;

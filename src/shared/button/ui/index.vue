@@ -1,6 +1,5 @@
 <template>
-  <!-- ADD RIPPLE EFFECT TO CLICK ON BUTTON -->
-  <nuxt-link class="button" :to="to" v-if="to && target !== '_blank'">
+  <nuxt-link class="button" :to="to" v-if="to && target !== '_blank'" v-ripple>
     <span class="button-content">
       <span class="button-icon" v-if="!!slots.icon">
         <slot name="icon" />
@@ -12,7 +11,7 @@
       </span>
     </span>
   </nuxt-link>
-  <a class="button" :href="to" :target="target" v-else-if="target === '_blank'">
+  <a class="button" :href="to" :target="target" v-else-if="target === '_blank'" v-ripple>
     <span class="button-content">
       <span class="button-icon" v-if="!!slots.icon">
         <slot name="icon" />
@@ -24,7 +23,7 @@
       </span>
     </span>
   </a>
-  <button class="button" v-else>
+  <button class="button" v-else v-ripple>
     <span class="button-content">
       <span class="button-icon" v-if="!!slots.icon">
         <slot name="icon" />

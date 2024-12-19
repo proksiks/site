@@ -17,7 +17,6 @@
   const getUrlShip = (url: string) => url.replace(api, "");
   const starshipsData = computed(() => {
     const data = starships.value?.data as StarshipsResponse | undefined;
-    console.log(data?.results);
 
     const result = [];
     if (data) {
